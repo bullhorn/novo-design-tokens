@@ -1,8 +1,8 @@
 {
-  "name": "@bullhorn/design-tokens",
-  "version": "1.0.0",
+  "name": "novo-design-tokens",
+  "version": "0.0.1",
   "description": "Design tokens for the Novo Design System",
-  "homepage": "https://github.com/bullhorn/design-tokens#readme",
+  "homepage": "https://github.com/bullhorn/novo-design-tokens#readme",
   "license": "MIT",
   "main": "lib/variables.js",
   "module": "lib/variables.esm.js",

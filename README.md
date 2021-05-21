@@ -7,7 +7,7 @@ Design tokens for the Bullhorn/Novo Design System.
 ### Installing the package:
 
 ```
-yarn add novo-design-tokens
+npm install novo-design-tokens
 ```
 
 ### What's included
