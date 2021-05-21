@@ -1,0 +1,25 @@
+{
+  "name": "@bullhorn/design-tokens",
+  "version": "1.0.0",
+  "description": "Design tokens for the Novo Design System",
+  "homepage": "https://github.com/bullhorn/design-tokens#readme",
+  "license": "MIT",
+  "main": "lib/variables.js",
+  "module": "lib/variables.esm.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rm -rf build",
+    "prepublishOnly": "npm run build && npm run minify-css",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "minify-css": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
+  },
+  "devDependencies": {
+    "clean-css-cli": "4.3.0",
+    "foreach-cli": "1.8.1",
+    "polished": "^4.1.2",
+    "style-dictionary": "^3.0.0-rc.9"
+  }
+}

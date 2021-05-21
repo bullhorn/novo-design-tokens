@@ -1,0 +1,7 @@
+lib
+css
+# Ignore SCSS :
+! scss/
+**/scss/*
+!**/scss/_index.scss
+!**/scss/mixins.scss
