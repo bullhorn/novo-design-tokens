@@ -1,13 +1,15 @@
 {
   "name": "novo-design-tokens",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Design tokens for the Novo Design System",
   "homepage": "https://github.com/bullhorn/novo-design-tokens#readme",
   "license": "MIT",
   "main": "lib/variables.js",
   "module": "lib/variables.esm.js",
   "files": [
-    "lib"
+    "lib",
+    "css",
+    "scss"
   ],
   "scripts": {
     "build": "node build.js",
@@ -20,6 +22,6 @@
     "clean-css-cli": "4.3.0",
     "foreach-cli": "1.8.1",
     "polished": "^4.1.2",
-    "style-dictionary": "^3.0.0-rc.9"
+    "style-dictionary": "^3.0.1"
   }
 }

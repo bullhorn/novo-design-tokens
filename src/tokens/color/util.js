@@ -1,17 +1,22 @@
-const { darken, lighten, meetsContrastGuidelines, rgba } = require("polished");
+const {
+  darken,
+  lighten,
+  readableColor,
+  meetsContrastGuidelines,
+  rgba,
+} = require("polished");
 
 // Color Primitives
 const transparent = "transparent";
 const current = "currentColor";
 const black = "#000";
 const white = "#fff";
-const gray = "#999";
 
 const contrastColor = (color, light = white, dark = black) => {
   if (meetsContrastGuidelines(color, light).AALarge) {
     return light;
   }
-  return dark;
+  return readableColor(color, light, dark);
 };
 
 /**
@@ -21,7 +26,7 @@ const contrastColor = (color, light = white, dark = black) => {
  */
 const makeColorScale = (color, light, dark) => {
   return {
-    base: { value: color },
+    value: color,
     shade: { value: darken(0.2, color) },
     tint: { value: lighten(0.2, color) },
     contrast: { value: contrastColor(color, light, dark) },
@@ -41,11 +46,31 @@ const makeColorScale = (color, light, dark) => {
 //   10: T;
 // }
 
+const loopColors = (colors, fn) => {
+  return Object.keys(colors).reduce((ret, name) => {
+    const color = colors[name];
+    return Object.assign({}, ret, {
+      [name]: fn(color),
+    });
+  }, {});
+};
+
+const makeColors = (colors) => loopColors(colors, (c) => ({ value: c }));
+const makeTintColors = (colors) =>
+  loopColors(colors, (c) => ({ value: lighten(0.2, c) }));
+const makeShadeColors = (colors) =>
+  loopColors(colors, (c) => ({ value: darken(0.2, c) }));
+const makeContrastColors = (colors, light, dark) =>
+  loopColors(colors, (c) => ({ value: contrastColor(c, light, dark) }));
+
 module.exports = {
   transparent,
   current,
   black,
   white,
-  gray,
   makeColorScale,
+  makeColors,
+  makeTintColors,
+  makeShadeColors,
+  makeContrastColors,
 };

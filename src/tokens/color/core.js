@@ -1,15 +1,27 @@
-const { black, gray, makeColorScale, white } = require("./util");
+const { black, makeColorScale, white } = require("./util");
+
+// --background-body: #202b38;
+// --background: #161f27;
+// --background-alt: #1a242f;
+// --selection: #1c76c5;
+// --text-main: #dbdbdb;
+// --text-bright: #fff;
+// --text-muted: #a9b1ba;
+// --links: #41adff;
+// --focus: #0096bfab;
+// --border: #526980;
 
 // Base Colors
-const baseColors = {
+module.exports = {
   // Core
-  base: white,
   black,
   white,
-  gray,
-  grey: gray,
-  offWhite: "#f4f4f4",
-  light: "#bebebe",
+  gray: "#9e9e9e",
+  grey: "#9e9e9e",
+  offWhite: "#f7f7f7", // deprecate
+  bright: "#f7f7f7",
+  light: "#dbdbdb",
+  neutral: "#4f5361",
   dark: "#3d464d",
   // Bullhorn Brand Orange
   orange: "#ff6900",
@@ -23,10 +35,11 @@ const baseColors = {
   stone: "#bebebe",
   ash: "#a0a0a0",
   slate: "#707070",
+  onyx: "#526980",
   charcoal: "#282828",
-  moonlight: "#2f384f",
-  midnight: "#202945",
-  darkness: "#0b0f1a",
+  moonlight: "#1a242f", // "#2f384f",
+  midnight: "#202b38", // "#202945",
+  darkness: "#161f27", // "#0b0f1a",
   navy: "#0d2d42",
   aqua: "#3bafda",
   ocean: "#4a89dc",
@@ -39,12 +52,3 @@ const baseColors = {
   lavender: "#967adc",
   mountain: "#9678b6",
 };
-
-// Use a reduce function to take the array of keys in baseColor
-// and map them to an object with the same keys.
-module.exports = Object.keys(baseColors).reduce((ret, name) => {
-  const color = baseColors[name];
-  return Object.assign({}, ret, {
-    [name]: makeColorScale(color),
-  });
-}, {});

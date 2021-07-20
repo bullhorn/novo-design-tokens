@@ -4,6 +4,6 @@ const base = require("./base");
 // that you extend. This can be useful for defining component
 // styles if you have a base style and variations.
 module.exports = Object.assign({}, base, {
-  "background-color": { value: "{color.ocean.base.value}" },
-  color: { value: "{color.ocean.contrast.value}" },
+  "background-color": { value: "{color.ocean.value}" },
+  color: { value: "{color.contrast.ocean.value}" },
 });

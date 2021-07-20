@@ -1,6 +1,8 @@
+const core = require("./core");
+
 module.exports = {
-  navigation: { value: "{color.midnight.base.value}" },
-  presentation: { value: "{color.steel.base.value}" },
-  orange: { value: "{color.orange.base.value}" },
-  pulse: { value: "{color.aqua.base.value}" },
+  navigation: core.midnight,
+  presentation: core.steel,
+  bullhorn: core.orange,
+  pulse: core.aqua,
 };

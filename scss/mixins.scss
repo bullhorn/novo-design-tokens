@@ -1,4 +1,32 @@
-@use "./variables.scss";
+@import "./variables.scss";
+
+// Entity Color Map
+$entityColors: (
+  "star": $color-placement,
+  "person": $color-contact,
+  "company": $color-company,
+  "candidate": $color-candidate,
+  "navigation": $color-navigation,
+  "lead": $color-lead,
+  "contact": $color-contact,
+  "opportunity": $color-opportunity,
+  "job": $color-job,
+  "submission": $color-submission,
+  "sendout": $color-sendout,
+  "placement": $color-placement,
+  "note": $color-note,
+  "task": $color-neutral,
+  "distributionList": $color-neutral,
+  "credential": $color-neutral,
+  "user": $color-neutral,
+  "corporateuser": $color-neutral,
+  "contract": $color-contract,
+  "jobCode": $color-job-code,
+  "earnCode": $color-earn-code,
+  "billableCharge": $color-billable-charge,
+  "payableCharge": $color-payable-charge,
+  "invoiceStatement": $color-invoice-statement,
+);
 
 /*******************/
 /********SPACE******/
@@ -60,25 +88,34 @@
 /*******************/
 /********COLOR******/
 /*******************/
-@function getColor($color, $size: "base") {
+@function getColor($color) {
   $colorTokens: map-get($tokens, "color");
-  $entityColors: map-get($colorTokens, "entity");
-  @if map-has-key($entityColors, $color) {
-    @return map-get($entityColors, $color);
-  } @else {
-    $selected: map-get($colorTokens, $color);
-    @return map-get($selected, $size);
-  }
+  @return map-get($colorTokens, $color);
+}
+@function getTintColor($color) {
+  $colorTokens: map-get($tokens, "color");
+  $tintTokens: map-get($colorTokens, "tint");
+  @return map-get($tintTokens, $color);
+}
+@function getShadeColor($color) {
+  $colorTokens: map-get($tokens, "color");
+  $shadeTokens: map-get($colorTokens, "shade");
+  @return map-get($shadeTokens, $color);
+}
+@function getContrastColor($color) {
+  $colorTokens: map-get($tokens, "color");
+  $contrastTokens: map-get($colorTokens, "contrast");
+  @return map-get($contrastTokens, $color);
 }
 
 /**color**/
-@mixin color($color, $size: "base") {
-  color: getColor($color, $size);
+@mixin color($color) {
+  color: getColor($color);
 }
 
 /**background-color**/
-@mixin background-color($color, $size: "base") {
-  background-color: getColor($color, $size);
+@mixin background-color($color) {
+  background-color: getColor($color);
 }
 
 /*******************/
@@ -95,5 +132,63 @@ $textWeightTokens: map-get($tokens, "textWeight");
   @if ($type == "heading") {
     font-size: map-get($textSizeTokens, $size);
     font-weight: map-get($textWeightTokens, "bold");
+  }
+}
+
+/** THEMES **/
+@mixin entity-colors() {
+  @each $name, $color in $entityColors {
+    @if (type-of($color) != "map") {
+      @content ($color, $name);
+    }
+  }
+}
+
+@mixin theme-colors() {
+  $colorTokens: map-get($tokens, "color");
+  @each $name, $color in $colorTokens {
+    @if (type-of($color) != "map") {
+      @content ($color, $name);
+    }
+  }
+}
+
+@mixin theme-backgrounds($prefix: "color", $interactive: false) {
+  @include theme-colors() using ($color, $name) {
+    &[#{$prefix}="#{$name}"] {
+      color: getContrastColor($name);
+      background: $color;
+      @if ($interactive) {
+        &:hover,
+        &:focus {
+          background: getTintColor($name);
+        }
+        &:active {
+          background: getShadeColor($name);
+        }
+      }
+      @content ($color, $name);
+    }
+  }
+}
+
+@mixin theme-text-colors($prefix: "color") {
+  @include theme-colors() using ($color, $name) {
+    &[#{$prefix}="#{$name}"] {
+      color: $color;
+      i {
+        color: $color;
+      }
+      @content ($color, $name);
+    }
+  }
+}
+
+@mixin theme-borders($prefix: "color") {
+  @include theme-colors() using ($color, $name) {
+    &[#{$prefix}="#{$name}"] {
+      border: 1px solid $color;
+      @content ($color, $name);
+    }
   }
 }

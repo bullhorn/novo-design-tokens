@@ -78,6 +78,7 @@ your components.
   @include background-color(gray);
   @include color(gray, "contrast");
   @include padding("md");
+
   // padding: 0.6rem;
   padding-top: $spacing-md;
   color: rgba($candidate, 0.3);

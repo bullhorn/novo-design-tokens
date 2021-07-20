@@ -26,6 +26,7 @@ module.exports = {
   }),
 
   size: tokenize({
+    base: "10px",
     xs: "0.75rem",
     sm: "0.875rem",
     md: "1rem",
@@ -53,5 +54,11 @@ module.exports = {
     base: "1.5",
     tall: "1.625",
     taller: "2",
+  }),
+
+  color: tokenize({
+    base: "{color.dark.value}",
+    secondary: "{color.light.value}",
+    link: "{color.ocean.value}",
   }),
 };
