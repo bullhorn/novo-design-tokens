@@ -26,7 +26,7 @@ module.exports = {
   }),
 
   size: tokenize({
-    base: "10px",
+    base: "12px",
     xs: "0.75rem",
     sm: "0.875rem",
     md: "1rem",
