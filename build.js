@@ -11,6 +11,11 @@ const StyleDictionary = require("style-dictionary").extend({
           destination: "variables.css",
           format: "css/variables",
         },
+        {
+          destination: `variables-dark.css`,
+          format: `css/dark`,
+          filter: (token) => token.darkValue,
+        },
       ],
     },
     scss: {
@@ -104,6 +109,31 @@ StyleDictionary.registerFormat({
       `module.exports = ${tokens};`,
     ].join("\n");
   },
+});
+
+function cssFormatWrapper(property) {
+  return function (args) {
+    const dictionary = Object.assign({}, args.dictionary);
+    // Override each token's `value` with `property` value
+    dictionary.allProperties = dictionary.allProperties.map((token) => {
+      const propValue = token[property];
+      if (propValue) {
+        return Object.assign({}, token, {
+          value: propValue,
+        });
+      } else {
+        return token;
+      }
+    });
+    // Use the built-in format but with our customized dictionary object
+    // so it will output the hcValue instead of the value
+    return StyleDictionary.format["css/variables"]({ ...args, dictionary });
+  };
+}
+
+StyleDictionary.registerFormat({
+  name: "css/dark",
+  formatter: cssFormatWrapper("darkValue"),
 });
 
 StyleDictionary.buildAllPlatforms();

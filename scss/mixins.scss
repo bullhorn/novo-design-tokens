@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./functions.scss";
 
 // Entity Color Map
 $entityColors: (
@@ -106,6 +107,11 @@ $entityColors: (
   $colorTokens: map-get($tokens, "color");
   $contrastTokens: map-get($colorTokens, "contrast");
   @return map-get($contrastTokens, $color);
+}
+@function getPaleColor($color) {
+  $colorTokens: map-get($tokens, "color");
+  $paleTokens: map-get($colorTokens, "pale");
+  @return map-get($paleTokens, $color);
 }
 
 /**color**/

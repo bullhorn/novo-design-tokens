@@ -4,6 +4,9 @@ const {
   readableColor,
   meetsContrastGuidelines,
   rgba,
+  setLightness,
+  shade,
+  tint,
 } = require("polished");
 
 // Color Primitives
@@ -26,14 +29,12 @@ const contrastColor = (color, light = white, dark = black) => {
  */
 const makeColorScale = (color, light, dark) => {
   return {
-    value: color,
+    "@": { value: color },
     shade: { value: darken(0.2, color) },
     tint: { value: lighten(0.2, color) },
     contrast: { value: contrastColor(color, light, dark) },
-    // Disabled for right now because StyleDictionary converts all color values to hex
-    // in the transform group
-    // 50: { value: rgba(color, 0.5) },
-    // 10: { value: rgba(color, 0.1) },
+    50: { value: setLightness(0.5, color) },
+    10: { value: setLightness(0.8, color) },
   };
 };
 
@@ -56,12 +57,17 @@ const loopColors = (colors, fn) => {
 };
 
 const makeColors = (colors) => loopColors(colors, (c) => ({ value: c }));
+const makeScaledColors = (colors, light, dark) =>
+  loopColors(colors, (c) => makeColorScale(c, light, dark));
+
 const makeTintColors = (colors) =>
-  loopColors(colors, (c) => ({ value: lighten(0.2, c) }));
+  loopColors(colors, (c) => ({ value: tint(0.2, c) }));
 const makeShadeColors = (colors) =>
-  loopColors(colors, (c) => ({ value: darken(0.2, c) }));
+  loopColors(colors, (c) => ({ value: shade(0.2, c) }));
 const makeContrastColors = (colors, light, dark) =>
   loopColors(colors, (c) => ({ value: contrastColor(c, light, dark) }));
+const makePaleColors = (colors) =>
+  loopColors(colors, (c) => ({ value: setLightness(0.9, c) }));
 
 module.exports = {
   transparent,
@@ -73,4 +79,6 @@ module.exports = {
   makeTintColors,
   makeShadeColors,
   makeContrastColors,
+  makePaleColors,
+  makeScaledColors,
 };

@@ -1,4 +1,5 @@
 module.exports = {
+  theme: require("./theme"),
   color: require("./color"),
   size: require("./size"),
   spacing: require("./spacing"),

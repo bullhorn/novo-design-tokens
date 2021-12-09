@@ -1,5 +1,3 @@
 module.exports = {
-  component: {
-    button: require("./button"),
-  },
+  button: require("./button"),
 };

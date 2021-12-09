@@ -5,6 +5,8 @@ const {
   makeContrastColors,
   makeShadeColors,
   makeTintColors,
+  makePaleColors,
+  makeScaledColors,
 } = require("./util");
 const core = require("./core");
 const app = require("./app");
@@ -17,4 +19,5 @@ module.exports = {
   shade: makeShadeColors(allColors),
   tint: makeTintColors(allColors),
   contrast: makeContrastColors(allColors, core.white, core.dark),
+  pale: makePaleColors(allColors),
 };

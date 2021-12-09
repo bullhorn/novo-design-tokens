@@ -6,3 +6,4 @@ node_modules
 **/scss/*
 !**/scss/_index.scss
 !**/scss/mixins.scss
+!**/scss/functions.scss
