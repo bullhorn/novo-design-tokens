@@ -17,8 +17,8 @@ module.exports = {
     default: { value: "{borderRadius.round.value}" },
   },
   shadow: {
-    1: { value: "0px 2px 5px 0 rgba(0, 0, 0, 0.25)" },
-    2: { value: "0px 3px 8px rgba(0, 0, 0, 0.25)" },
+    1: { value: "0 1px 2px rgba(0, 0, 0, 0.15)" },
+    2: { value: "0 3px 7px rgba(0, 0, 0, 0.15)" },
     3: { value: "0px 4px 10px rgba(0, 0, 0, 0.25)" },
     4: { value: "0px 16px 28px 0 rgba(0, 0, 0, 0.25)" },
     5: { value: "0px 27px 24px 0 rgba(0, 0, 0, 0.25)" },
