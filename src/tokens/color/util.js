@@ -15,11 +15,15 @@ const current = "currentColor";
 const black = "#000";
 const white = "#fff";
 
-const contrastColor = (color, light = white, dark = black) => {
-  if (meetsContrastGuidelines(color, light).AALarge) {
+const contrastColor = (color, light = white, dark = black, overrides = []) => {
+  if (
+    overrides.includes(color) ||
+    meetsContrastGuidelines(color, light).AALarge
+  ) {
     return light;
   }
-  return readableColor(color, light, dark);
+  return dark;
+  // return readableColor(color, light, dark, false);
 };
 
 /**
@@ -64,8 +68,10 @@ const makeTintColors = (colors) =>
   loopColors(colors, (c) => ({ value: tint(0.2, c) }));
 const makeShadeColors = (colors) =>
   loopColors(colors, (c) => ({ value: shade(0.2, c) }));
-const makeContrastColors = (colors, light, dark) =>
-  loopColors(colors, (c) => ({ value: contrastColor(c, light, dark) }));
+const makeContrastColors = (colors, light, dark, overrides) =>
+  loopColors(colors, (c) => ({
+    value: contrastColor(c, light, dark, overrides),
+  }));
 const makePaleColors = (colors) =>
   loopColors(colors, (c) => ({ value: setLightness(0.9, c) }));
 
