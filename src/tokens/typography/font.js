@@ -28,9 +28,9 @@ module.exports = {
   size: tokenize({
     base: "10px",
     body: "1.2rem", // body, form, p
-    xs: "0.8rem", // nothing
-    sm: "1.0rem", // caption
-    md: "1.2rem", // label, button
+    xs: "0.8rem", // caption
+    sm: "1.0rem", // label
+    md: "1.2rem", // input, text, button
     lg: "1.6rem", // ??
     xl: "2.0rem", // title --was 1.8
     "2xl": "2.6rem",
