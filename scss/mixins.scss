@@ -145,7 +145,12 @@ $textWeightTokens: map-get($tokens, "textWeight");
 @mixin entity-colors() {
   @each $name, $color in $entityColors {
     @if (type-of($color) != "map") {
-      @content ($color, $name);
+      $contrast: getContrastColor($name);
+      $tint: getContrastColor($name);
+      $shade: getContrastColor($name);
+      $pale: getPaleColor($name);
+
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }
@@ -154,47 +159,51 @@ $textWeightTokens: map-get($tokens, "textWeight");
   $colorTokens: map-get($tokens, "color");
   @each $name, $color in $colorTokens {
     @if (type-of($color) != "map") {
-      @content ($color, $name);
+      $contrast: getContrastColor($name);
+      $tint: getContrastColor($name);
+      $shade: getContrastColor($name);
+      $pale: getPaleColor($name);
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }
 
 @mixin theme-backgrounds($prefix: "color", $interactive: false) {
-  @include theme-colors() using ($color, $name) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
     &[#{$prefix}="#{$name}"] {
-      color: getContrastColor($name);
+      color: $contrast;
       background: $color;
       @if ($interactive) {
         &:hover,
         &:focus {
-          background: getTintColor($name);
+          background: $tint;
         }
         &:active {
-          background: getShadeColor($name);
+          background: $shade;
         }
       }
-      @content ($color, $name);
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }
 
 @mixin theme-text-colors($prefix: "color") {
-  @include theme-colors() using ($color, $name) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
     &[#{$prefix}="#{$name}"] {
       color: $color;
       i {
         color: $color;
       }
-      @content ($color, $name);
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }
 
 @mixin theme-borders($prefix: "color") {
-  @include theme-colors() using ($color, $name) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
     &[#{$prefix}="#{$name}"] {
       border: 1px solid $color;
-      @content ($color, $name);
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }

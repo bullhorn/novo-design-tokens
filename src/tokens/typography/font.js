@@ -16,12 +16,12 @@ module.exports = {
     semibold: 600,
     bold: 700,
     extrabold: 800,
-    black: 900,
+    heavy: 900,
   }),
 
   family: tokenize({
-    body: `'Roboto', Helvetica, Arial, sans-serif`, // TODO: `Gotham, 'Montserrat', Helvetica, Arial, sans-serif`,
-    mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`, // TODO: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
+    body: `'Montserrat', Helvetica, Arial, sans-serif`,
+    mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
     base: `{font.family.body.value}`,
   }),
 

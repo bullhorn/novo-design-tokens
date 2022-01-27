@@ -38,7 +38,7 @@ module.exports = {
   onyx: "#526980",
   charcoal: "#282828",
   moonlight: "#1a242f", // "#2f384f",
-  midnight: "#202b38", // "#202945",
+  midnight: "#202945", // "#202945",
   darkness: "#161f27", // "#0b0f1a",
   navy: "#0d2d42",
   aqua: "#3bafda",
