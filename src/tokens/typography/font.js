@@ -20,8 +20,10 @@ module.exports = {
   }),
 
   family: tokenize({
-    body: `'Montserrat', Helvetica, Arial, sans-serif`,
-    mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
+    body: `'Roboto', Helvetica, Arial, sans-serif`,
+    mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`,
+    // body: `'Montserrat', Helvetica, Arial, sans-serif`,
+    // mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
     base: `{font.family.body.value}`,
   }),
 
