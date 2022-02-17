@@ -20,19 +20,19 @@ module.exports = {
   }),
 
   family: tokenize({
-    body: `'Roboto', Helvetica, Arial, sans-serif`,
-    mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`,
-    // body: `'Montserrat', Helvetica, Arial, sans-serif`,
-    // mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
+    // body: `'Roboto', Helvetica, Arial, sans-serif`,
+    // mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`,
+    body: `'Montserrat', Helvetica, Arial, sans-serif`,
+    mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
     base: `{font.family.body.value}`,
   }),
 
   size: tokenize({
     base: "10px",
-    body: "1.2rem", // body, form, p
-    xs: "0.8rem", // caption
-    sm: "1.0rem", // label
-    md: "1.2rem", // input, text, button
+    body: "1.3rem", // body, form, p
+    xs: "1.0rem", // caption
+    sm: "1.2rem", // label
+    md: "1.3rem", // input, text, button
     lg: "1.6rem", // ??
     xl: "2.0rem", // title --was 1.8
     "2xl": "2.6rem",
