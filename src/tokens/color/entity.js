@@ -13,6 +13,7 @@ module.exports = {
   placement: "#0b344f",
   note: "#747884",
   contract: "#454ea0",
+  task: "#4f5361",
   jobCode: "#696d79",
   earnCode: "#696d79",
   invoiceStatement: "#696d79",
