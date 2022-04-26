@@ -25,4 +25,5 @@ module.exports = {
   tint: makeTintColors(allColors),
   contrast: makeContrastColors(allColors, core.white, core.dark, colorOverides),
   pale: makePaleColors(allColors),
+  hsl: require("./hsl"),
 };

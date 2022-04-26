@@ -12,7 +12,11 @@
     "scss"
   ],
   "scripts": {
-    "build": "node build.js",
+    "build": "npm run build:tokens && npm run build:base && npm run build:docs",
+    "build:tokens": "node scripts/build.js",
+    "build:docs": "node scripts/docs.js",
+    "build:base": "sass ./base/index.scss ./css/novo-base.css",
+    "docs:serve": "npx serve ./docs",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minify-css",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,7 +25,10 @@
   "devDependencies": {
     "clean-css-cli": "4.3.0",
     "foreach-cli": "1.8.1",
+    "handlebars": "^4.7.7",
+    "loggy": "^1.0.8",
     "polished": "^4.1.2",
-    "style-dictionary": "^3.0.1"
+    "sass": "^1.50.1",
+    "style-dictionary": "^3.7.0"
   }
 }

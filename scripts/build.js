@@ -4,12 +4,16 @@ const StyleDictionary = require("style-dictionary").extend({
   source: ["src/tokens/index.js", "src/components/index.js"],
   platforms: {
     css: {
-      transformGroup: "css",
+      transformGroup: "bh-css",
       buildPath: "css/",
       files: [
         {
           destination: "variables.css",
           format: "css/variables",
+          options: {
+            // Look here 👇
+            outputReferences: true,
+          },
         },
         {
           destination: `variables-dark.css`,
@@ -134,6 +138,17 @@ function cssFormatWrapper(property) {
 StyleDictionary.registerFormat({
   name: "css/dark",
   formatter: cssFormatWrapper("darkValue"),
+});
+
+StyleDictionary.registerTransformGroup({
+  name: "bh-css",
+  transforms: [
+    "attribute/cti",
+    "name/cti/kebab",
+    "time/seconds",
+    "content/icon",
+    "size/rem",
+  ],
 });
 
 StyleDictionary.buildAllPlatforms();
