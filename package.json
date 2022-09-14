@@ -1,6 +1,6 @@
 {
   "name": "novo-design-tokens",
-  "version": "0.0.9",
+  "version": "0.1.0-beta.1",
   "description": "Design tokens for the Novo Design System",
   "homepage": "https://github.com/bullhorn/novo-design-tokens#readme",
   "license": "MIT",
@@ -25,7 +25,6 @@
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
   "devDependencies": {
-    "@divriots/style-dictionary-to-figma": "^0.3.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/commit-analyzer": "^9.0.2",
     "@semantic-release/git": "^10.0.1",
