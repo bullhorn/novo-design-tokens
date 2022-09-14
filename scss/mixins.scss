@@ -1,7 +1,6 @@
 @import "./functions.scss";
 @import "./helpers.scss";
 
-<<<<<<< HEAD
 $paletteKeys: "red", "pink", "orange", "yellow", "green", "teal", "blue", "aqua",
   "indigo", "violet", "gray";
 $entityKeys: "person", "company", "candidate", "lead", "contact",
@@ -11,37 +10,6 @@ $entityKeys: "person", "company", "candidate", "lead", "contact",
   "payable-charge", "invoice-statement";
 $semanticKeys: "selection", "positive", "success", "warning", "error", "info",
   "disabled";
-=======
-// Entity Color Map
-$entityColors: (
-  "star": $color-placement,
-  "person": $color-contact,
-  "company": $color-company,
-  "candidate": $color-candidate,
-  "navigation": $color-navigation,
-  "lead": $color-lead,
-  "contact": $color-contact,
-  "clientcontact": $color-contact,
-  "opportunity": $color-opportunity,
-  "job": $color-job,
-  "joborder": $color-job,
-  "submission": $color-submission,
-  "sendout": $color-sendout,
-  "placement": $color-placement,
-  "note": $color-note,
-  "task": $color-task,
-  "distributionList": $color-neutral,
-  "credential": $color-neutral,
-  "user": $color-neutral,
-  "corporateuser": $color-neutral,
-  "contract": $color-contract,
-  "jobCode": $color-job-code,
-  "earnCode": $color-earn-code,
-  "billableCharge": $color-billable-charge,
-  "payableCharge": $color-payable-charge,
-  "invoiceStatement": $color-invoice-statement,
-);
->>>>>>> 6f8011d31ab3d53b06473c82cf8084b08afc715e
 
 /*******************/
 /********SPACE******/
@@ -156,18 +124,6 @@ $textWeightTokens: map-get($tokens, "textWeight");
 }
 
 /** THEMES **/
-@mixin entity-colors() {
-  @each $name, $color in $entityColors {
-    @if (type-of($color) != "map") {
-      $contrast: getContrastColor($name);
-      $tint: getContrastColor($name);
-      $shade: getContrastColor($name);
-      $pale: getPaleColor($name);
-
-      @content ($name, $color, $contrast, $tint, $shade, $pale);
-    }
-  }
-}
 
 @mixin palette-colors() {
   @each $name in $paletteKeys {
