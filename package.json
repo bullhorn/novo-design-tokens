@@ -1,6 +1,6 @@
 {
   "name": "novo-design-tokens",
-  "version": "0.0.10",
+  "version": "0.0.9",
   "description": "Design tokens for the Novo Design System",
   "homepage": "https://github.com/bullhorn/novo-design-tokens#readme",
   "license": "MIT",
@@ -13,15 +13,38 @@
   ],
   "scripts": {
     "build": "node build.js",
+    "postbuild": "npm run postcss && npm run minifycss",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minify-css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "minify-css": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
+    "postcss": "postcss ./css/*.css --use autoprefixer --use postcss-prettify -d css/ --no-map",
+    "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^9.0.1",
+    "@semantic-release/release-notes-generator": "^10.0.3",
+    "autoprefixer": "^10.4.7",
+    "chroma-js": "^2.4.2",
     "clean-css-cli": "4.3.0",
     "foreach-cli": "1.8.1",
+    "handlebars": "^4.7.7",
+    "loggy": "^1.0.8",
+    "mini-svg-data-uri": "^1.4.4",
     "polished": "^4.1.2",
-    "style-dictionary": "^3.0.1"
-  }
+    "postcss": "^8.4.13",
+    "postcss-cli": "^9.1.0",
+    "postcss-prettify": "^0.3.4",
+    "sass": "^1.50.1",
+    "style-dictionary": "^3.7.0",
+    "semantic-release": "^19.0.3"
+  },
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 4 versions",
+    "not dead"
+  ]
 }
