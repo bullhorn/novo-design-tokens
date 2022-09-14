@@ -1,3 +1,10 @@
+# [1.0.0-beta.4](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-09-14)
+
+
+### Bug Fixes
+
+* **scss:** removed variables.scss reference ([bc4cc4a](https://github.com/bullhorn/novo-design-tokens/commit/bc4cc4a230410a4dce4a54a684687ae5c7bff69c))
+
 # [1.0.0-beta.3](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-09-14)
 
 
