@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-09-14)
+
+
+### Bug Fixes
+
+* **build:** removed prepublish script ([8b959f8](https://github.com/bullhorn/novo-design-tokens/commit/8b959f8a71df72e705826f9c964216481b54d057))
+
 # [1.0.0-beta.2](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-09-14)
 
 
