@@ -19,7 +19,6 @@
     "postbuild": "npm run postcss && npm run minifycss",
     "docs:serve": "npx serve ./docs",
     "clean": "rm -rf build",
-    "prepublishOnly": "npm run build && npm run minify-css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postcss": "postcss ./css/*.css --use autoprefixer --use postcss-prettify -d css/ --no-map",
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
