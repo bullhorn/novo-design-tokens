@@ -15,20 +15,41 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.palette {
+.palette-grid,
+.semantic-grid {
   display: flex;
   flex-flow: row nowrap;
+}
+.palette {
+  display: flex;
+  flex-flow: column;
   list-style-type: none;
+  margin-block-start:0px;
+  padding-inline-start: 0px;
 }
 .swatch {
   display:flex;
-  border-radius: 50%;
-  width: 50px;
+  width: 100px;
   height: 50px;
   align-items: center;
   justify-content: center;
 }
-.swatch-label {
+.semantic-swatch {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px, 50px;
+  width: 200px;
+}
+
+.semantic-swatch > * {
+  padding:1rem;
+  text-align: center;
+}
+.semantic-swatch :first-child {
+  grid-column: 1 / -1;
+}
+
+.palette-label {
   display:flex;
   font-weight: bold;
   height: 50px;
@@ -38,10 +59,8 @@ body {
 }
 
 {{#each colors as |color|}}
-{{#each ../swatches as |swatch|}}
-.swatch-{{color}}-{{swatch}} {
-  background: var(--color-hsl-{{color}}-{{swatch}});
-  color: hsla(0, 0%, calc(calc(65% - {{swatch}}%) * 100), 100%);
+.palette-label-{{color}} {
+  background: var(--palette-{{color}});
+  color: var(--palette-{{color}}-contrast);
 }
-{{/each}}
 {{/each}}

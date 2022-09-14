@@ -15,20 +15,41 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.palette {
+.palette-grid,
+.semantic-grid {
   display: flex;
   flex-flow: row nowrap;
+}
+.palette {
+  display: flex;
+  flex-flow: column;
   list-style-type: none;
+  margin-block-start:0px;
+  padding-inline-start: 0px;
 }
 .swatch {
   display:flex;
-  border-radius: 50%;
-  width: 50px;
+  width: 100px;
   height: 50px;
   align-items: center;
   justify-content: center;
 }
-.swatch-label {
+.semantic-swatch {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px, 50px;
+  width: 200px;
+}
+
+.semantic-swatch > * {
+  padding:1rem;
+  text-align: center;
+}
+.semantic-swatch :first-child {
+  grid-column: 1 / -1;
+}
+
+.palette-label {
   display:flex;
   font-weight: bold;
   height: 50px;
@@ -37,399 +58,47 @@ body {
   width: 100px;
 }
 
-.swatch-red-10 {
-  background: var(--color-hsl-red-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-red-20 {
-  background: var(--color-hsl-red-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-red-30 {
-  background: var(--color-hsl-red-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-red-40 {
-  background: var(--color-hsl-red-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-red-50 {
-  background: var(--color-hsl-red-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-red-60 {
-  background: var(--color-hsl-red-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-red-70 {
-  background: var(--color-hsl-red-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-red-80 {
-  background: var(--color-hsl-red-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-red-90 {
-  background: var(--color-hsl-red-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-pink-10 {
-  background: var(--color-hsl-pink-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-pink-20 {
-  background: var(--color-hsl-pink-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-pink-30 {
-  background: var(--color-hsl-pink-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-pink-40 {
-  background: var(--color-hsl-pink-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-pink-50 {
-  background: var(--color-hsl-pink-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-pink-60 {
-  background: var(--color-hsl-pink-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-pink-70 {
-  background: var(--color-hsl-pink-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-pink-80 {
-  background: var(--color-hsl-pink-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-pink-90 {
-  background: var(--color-hsl-pink-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-orange-10 {
-  background: var(--color-hsl-orange-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-orange-20 {
-  background: var(--color-hsl-orange-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-orange-30 {
-  background: var(--color-hsl-orange-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-orange-40 {
-  background: var(--color-hsl-orange-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-orange-50 {
-  background: var(--color-hsl-orange-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-orange-60 {
-  background: var(--color-hsl-orange-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-orange-70 {
-  background: var(--color-hsl-orange-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-orange-80 {
-  background: var(--color-hsl-orange-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-orange-90 {
-  background: var(--color-hsl-orange-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-yellow-10 {
-  background: var(--color-hsl-yellow-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-yellow-20 {
-  background: var(--color-hsl-yellow-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-yellow-30 {
-  background: var(--color-hsl-yellow-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-yellow-40 {
-  background: var(--color-hsl-yellow-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-yellow-50 {
-  background: var(--color-hsl-yellow-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-yellow-60 {
-  background: var(--color-hsl-yellow-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-yellow-70 {
-  background: var(--color-hsl-yellow-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-yellow-80 {
-  background: var(--color-hsl-yellow-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-yellow-90 {
-  background: var(--color-hsl-yellow-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-green-10 {
-  background: var(--color-hsl-green-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-green-20 {
-  background: var(--color-hsl-green-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-green-30 {
-  background: var(--color-hsl-green-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-green-40 {
-  background: var(--color-hsl-green-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-green-50 {
-  background: var(--color-hsl-green-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-green-60 {
-  background: var(--color-hsl-green-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-green-70 {
-  background: var(--color-hsl-green-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-green-80 {
-  background: var(--color-hsl-green-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-green-90 {
-  background: var(--color-hsl-green-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-teal-10 {
-  background: var(--color-hsl-teal-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-teal-20 {
-  background: var(--color-hsl-teal-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-teal-30 {
-  background: var(--color-hsl-teal-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-teal-40 {
-  background: var(--color-hsl-teal-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-teal-50 {
-  background: var(--color-hsl-teal-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-teal-60 {
-  background: var(--color-hsl-teal-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-teal-70 {
-  background: var(--color-hsl-teal-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-teal-80 {
-  background: var(--color-hsl-teal-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-teal-90 {
-  background: var(--color-hsl-teal-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-aqua-10 {
-  background: var(--color-hsl-aqua-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-aqua-20 {
-  background: var(--color-hsl-aqua-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-aqua-30 {
-  background: var(--color-hsl-aqua-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-aqua-40 {
-  background: var(--color-hsl-aqua-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-aqua-50 {
-  background: var(--color-hsl-aqua-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-aqua-60 {
-  background: var(--color-hsl-aqua-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-aqua-70 {
-  background: var(--color-hsl-aqua-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-aqua-80 {
-  background: var(--color-hsl-aqua-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-aqua-90 {
-  background: var(--color-hsl-aqua-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-blue-10 {
-  background: var(--color-hsl-blue-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-blue-20 {
-  background: var(--color-hsl-blue-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-blue-30 {
-  background: var(--color-hsl-blue-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-blue-40 {
-  background: var(--color-hsl-blue-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-blue-50 {
-  background: var(--color-hsl-blue-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-blue-60 {
-  background: var(--color-hsl-blue-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-blue-70 {
-  background: var(--color-hsl-blue-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-blue-80 {
-  background: var(--color-hsl-blue-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-blue-90 {
-  background: var(--color-hsl-blue-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-indigo-10 {
-  background: var(--color-hsl-indigo-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-indigo-20 {
-  background: var(--color-hsl-indigo-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-indigo-30 {
-  background: var(--color-hsl-indigo-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-indigo-40 {
-  background: var(--color-hsl-indigo-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-indigo-50 {
-  background: var(--color-hsl-indigo-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-indigo-60 {
-  background: var(--color-hsl-indigo-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-indigo-70 {
-  background: var(--color-hsl-indigo-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-indigo-80 {
-  background: var(--color-hsl-indigo-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-indigo-90 {
-  background: var(--color-hsl-indigo-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-violet-10 {
-  background: var(--color-hsl-violet-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-violet-20 {
-  background: var(--color-hsl-violet-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-violet-30 {
-  background: var(--color-hsl-violet-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-violet-40 {
-  background: var(--color-hsl-violet-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-violet-50 {
-  background: var(--color-hsl-violet-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-violet-60 {
-  background: var(--color-hsl-violet-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-violet-70 {
-  background: var(--color-hsl-violet-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-violet-80 {
-  background: var(--color-hsl-violet-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-violet-90 {
-  background: var(--color-hsl-violet-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
-}
-.swatch-gray-10 {
-  background: var(--color-hsl-gray-10);
-  color: hsla(0, 0%, calc(calc(65% - 10%) * 100), 100%);
-}
-.swatch-gray-20 {
-  background: var(--color-hsl-gray-20);
-  color: hsla(0, 0%, calc(calc(65% - 20%) * 100), 100%);
-}
-.swatch-gray-30 {
-  background: var(--color-hsl-gray-30);
-  color: hsla(0, 0%, calc(calc(65% - 30%) * 100), 100%);
-}
-.swatch-gray-40 {
-  background: var(--color-hsl-gray-40);
-  color: hsla(0, 0%, calc(calc(65% - 40%) * 100), 100%);
-}
-.swatch-gray-50 {
-  background: var(--color-hsl-gray-50);
-  color: hsla(0, 0%, calc(calc(65% - 50%) * 100), 100%);
-}
-.swatch-gray-60 {
-  background: var(--color-hsl-gray-60);
-  color: hsla(0, 0%, calc(calc(65% - 60%) * 100), 100%);
-}
-.swatch-gray-70 {
-  background: var(--color-hsl-gray-70);
-  color: hsla(0, 0%, calc(calc(65% - 70%) * 100), 100%);
-}
-.swatch-gray-80 {
-  background: var(--color-hsl-gray-80);
-  color: hsla(0, 0%, calc(calc(65% - 80%) * 100), 100%);
-}
-.swatch-gray-90 {
-  background: var(--color-hsl-gray-90);
-  color: hsla(0, 0%, calc(calc(65% - 90%) * 100), 100%);
+.palette-label-red {
+  background: var(--palette-red);
+  color: var(--palette-red-contrast);
+}
+.palette-label-pink {
+  background: var(--palette-pink);
+  color: var(--palette-pink-contrast);
+}
+.palette-label-orange {
+  background: var(--palette-orange);
+  color: var(--palette-orange-contrast);
+}
+.palette-label-yellow {
+  background: var(--palette-yellow);
+  color: var(--palette-yellow-contrast);
+}
+.palette-label-green {
+  background: var(--palette-green);
+  color: var(--palette-green-contrast);
+}
+.palette-label-teal {
+  background: var(--palette-teal);
+  color: var(--palette-teal-contrast);
+}
+.palette-label-aqua {
+  background: var(--palette-aqua);
+  color: var(--palette-aqua-contrast);
+}
+.palette-label-blue {
+  background: var(--palette-blue);
+  color: var(--palette-blue-contrast);
+}
+.palette-label-indigo {
+  background: var(--palette-indigo);
+  color: var(--palette-indigo-contrast);
+}
+.palette-label-violet {
+  background: var(--palette-violet);
+  color: var(--palette-violet-contrast);
+}
+.palette-label-gray {
+  background: var(--palette-gray);
+  color: var(--palette-gray-contrast);
 }

@@ -1,8 +1,13 @@
-const base = require("./base");
+const { tokenize } = require("../../utils/token-utils");
 
-module.exports = Object.assign({}, base, {
-  backgroundColor: { value: "{color.white.value}" },
-  borderColor: { value: "{color.ocean.value}" },
-  borderWidth: { value: "{size.border.width.base.value}" },
-  color: { value: "{color.ocean.value}" },
+module.exports = tokenize({
+  shadow: {
+    hover: "{button.shadow.hover}",
+    active: "{button.shadow.active}",
+  },
+  color: {
+    background: "transparent",
+    text: "{color.selection}",
+    border: "{color.selection}",
+  },
 });

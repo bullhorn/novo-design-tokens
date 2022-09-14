@@ -1,5 +1,6 @@
+const { makeScaledColors } = require("../../utils/color-utils");
 // Entity Colors
-module.exports = {
+module.exports = makeScaledColors({
   company: "#3399dd",
   candidate: "#44bb77",
   lead: "#aa6699",
@@ -13,15 +14,16 @@ module.exports = {
   placement: "#0b344f",
   note: "#747884",
   contract: "#454ea0",
-  jobCode: "#696d79",
-  earnCode: "#696d79",
-  invoiceStatement: "#696d79",
-  billableCharge: "#696d79",
-  payableCharge: "#696d79",
+  "job-code": "#696d79",
+  "earn-code": "#696d79",
+  "invoice-statement": "#696d79",
+  "billable-charge": "#696d79",
+  "payable-charge": "#696d79",
   user: "#696d79",
-  corporateUser: "#696d79",
-  distributionList: "#696d79",
+  "corporate-user": "#696d79",
+  "distribution-list": "#696d79",
+  task: "#696d79",
   credential: "#696d79",
   person: "#696d79",
-  payableCharge: "#696d79",
-};
+  "payable-charge": "#696d79",
+});

@@ -1,9 +1,15 @@
-const base = require("./base");
+const { tokenize } = require("../../utils/token-utils");
 
-// You can do interesting things like having a base object
-// that you extend. This can be useful for defining component
-// styles if you have a base style and variations.
-module.exports = Object.assign({}, base, {
-  backgroundColor: { value: "{color.ocean.value}" },
-  color: { value: "{color.contrast.ocean.value}" },
+module.exports = tokenize({
+  shadow: {
+    hover: "{button.shadow.hover}",
+    active: "{button.shadow.active}",
+  },
+  color: {
+    background: "{color.selection}",
+    backgroundHover: "{color.selectionTint}",
+    backgroundActive: "{color.selectionShade}",
+    text: "{color.selectionContrast}",
+    border: "transparent",
+  },
 });
