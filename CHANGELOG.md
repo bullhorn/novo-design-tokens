@@ -1,3 +1,28 @@
+# [1.0.0-beta.1](https://github.com/bullhorn/novo-design-tokens/compare/v0.1.0-beta.1...v1.0.0-beta.1) (2022-09-14)
+
+
+* Merge pull request #3 from bullhorn/f/full-theme ([2f23ac0](https://github.com/bullhorn/novo-design-tokens/commit/2f23ac0abfc72fd6edfc9b1d967eab89756e0933)), closes [#3](https://github.com/bullhorn/novo-design-tokens/issues/3)
+
+
+### BREAKING CHANGES
+
+* Full Theme Support (WIP)
+Major Changes and Features Added
+- [x] Figma Token Generation
+- [x] Component Specific Tokens
+- [x] Theming support
+- [x] APAC Contrast Color Generation
+
+Still a WIP as we add the remaining component tokens
+Talent and Novo theme files are generated but "Values" are not currently "accurate"
+SCSS Mixins are being updated with helper to add and use css variables. SCSS variables will be removed.
+
+Breaking Changes for NDS users:
+- "Named" Color Variables are currently deprecated and most have been removed.
+- Added new palette with generated color variables
+  -  Use  `red`, `pink`, `orange`, `yellow`, `green`, `teal`, `blue`, `aqua`, `indigo`, `violet`, `gray`
+  -  Palette adds `hex` color based on a `hcl` scale of 10,15,20-90,95,98.  ie. `var(--palette-blue-50)`
+
 # [0.1.0-beta.1](https://github.com/bullhorn/novo-design-tokens/compare/v0.0.9...v0.1.0-beta.1) (2022-09-14)
 
 
