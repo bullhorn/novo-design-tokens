@@ -1,0 +1,104 @@
+@import url(variables.css);
+@import url(novo-base.css);
+
+html {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base, 10px);
+  color: var(--font-color-base, #333);
+}
+
+body {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body, 1.2rem);
+  line-height: 1.2;
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+}
+
+.palette-grid,
+.semantic-grid {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.palette {
+  display: flex;
+  flex-flow: column;
+  list-style-type: none;
+  margin-block-start:0px;
+  padding-inline-start: 0px;
+}
+.swatch {
+  display:flex;
+  width: 100px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.semantic-swatch {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100px, 50px;
+  width: 200px;
+}
+
+.semantic-swatch > * {
+  padding:1rem;
+  text-align: center;
+}
+.semantic-swatch :first-child {
+  grid-column: 1 / -1;
+}
+
+.palette-label {
+  display:flex;
+  font-weight: bold;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+}
+
+.palette-label-red {
+  background: var(--palette-red);
+  color: var(--palette-red-contrast);
+}
+.palette-label-pink {
+  background: var(--palette-pink);
+  color: var(--palette-pink-contrast);
+}
+.palette-label-orange {
+  background: var(--palette-orange);
+  color: var(--palette-orange-contrast);
+}
+.palette-label-yellow {
+  background: var(--palette-yellow);
+  color: var(--palette-yellow-contrast);
+}
+.palette-label-green {
+  background: var(--palette-green);
+  color: var(--palette-green-contrast);
+}
+.palette-label-teal {
+  background: var(--palette-teal);
+  color: var(--palette-teal-contrast);
+}
+.palette-label-aqua {
+  background: var(--palette-aqua);
+  color: var(--palette-aqua-contrast);
+}
+.palette-label-blue {
+  background: var(--palette-blue);
+  color: var(--palette-blue-contrast);
+}
+.palette-label-indigo {
+  background: var(--palette-indigo);
+  color: var(--palette-indigo-contrast);
+}
+.palette-label-violet {
+  background: var(--palette-violet);
+  color: var(--palette-violet-contrast);
+}
+.palette-label-gray {
+  background: var(--palette-gray);
+  color: var(--palette-gray-contrast);
+}

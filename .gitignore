@@ -7,3 +7,4 @@ node_modules
 !**/scss/_index.scss
 !**/scss/mixins.scss
 !**/scss/functions.scss
+!**/css/index.css

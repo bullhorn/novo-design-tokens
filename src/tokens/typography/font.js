@@ -1,22 +1,16 @@
-const tokenize = (obj) =>
-  Object.keys(obj).reduce((ret, name) => {
-    const value = obj[name];
-    return Object.assign({}, ret, {
-      [name]: { value },
-    });
-  }, {});
+const { tokenize } = require("../../utils/token-utils");
 
 module.exports = {
   weight: tokenize({
-    hairline: 100,
-    thin: 200,
-    light: 300,
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-    extrabold: 800,
-    heavy: 900,
+    hairline: "100",
+    thin: "200",
+    light: "300",
+    normal: "400",
+    medium: "500",
+    semibold: "600",
+    bold: "700",
+    extrabold: "800",
+    heavy: "900",
   }),
 
   family: tokenize({
@@ -24,7 +18,7 @@ module.exports = {
     // mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`,
     body: `'Montserrat', Helvetica, Arial, sans-serif`,
     mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
-    base: `{font.family.body.value}`,
+    base: `{font.family.body}`,
   }),
 
   size: tokenize({
@@ -38,6 +32,12 @@ module.exports = {
     "2xl": "2.6rem",
     "3xl": "3.2rem",
     "4xl": "4rem",
+
+    caption: "{font.size.xs}",
+    label: "{font.size.sm}",
+    text: "{font.size.body}",
+    button: "{font.size.body}",
+    title: "{font.size.xl}",
   }),
 
   spacing: tokenize({
@@ -57,11 +57,5 @@ module.exports = {
     base: "1.5",
     tall: "1.625",
     taller: "2",
-  }),
-
-  color: tokenize({
-    base: "{color.dark.value}",
-    secondary: "{color.light.value}",
-    link: "{color.ocean.value}",
   }),
 };

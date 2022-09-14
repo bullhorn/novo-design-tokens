@@ -12,8 +12,12 @@
     "scss"
   ],
   "scripts": {
-    "build": "node build.js",
+    "build": "npm run build:tokens && npm run build:css && npm run build:docs",
+    "build:tokens": "node scripts/build-tokens.js",
+    "build:docs": "node scripts/build-docs.js",
+    "build:css": "sass ./src/base/index.scss ./css/novo-base.css",
     "postbuild": "npm run postcss && npm run minifycss",
+    "docs:serve": "npx serve ./docs",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minify-css",
     "test": "echo \"Error: no test specified\" && exit 1",

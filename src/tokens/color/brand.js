@@ -1,8 +1,8 @@
-const core = require("./core");
+const { tokenize } = require("../../utils/token-utils");
 
-module.exports = {
-  navigation: core.midnight,
-  presentation: core.steel,
-  bullhorn: core.orange,
-  pulse: core.aqua,
-};
+module.exports = tokenize({
+  // navigation: "{color.navigation}",
+  // presentation: "{color.steel}",
+  bullhorn: "{palette.orange.50}",
+  pulse: "{palette.aqua.50}",
+});

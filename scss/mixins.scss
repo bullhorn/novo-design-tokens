@@ -1,6 +1,17 @@
-@import "./variables.scss";
 @import "./functions.scss";
+@import "./helpers.scss";
 
+<<<<<<< HEAD
+$paletteKeys: "red", "pink", "orange", "yellow", "green", "teal", "blue", "aqua",
+  "indigo", "violet", "gray";
+$entityKeys: "person", "company", "candidate", "lead", "contact",
+  "clientcontact", "opportunity", "job", "joborder", "submission", "sendout",
+  "placement", "note", "task", "distribution-list", "credential", "user",
+  "corporate-user", "contract", "job-code", "earn-code", "billable-charge",
+  "payable-charge", "invoice-statement";
+$semanticKeys: "selection", "positive", "success", "warning", "error", "info",
+  "disabled";
+=======
 // Entity Color Map
 $entityColors: (
   "star": $color-placement,
@@ -30,6 +41,7 @@ $entityColors: (
   "payableCharge": $color-payable-charge,
   "invoiceStatement": $color-invoice-statement,
 );
+>>>>>>> 6f8011d31ab3d53b06473c82cf8084b08afc715e
 
 /*******************/
 /********SPACE******/
@@ -157,22 +169,203 @@ $textWeightTokens: map-get($tokens, "textWeight");
   }
 }
 
+@mixin palette-colors() {
+  @each $name in $paletteKeys {
+    $color: var(--palette-#{$name}-50);
+    $contrast: var(--palette-#{$name}-50-contrast);
+    $tint: var(--palette-#{$name}-70);
+    $shade: var(--palette-#{$name}-30);
+    $pale: var(--palette-#{$name}-98);
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+}
+
+@mixin semantic-colors() {
+  @each $name in $semanticKeys {
+    $color: var(--color-#{$name});
+    $contrast: var(--color-#{$name}-contrast);
+    $tint: var(--color-#{$name}-tint);
+    $shade: var(--color-#{$name}-shade);
+    $pale: var(--color-#{$name}-overlay);
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+}
+
+@mixin entity-colors() {
+  @each $name in $entityKeys {
+    $color: var(--color-#{$name});
+    $contrast: var(--color-#{$name}-contrast);
+    $tint: var(--color-#{$name}-tint);
+    $shade: var(--color-#{$name}-shade);
+    $pale: var(--color-#{$name}-overlay);
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+}
+
+@mixin variant-colors() {
+  @include semantic-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+  @include palette-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+}
+
 @mixin theme-colors() {
-  $colorTokens: map-get($tokens, "color");
-  @each $name, $color in $colorTokens {
-    @if (type-of($color) != "map") {
-      $contrast: getContrastColor($name);
-      $tint: getContrastColor($name);
-      $shade: getContrastColor($name);
-      $pale: getPaleColor($name);
+  @include entity-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+  @include semantic-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+  @include palette-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    @content ($name, $color, $contrast, $tint, $shade, $pale);
+  }
+}
+
+@mixin color-variants($prefix, $vars) {
+  @include variant-colors() using
+    ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[color="#{$name}"] {
+      @each $k, $value in $vars {
+        $key: #{$prefix}-#{$k};
+        @if $value == default {
+          @include cssvar(#{$key}, $color);
+        } @else if $value == shade {
+          @include cssvar(#{$key}, $shade);
+        } @else if $value == tint {
+          @include cssvar(#{$key}, $tint);
+        } @else if $value == contrast {
+          @include cssvar(#{$key}, $contrast);
+        } @else if $value == overlay {
+          @include cssvar(#{$key}, $pale);
+        } @else {
+          @include cssvar(#{$key}, $value);
+        }
+      }
+    }
+  }
+}
+
+@mixin component-vars($component) {
+  @include hostvars(
+    (
+      color-background: cssvar(color-background, $component, none),
+      color-background-hover: cssvar(color-background-hover, $component, none),
+      color-background-active: cssvar(color-background-active, $component, none),
+      color-text: cssvar(color-text, $component, default),
+      color-text-hover: cssvar(color-text-hover, $component, default),
+      color-text-active: cssvar(color-text-active, $component, default),
+      color-border: cssvar(color-border, $component, default),
+      color-border-hover: cssvar(color-border-hover, $component, default),
+      color-border-active: cssvar(color-border-active, $component, default),
+      border-radius: cssvar(border-radius, $component, default),
+      font-size: cssvar(font-size, $component, var(--spacing-md)),
+      height: cssvar(height, $component, var(--size-height-md)),
+      spacing: cssvar(spacing, $component, var(--spacing-md)),
+    )
+  );
+}
+
+@mixin current-color($name, $prefix: current) {
+  @include cssvars(
+    (
+      color: cssvar($name, "color"),
+      color-contrast: cssvar(#{$name}-contrast, "color"),
+      color-tint: cssvar(#{$name}-tint, "color"),
+      color-shade: cssvar(#{$name}-shade, "color"),
+      color-alpha: cssvar(#{$name}-overlay, "color"),
+    ),
+    $prefix
+  );
+}
+
+@mixin color-vars($selector: "&.class-${name}", $color: null) {
+  @if $color {
+    @include current-color($color);
+  }
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    #{str-replace($selector, '${name}', $name)} {
+      @include current-color($name);
+      @content;
+    }
+  }
+}
+
+@mixin variants($selector) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    #{str-replace($selector, '${name}', $name)} {
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
 }
 
-@mixin theme-backgrounds($prefix: "color", $interactive: false) {
+@mixin host-backgrounds($attr: "color", $interactive: false) {
   @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
-    &[#{$prefix}="#{$name}"] {
+    &[#{$attr}="#{$name}"] {
+      --host-color-main: #{$color};
+      --host-color-accent: #{$contrast};
+      --host-color-hover: #{$tint};
+      --host-color-active: #{$shade};
+
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
+    }
+  }
+}
+
+@mixin host-borders($attr: "color", $interactive: false) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$attr}="#{$name}"] {
+      --host-border-color: #{$color};
+      @if ($interactive) {
+        &:hover,
+        &:focus {
+          --host-border-color: #{$tint};
+        }
+        &:active {
+          --host-border-color: #{$shade};
+        }
+      }
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
+    }
+  }
+}
+
+@mixin host-colors($attr: "color", $interactive: false) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$attr}="#{$name}"] {
+      --host-color-text: #{$color};
+      @if ($interactive) {
+        &:hover,
+        &:focus {
+          --host-color-text: #{$tint};
+        }
+        &:active {
+          --host-color-text: #{$shade};
+        }
+      }
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
+    }
+  }
+}
+
+@mixin host-overlays($attr: "color") {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$attr}="#{$name}"] {
+      --host-overlay: #{$pale};
+      @content ($name, $color, $contrast, $tint, $shade, $pale);
+    }
+  }
+}
+
+@mixin theme-backgrounds($attr: "color", $interactive: false) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$attr}="#{$name}"] {
       color: $contrast;
       background: $color;
       @if ($interactive) {
@@ -189,9 +382,9 @@ $textWeightTokens: map-get($tokens, "textWeight");
   }
 }
 
-@mixin theme-text-colors($prefix: "color") {
+@mixin theme-text-colors($attr: "color") {
   @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
-    &[#{$prefix}="#{$name}"] {
+    &[#{$attr}="#{$name}"] {
       color: $color;
       i {
         color: $color;
@@ -208,4 +401,49 @@ $textWeightTokens: map-get($tokens, "textWeight");
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
+}
+
+@mixin novo-title() {
+  font-size: var(--font-size-title);
+  color: var(--text-main);
+}
+
+@mixin novo-text() {
+  font-size: var(--font-size-text);
+  color: var(--text-main);
+}
+
+@mixin novo-overlay() {
+  background-color: var(--color-background);
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  box-shadow: var(--shadow-z3);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 180px;
+}
+
+// Easing Curves
+// -------------------------
+// Usage: html-tag { @include ease('all', 'swift-ease-in-out'); }
+$easing-curves: (
+  "swift-ease-out": (
+    "duration": 400ms,
+    "curve": "cubic-bezier(0.25, 0.8, 0.25, 1)",
+  ),
+  "swift-ease-in": (
+    "duration": 300ms,
+    "curve": "cubic-bezier(0.55, 0, 0.55, 0.2)",
+  ),
+  "swift-ease-in-out": (
+    "duration": 500ms,
+    "curve": "cubic-bezier(0.35, 0, 0.25, 1)",
+  ),
+);
+
+@mixin ease($target, $curve-name) {
+  $duration: deep-map-get($easing-curves, $curve-name, "duration");
+  $curve: deep-map-get($easing-curves, $curve-name, "curve");
+  transition: #{$target $duration $curve};
 }
