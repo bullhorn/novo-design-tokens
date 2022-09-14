@@ -1,0 +1,57 @@
+// a map-set function (not included with Sass)
+@function map-set($map, $key, $value) {
+  $new: (
+    $key: $value,
+  );
+  @return map-merge($map, $new);
+}
+
+@function ident($name, $prefix: null) {
+  @if $prefix != null {
+    @return --#{$prefix}-#{$name};
+  }
+  @return --#{$name};
+}
+
+/**
+ * Retrieve a css variable value with prefix
+ *
+ * Usage
+ * .selector {
+ *   color: cssvar(primary-color);
+ * }
+ *
+ * Will result in
+ * .selector {
+ *    color: var(--prefix-primary-color);
+ * }
+ */
+@function cssvar($name, $prefix, $fallback: null) {
+  $ident: ident($name, $prefix);
+  @if $fallback {
+    @if $fallback==default and $prefix {
+      @return var(#{$ident}, var(#{ident($name)}));
+    }
+    @return var(#{$ident}, $fallback);
+  }
+  @return var(#{$ident});
+}
+
+// Use to update css values
+@mixin cssvar($name, $value: "") {
+  --#{$name}: #{$value};
+}
+
+@mixin cssvars($css_variables, $prefix: null) {
+  @each $name, $value in $css_variables {
+    @if $prefix {
+      --#{$prefix}-#{$name}: #{$value};
+    } @else {
+      --#{$name}: #{$value};
+    }
+  }
+}
+
+@mixin hostvars($css_variables) {
+  @include cssvars($css_variables, host);
+}
