@@ -1,3 +1,10 @@
+# [1.0.0-beta.5](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-09-14)
+
+
+### Bug Fixes
+
+* **scss:** helpers were excluded ([c81c9ff](https://github.com/bullhorn/novo-design-tokens/commit/c81c9ff9a30ca9d6897fddbe224c12bd6a6b6466))
+
 # [1.0.0-beta.4](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-09-14)
 
 
