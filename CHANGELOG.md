@@ -1,3 +1,10 @@
+# [1.0.0-beta.2](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-09-14)
+
+
+### Bug Fixes
+
+* **scss:** Mixin merge conflict ([89ac746](https://github.com/bullhorn/novo-design-tokens/commit/89ac746e724415f9bd4fd24f32e9cac21af68507))
+
 # [1.0.0-beta.1](https://github.com/bullhorn/novo-design-tokens/compare/v0.1.0-beta.1...v1.0.0-beta.1) (2022-09-14)
 
 
