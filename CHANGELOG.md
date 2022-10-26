@@ -1,3 +1,10 @@
+# [1.0.0-beta.6](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2022-09-14)
+
+
+### Bug Fixes
+
+* **scss:** removing some old mixins ([8296ebd](https://github.com/bullhorn/novo-design-tokens/commit/8296ebda62a25d955accf4c93ea58258f40d8835))
+
 # [1.0.0-beta.5](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2022-09-14)
 
 
