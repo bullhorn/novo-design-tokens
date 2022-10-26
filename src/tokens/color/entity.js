@@ -1,3 +1,4 @@
+const color = require(".");
 const { makeScaledColors } = require("../../utils/color-utils");
 // Entity Colors
 module.exports = makeScaledColors({

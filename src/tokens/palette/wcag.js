@@ -46,7 +46,7 @@ const calcColorScale = (
           [scale[i]]: { value: color },
         };
       },
-      { 10: { value: chroma(hex).set("hcl.l", 0.1).hex() } }
+      { 10: { value: chroma(hex).set("hcl.l", 0.15).hex() } }
     ),
   };
 

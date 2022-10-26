@@ -1,9 +1,10 @@
 /**
  * Do not edit directly
- * Generated on Tue, 13 Sep 2022 20:26:10 GMT
+ * Generated on Wed, 26 Oct 2022 16:08:47 GMT
  */
 
 :root {
+  --tooltip-color-border: transparent;
   --toast-color-border: transparent;
   --switch-spacing: spacing.md;
   --nav-shadow: none;
@@ -57,8 +58,8 @@
   --size-height-md: 3.2rem;
   --size-height-sm: 2.4rem;
   --size-height-xs: 1.2rem;
-  --size-height-px: 1rem;
-  --size-height-none: 0rem;
+  --size-height-px: 1px;
+  --size-height-none: 0;
   --shadow-z5: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
   --shadow-z4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   --shadow-z3: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
@@ -90,21 +91,6 @@
   --icon-box-unknown: url("data:image/svg+xml,%3csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cdefs%3e%3cstyle%3e.cls-1%7bfill:%23010101%3b%7d%3c/style%3e%3c/defs%3e%3cpath class='cls-1' d='M448%2c31.99979a32.03619%2c32.03619%2c0%2c0%2c1%2c32%2c32v384a32.03619%2c32.03619%2c0%2c0%2c1-32%2c32H64a32.03619%2c32.03619%2c0%2c0%2c1-32-32v-384a32.03619%2c32.03619%2c0%2c0%2c1%2c32-32H448m0-32H64a64%2c64%2c0%2c0%2c0-64%2c64v384a64%2c64%2c0%2c0%2c0%2c64%2c64H448a64%2c64%2c0%2c0%2c0%2c64-64v-384a64%2c64%2c0%2c0%2c0-64-64Z'/%3e%3crect class='cls-1' x='96' y='238.22222' width='320' height='35.55556'/%3e%3c/svg%3e");
   --icon-box-checked: url("data:image/svg+xml,%3csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cdefs%3e%3cstyle%3e.cls-1%7bfill:%23010101%3b%7d%3c/style%3e%3c/defs%3e%3cg id='check'%3e%3cpolygon class='cls-1' points='390.592 134.106 197.686 327.012 121.252 250.578 95.765 276.064 197.686 377.972 416.078 159.58 390.592 134.106 390.592 134.106'/%3e%3c/g%3e%3cpath class='cls-1' d='M448%2c31.99979a32.03619%2c32.03619%2c0%2c0%2c1%2c32%2c32v384a32.03619%2c32.03619%2c0%2c0%2c1-32%2c32H64a32.03619%2c32.03619%2c0%2c0%2c1-32-32v-384a32.03619%2c32.03619%2c0%2c0%2c1%2c32-32H448m0-32H64a64%2c64%2c0%2c0%2c0-64%2c64v384a64%2c64%2c0%2c0%2c0%2c64%2c64H448a64%2c64%2c0%2c0%2c0%2c64-64v-384a64%2c64%2c0%2c0%2c0-64-64Z'/%3e%3c/svg%3e");
   --icon-box-empty: url("data:image/svg+xml,%3csvg id='Layer_1' data-name='Layer 1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3e%3cdefs%3e%3cstyle%3e.cls-1%7bfill:%23010101%3b%7d%3c/style%3e%3c/defs%3e%3cpath class='cls-1' d='M448%2c31.99979a32.03619%2c32.03619%2c0%2c0%2c1%2c32%2c32v384a32.03619%2c32.03619%2c0%2c0%2c1-32%2c32H64a32.03619%2c32.03619%2c0%2c0%2c1-32-32v-384a32.03619%2c32.03619%2c0%2c0%2c1%2c32-32H448m0-32H64a64%2c64%2c0%2c0%2c0-64%2c64v384a64%2c64%2c0%2c0%2c0%2c64%2c64H448a64%2c64%2c0%2c0%2c0%2c64-64v-384a64%2c64%2c0%2c0%2c0-64-64Z'/%3e%3c/svg%3e");
-  --color-person-overlay: #696d791a;
-  --color-person-contrast: #fff;
-  --color-person-tint: #979ba8;
-  --color-person-shade: #3e424d;
-  --color-person: #696d79;
-  --color-credential-overlay: #696d791a;
-  --color-credential-contrast: #fff;
-  --color-credential-tint: #979ba8;
-  --color-credential-shade: #3e424d;
-  --color-credential: #696d79;
-  --color-task-overlay: #696d791a;
-  --color-task-contrast: #fff;
-  --color-task-tint: #979ba8;
-  --color-task-shade: #3e424d;
-  --color-task: #696d79;
   --color-distribution-list-overlay: #696d791a;
   --color-distribution-list-contrast: #fff;
   --color-distribution-list-tint: #979ba8;
@@ -115,11 +101,6 @@
   --color-corporate-user-tint: #979ba8;
   --color-corporate-user-shade: #3e424d;
   --color-corporate-user: #696d79;
-  --color-user-overlay: #696d791a;
-  --color-user-contrast: #fff;
-  --color-user-tint: #979ba8;
-  --color-user-shade: #3e424d;
-  --color-user: #696d79;
   --color-payable-charge-overlay: #696d791a;
   --color-payable-charge-contrast: #fff;
   --color-payable-charge-tint: #979ba8;
@@ -145,6 +126,26 @@
   --color-job-code-tint: #979ba8;
   --color-job-code-shade: #3e424d;
   --color-job-code: #696d79;
+  --color-person-overlay: #696d791a;
+  --color-person-contrast: #fff;
+  --color-person-tint: #979ba8;
+  --color-person-shade: #3e424d;
+  --color-person: #696d79;
+  --color-credential-overlay: #696d791a;
+  --color-credential-contrast: #fff;
+  --color-credential-tint: #979ba8;
+  --color-credential-shade: #3e424d;
+  --color-credential: #696d79;
+  --color-task-overlay: #696d791a;
+  --color-task-contrast: #fff;
+  --color-task-tint: #979ba8;
+  --color-task-shade: #3e424d;
+  --color-task: #696d79;
+  --color-user-overlay: #696d791a;
+  --color-user-contrast: #fff;
+  --color-user-tint: #979ba8;
+  --color-user-shade: #3e424d;
+  --color-user: #696d79;
   --color-contract-overlay: #454ea01a;
   --color-contract-contrast: #fff;
   --color-contract-tint: #777ad2;
@@ -220,7 +221,7 @@
   --color-named-grass: #8cc152;
   --color-named-mint: #37bc9b;
   --color-named-ocean: #4a89dc;
-  --color-named-sky-blue: #009bdf;
+  --color-named-skyblue: #009bdf;
   --color-named-navy: #0d2d42;
   --color-named-darkness: #161f27;
   --color-named-midnight: #202945;
@@ -256,7 +257,7 @@
   --palette-gray-30: #4c4c4c;
   --palette-gray-20: #3a3a3a;
   --palette-gray-15: #282828;
-  --palette-gray-10: #000000;
+  --palette-gray-10: #010101;
   --palette-violet-contrast-98: #3d464d;
   --palette-violet-contrast-95: #3d464d;
   --palette-violet-contrast-90: #3d464d;
@@ -356,7 +357,7 @@
   --palette-aqua-30: #00639a;
   --palette-aqua-20: #00508a;
   --palette-aqua-15: #003e78;
-  --palette-aqua-10: #00112f;
+  --palette-aqua-10: #001130;
   --palette-teal-contrast-98: #3d464d;
   --palette-teal-contrast-95: #3d464d;
   --palette-teal-contrast-90: #3d464d;
@@ -506,8 +507,8 @@
   --palette-red-30: #a03234;
   --palette-red-20: #8f1c1c;
   --palette-red-15: #7c0000;
-  --palette-red-10: #510000;
-  --tooltip-padding: var(--spacing-md);
+  --palette-red-10: #520000;
+  --tooltip-shadow: var(--shadow-z2);
   --tooltip-border-radius: var(--border-radius);
   --toast-height: var(--size-height-lg);
   --toast-shadow: var(--shadow-z2);
@@ -520,7 +521,7 @@
   --switch-border-radius: var(--size-height-sm);
   --switch-border-width: var(--border-width);
   --nav-height: var(--size-height-md);
-  --option-spacing: var(--size-height-md);
+  --option-spacing: var(--spacing-md);
   --option-height: var(--size-height-md);
   --field-border-error: var(--border-width) solid var(--color-error);
   --field-border-valid: var(--border-width) solid var(--color-border);
@@ -531,15 +532,15 @@
   --card-border-radius: var(--border-radius);
   --button-large-font-size: var(--font-size-lg);
   --button-large-spacing: var(--spacing-lg);
-  --button-large-height: var(--size-height-lg);
+  --button-large-size-height: var(--size-height-lg);
   --button-small-font-size: var(--font-size-sm);
   --button-small-spacing: var(--spacing-sm);
-  --button-small-height: var(--size-height-sm);
+  --button-small-size-height: var(--size-height-sm);
   --button-shadow-active: var(--shadow-none);
   --button-shadow-hover: var(--shadow-none);
   --button-border-radius: var(--border-radius);
+  --button-size-height: var(--size-height-md);
   --button-spacing: var(--spacing-md);
-  --button-height: var(--size-height-md);
   --code-comment-color: var(--palette-aqua-30);
   --code-value-color: var(--palette-gray-20);
   --code-property-color: var(--palette-gray-40);
@@ -551,8 +552,8 @@
   --font-size-label: var(--font-size-sm);
   --font-size-caption: var(--font-size-xs);
   --font-family-base: var(--font-family-body);
-  --shadow-popover: [object Object];
-  --shadow-card: [object Object];
+  --shadow-popover: var(--shadow-z2);
+  --shadow-card: var(--shadow-z2);
   --border-error: var(--border-width) solid var(--color-error);
   --border-disabled: var(--border-width) dashed var(--color-disabled);
   --border-main: var(--border-width) solid var(--color-border);
@@ -605,11 +606,12 @@
   --color-brand-pulse: var(--palette-aqua-50);
   --color-brand-bullhorn: var(--palette-orange-50);
   --color-shadow: var(--palette-gray-10);
-  --color-link: var(--palette-blue-50);
+  --color-link: var(--palette-indigo-50);
   --color-placeholder: var(--palette-gray-50);
   --color-border: var(--palette-gray-70);
   --color-active: var(--color-background-overlay);
-  --tooltip-background-color: var(--color-empty);
+  --tooltip-color-text: var(--color-background);
+  --tooltip-color-background: var(--color-text);
   --toast-color-text: var(--color-text);
   --toast-color-background: var(--color-background);
   --tab-color-active: var(--color-selection);

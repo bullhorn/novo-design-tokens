@@ -34,13 +34,19 @@ module.exports = tokenize({
     shadow: "{shadow.low}",
   },
   button: {
-    height: "2.7rem",
+    size: {
+      height: "2.7rem",
+    },
     // borderRadius: "{border.radiusFull}",
     small: {
-      height: "20px",
+      size: {
+        height: "20px",
+      },
     },
     large: {
-      height: "40px",
+      size: {
+        height: "40px",
+      },
       borderRadius: "40px",
     },
   },

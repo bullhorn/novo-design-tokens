@@ -5,7 +5,7 @@ module.exports = tokenize({
   active: `{color.backgroundOverlay}`,
   border: `{palette.gray.70}`,
   placeholder: `{palette.gray.50}`,
-  link: "{palette.blue.50}",
+  link: "{palette.indigo.50}",
   caption: "{color.textSecondary}",
   label: "{color.textSecondary}",
   title: "{color.text}",

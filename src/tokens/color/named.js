@@ -13,7 +13,7 @@ module.exports = describeWith(
     darkness: "#161f27", // "#0b0f1a",
     navy: "#0d2d42",
     // Anaylytics
-    skyBlue: "#009bdf",
+    skyblue: "#009bdf",
     ocean: "#4a89dc",
     mint: "#37bc9b",
     grass: "#8cc152",

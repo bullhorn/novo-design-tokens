@@ -2,15 +2,15 @@ const { tokenize } = require("../../utils/token-utils");
 
 module.exports = tokenize({
   small: {
-    height: "{size.height.sm}",
+    "size-height": "{size.height.sm}",
     spacing: "{spacing.sm}",
     fontSize: "{font.size.sm}",
-    borderRadius: "{button.borderRadius}",
+    borderRadius: "{button.border.radius}",
   },
   large: {
-    height: "{size.height.lg}",
+    "size-height": "{size.height.lg}",
     spacing: "{spacing.lg}",
     fontSize: "{font.size.lg}",
-    borderRadius: "{button.borderRadius}",
+    borderRadius: "{button.border.radius}",
   },
 });

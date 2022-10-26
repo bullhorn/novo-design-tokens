@@ -3,11 +3,17 @@ const { tokenize } = require("../../utils/token-utils");
 //var(--button-height);
 //var(--button-color-background);
 module.exports = tokenize({
-  height: "{size.height.md}",
   spacing: "{spacing.md}",
   textTransform: "uppercase",
-  fontSize: "{font.size.button}",
-  borderRadius: "{border.radius}",
+  size: {
+    height: "{size.height.md}",
+  },
+  font: {
+    size: "{font.size.button}",
+  },
+  border: {
+    radius: "{border.radius}",
+  },
   color: {
     background: "transparent",
     border: "transparent",

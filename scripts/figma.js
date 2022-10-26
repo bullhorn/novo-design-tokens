@@ -1,58 +1,11 @@
 const chroma = require("chroma-js");
-
-function isObject(obj) {
-  return typeof obj === "object" && obj !== null;
-}
-
-function deepSet(obj, path, value, create) {
-  var properties = path.split(".");
-  var currentObject = obj;
-  var property;
-
-  create = create === undefined ? true : create;
-
-  while (properties.length) {
-    property = properties.shift();
-
-    if (!currentObject) break;
-
-    if (!isObject(currentObject[property]) && create) {
-      currentObject[property] = {};
-    }
-
-    if (!properties.length) {
-      currentObject[property] = value;
-    }
-    currentObject = currentObject[property];
-  }
-
-  return obj;
-}
-
-const toPascalCase = (string) => {
-  return `${string}`
-    .toLowerCase()
-    .replace(new RegExp(/[-_.]+/, "g"), " ")
-    .replace(new RegExp(/[^\w\s]/, "g"), "")
-    .replace(
-      new RegExp(/\s+(.)(\w*)/, "g"),
-      ($1, $2, $3) => `${$2.toUpperCase() + $3}`
-    )
-    .replace(new RegExp(/\w/), (s) => s.toUpperCase());
-};
-
-const kebabCase = (string) =>
-  string
-    .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/[\s_]+/g, "-")
-    .toLowerCase();
-
-// Don't replace '-'
-const dotCase = (string) =>
-  string
-    .replace(/([a-z])([A-Z])/g, "$1.$2")
-    .replace(/[\s_]+/g, ".")
-    .toLowerCase();
+const {
+  dotCase,
+  kebabCase,
+  toPascalCase,
+  deepSet,
+  isObject,
+} = require("./helpers");
 
 const isThemeToken = (token) => token.filePath.includes("theme");
 const isComponentToken = (token) => token.filePath.includes("component");
@@ -86,7 +39,7 @@ function isRefValue(val) {
 }
 
 function figmaFontType(token) {
-  const type = getTokenType(token);
+  const type = token.attributes.type; //getTokenType(token);
   switch (type) {
     case "family":
       return "fontFamilies";
@@ -104,7 +57,8 @@ function figmaFontType(token) {
 }
 
 function figmaBorderType(token) {
-  const type = getTokenType(token);
+  // const type = getTokenType(token);
+  const type = token.attributes.type;
   if (type.startsWith("width")) return "borderWidth";
   if (type.startsWith("radius")) return "borderRadius";
   if (type.startsWith("height")) return "lineHeights";
@@ -113,13 +67,13 @@ function figmaBorderType(token) {
 }
 
 function figmaType(token) {
-  const category = getTokenCategory(token);
-  switch (category) {
+  // const category = getTokenCategory(token);
+  switch (token.attributes.category) {
     case "color":
       // if (token.path.includes("contrast")) return "Contrast Color";
       return "color";
     case "palette":
-      return "Palette Color";
+      return "color";
     case "spacing":
       return "spacing";
     case "size":
@@ -131,6 +85,13 @@ function figmaType(token) {
     case "shadow":
       return "boxShadow";
     default:
+      console.log(
+        token.path.join("-"),
+        "---",
+        token.attributes.category,
+        token.attributes.type,
+        token.attributes.variant
+      );
       return "other";
   }
 }

@@ -2,7 +2,7 @@ const { tokenize } = require("../../utils/token-utils");
 
 module.exports = tokenize({
   height: "{size.height.md}",
-  spacing: "{size.height.md}",
+  spacing: "{spacing.md}",
   // color: {
   //   background: "transparent",
   //   text: "{color.text}",
