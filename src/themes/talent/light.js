@@ -56,7 +56,6 @@ module.exports = tokenize({
 
 // Button sm, md, lg
 // height
-
 // --background-body: #{$color-white};
 // --background-main: #{$color-bright}; //efefef
 // --background-bright: #{$color-white}; //f7f7f7
