@@ -1,6 +1,6 @@
 # novo-design-tokens [![npm](https://img.shields.io/npm/v/novo-design-tokens?style=flat-square)](https://www.npmjs.com/package/novo-design-tokens) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/novo-design-tokens?label=gzipped%20size&style=flat-square)](https://bundlephobia.com/result?p=novo-design-tokens)
 
-Design tokens for the Bullhorn/Novo Design System.
+Design tokens for the Bullhorn/Novo Design System .
 
 ## Getting started
 
