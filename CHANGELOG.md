@@ -1,3 +1,10 @@
+# [1.0.0-beta.7](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2022-10-27)
+
+
+### Bug Fixes
+
+* **lib:** forcing new build ([4b7ee39](https://github.com/bullhorn/novo-design-tokens/commit/4b7ee3945b852feee6c3a601b4d7ff7fa7d313f9))
+
 # [1.0.0-beta.6](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2022-09-14)
 
 

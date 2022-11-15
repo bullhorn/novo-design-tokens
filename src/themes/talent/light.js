@@ -17,6 +17,8 @@ module.exports = tokenize({
       backgroundDisabled: "{palette.gray.98}", // Background color for whenever a components is disabled
       backgroundOverlay: "#0000001f",
     },
+    error: "#FF3B30",
+    success: "#34C759",
   },
   card: {
     shadow: "{shadow.low}",
@@ -49,6 +51,13 @@ module.exports = tokenize({
       },
       borderRadius: "40px",
     },
+    outlined: {
+        color: {
+          background: "{palette.gray.90}",
+          border: "{palette.gray.90}",
+          text: "{color.text}"
+        }
+    }
   },
 
   // Actions
