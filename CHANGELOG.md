@@ -1,3 +1,10 @@
+# [1.0.0-beta.8](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2022-11-15)
+
+
+### Bug Fixes
+
+* **lib:** forget to include valid commit message to build with new `subtle` variants ([7716c4b](https://github.com/bullhorn/novo-design-tokens/commit/7716c4b76d28c8fa74a83c5471125bb930d49c29))
+
 # [1.0.0-beta.7](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2022-10-27)
 
 
