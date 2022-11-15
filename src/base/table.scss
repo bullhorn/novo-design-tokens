@@ -44,7 +44,7 @@ tfoot {
 table {
   &[role="grid"] {
     tbody tr:nth-child(odd) {
-      background-color: var(--color-background-secondary);
+      background-color: var(--color-background-subtle);
     }
   }
 }

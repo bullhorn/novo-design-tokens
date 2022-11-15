@@ -7,14 +7,14 @@ const { tokenize, describeWith } = require("../../utils/token-utils");
 module.exports = tokenize({
   ...{
     background: "{color.white}", // body Color
-    backgroundSecondary: "{palette.gray.98}", // alt background color for containers
+    backgroundSubtle: "{palette.gray.98}", // alt background color for containers
     backgroundMuted: "{palette.gray.95}", // a muted state for backgrounds, do we need this
     backgroundDisabled: "{palette.gray.98}", // Background color for whenever a components is disabled
     backgroundOverlay: "#0000001f",
   },
   ...{
     text: `{palette.gray.10}`,
-    textSecondary: `{palette.gray.30}`,
+    textSubtle: `{palette.gray.30}`,
     textMuted: `{palette.gray.70}`,
     textDisabled: `{palette.gray.50}`,
     textCode: `{palette.red.30}`,
@@ -67,9 +67,5 @@ module.exports = tokenize({
     disabledShade: "{palette.gray.60}",
     disabledContrast: "{palette.gray.contrast.70}",
     disabledOverlay: "{palette.gray.alpha}",
-  },
-  scrollbar: {
-    thumb: "{palette.gray.90}",
-    thumbHover: "{palette.gray.50}",
   },
 });

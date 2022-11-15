@@ -4,14 +4,14 @@ module.exports = tokenize({
   color: {
     ...{
       background: "{palette.gray.10}", // body Color
-      backgroundSecondary: "{color.named.darkness}", // alt background color for containers
+      backgroundSubtle: "{color.named.darkness}", // alt background color for containers
       backgroundMuted: "{palette.gray.15}", // a muted state for backgrounds, do we need this
       backgroundDisabled: "{palette.gray.50}", // Background color for whenever a components is disabled
       backgroundOverlay: "#0000001f",
     },
     ...{
       text: `{palette.gray.90}`,
-      textSecondary: `{palette.gray.80}`,
+      textSubtle: `{palette.gray.80}`,
       textMuted: `{palette.gray.70}`,
       textDisabled: `{palette.gray.60}`,
       textCode: `{palette.red.70}`,
@@ -19,7 +19,7 @@ module.exports = tokenize({
   },
   card: {
     color: {
-      background: "{color.backgroundSecondary}",
+      background: "{color.backgroundSubtle}",
     },
   },
 });

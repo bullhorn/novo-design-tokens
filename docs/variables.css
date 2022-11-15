@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 26 Oct 2022 16:08:47 GMT
+ * Generated on Tue, 15 Nov 2022 18:33:47 GMT
  */
 
 :root {
@@ -557,8 +557,6 @@
   --border-error: var(--border-width) solid var(--color-error);
   --border-disabled: var(--border-width) dashed var(--color-disabled);
   --border-main: var(--border-width) solid var(--color-border);
-  --color-scrollbar-thumb-hover: var(--palette-gray-50);
-  --color-scrollbar-thumb: var(--palette-gray-90);
   --color-disabled-overlay: var(--palette-gray-alpha);
   --color-disabled-contrast: var(--palette-gray-contrast-70);
   --color-disabled-shade: var(--palette-gray-60);
@@ -597,14 +595,16 @@
   --color-text-code: var(--palette-red-30);
   --color-text-disabled: var(--palette-gray-50);
   --color-text-muted: var(--palette-gray-70);
-  --color-text-secondary: var(--palette-gray-30);
+  --color-text-subtle: var(--palette-gray-30);
   --color-text: var(--palette-gray-10);
   --color-background-disabled: var(--palette-gray-98);
   --color-background-muted: var(--palette-gray-95);
-  --color-background-secondary: var(--palette-gray-98);
+  --color-background-subtle: var(--palette-gray-98);
   --color-background: var(--color-white);
   --color-brand-pulse: var(--palette-aqua-50);
   --color-brand-bullhorn: var(--palette-orange-50);
+  --color-scrollbar-thumb-hover: var(--palette-gray-50);
+  --color-scrollbar-thumb: var(--palette-gray-90);
   --color-shadow: var(--palette-gray-10);
   --color-link: var(--palette-indigo-50);
   --color-placeholder: var(--palette-gray-50);
@@ -658,8 +658,8 @@
   --code-background-color: var(--color-background);
   --color-button: var(--color-text);
   --color-title: var(--color-text);
-  --color-label: var(--color-text-secondary);
-  --color-caption: var(--color-text-secondary);
+  --color-label: var(--color-text-subtle);
+  --color-caption: var(--color-text-subtle);
   --color-hover: var(--color-selection-overlay);
   --button-color-hover: var(--color-hover);
 }

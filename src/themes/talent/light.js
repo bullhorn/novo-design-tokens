@@ -12,7 +12,7 @@ module.exports = tokenize({
   color: {
     ...{
       background: "{color.white}", // body Color
-      backgroundSecondary: "{palette.gray.98}", // alt background color for containers
+      backgroundSubtle: "{palette.gray.98}", // alt background color for containers
       backgroundMuted: "{palette.gray.95}", // a muted state for backgrounds, do we need this
       backgroundDisabled: "{palette.gray.98}", // Background color for whenever a components is disabled
       backgroundOverlay: "#0000001f",
