@@ -128,7 +128,7 @@ textarea:disabled {
 }
 
 fieldset {
-  border: 1px solid var(--color-selection-tint);
+  border: 1px solid var(--color-primary);
   border-radius: 6px;
   margin: 0;
   margin-bottom: 12px;
@@ -164,7 +164,7 @@ select:focus {
 input:not([type=button]):not([type=reset]):not([type=submit]) :not([type=radio]):not([type=checkbox]):is([aria-current], :hover, :active, :focus),
 textarea:is([aria-current], :hover, :active, :focus),
 select:is([aria-current], :hover, :active, :focus) {
-  --current-border-color: var(--color-selection-tint);
+  --current-border-color: var(--color-text);
 }
 input:not([type=button]):not([type=reset]):not([type=submit]) :not([type=radio]):not([type=checkbox]):focus,
 textarea:focus,
@@ -178,13 +178,6 @@ textarea.invalid,
 select[aria-invalid=true],
 select.invalid {
   --current-border-color: var(--color-error);
-}
-input:not([type=button]):not([type=reset]):not([type=submit]) :not([type=radio]):not([type=checkbox])[aria-invalid=true]:is(:active, :focus), input:not([type=button]):not([type=reset]):not([type=submit]) :not([type=radio]):not([type=checkbox]).invalid:is(:active, :focus),
-textarea[aria-invalid=true]:is(:active, :focus),
-textarea.invalid:is(:active, :focus),
-select[aria-invalid=true]:is(:active, :focus),
-select.invalid:is(:active, :focus) {
-  --current-border-color: var(--color-error-tint);
 }
 
 img,
@@ -2416,9 +2409,9 @@ a[role=button]:not([href]) {
   --current-border-color: var(--switch-background-color);
 }
 [type=checkbox][role=switch]:checked {
-  --current-background-color: var(--color-selection-tint);
-  --current-border-color: var(--color-selection-shade);
-  --current-text-color: var(--color-selection);
+  --current-background-color: var(--color-primary);
+  --current-border-color: var(--color-primary);
+  --current-text-color: var(--color-primary-contrast);
   --current-state: none;
   mask-image: none;
 }

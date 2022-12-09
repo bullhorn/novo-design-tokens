@@ -6,8 +6,8 @@ module.exports = tokenize({
     active: "{button.shadow.active}",
   },
   color: {
-    background: "{color.selection}",
-    text: "{color.selectionContrast}",
+    background: "{color.primary}",
+    text: "{color.primaryContrast}",
     border: "transparent",
   },
 });

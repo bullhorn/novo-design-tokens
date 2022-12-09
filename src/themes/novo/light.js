@@ -9,6 +9,14 @@ module.exports = tokenize({
       hover: "{shadow.z2}",
       active: "{shadow.z1}",
     },
+    outlined: {
+      color: {
+        background: "{color.background}",
+      },
+    },
+  },
+  tab: {
+    fontSize: "1.1rem",
   },
   color: {
     ...{

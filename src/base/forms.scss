@@ -90,7 +90,7 @@ textarea:disabled {
 }
 
 fieldset {
-  border: 1px solid var(--color-selection-tint);
+  border: 1px solid var(--color-primary);
   border-radius: 6px;
   margin: 0;
   margin-bottom: 12px;
@@ -125,7 +125,7 @@ select {
   }
 
   &:is([aria-current], :hover, :active, :focus) {
-    --current-border-color: var(--color-selection-tint);
+    --current-border-color: var(--color-text);
   }
 
   &:focus {
@@ -136,8 +136,5 @@ select {
   &[aria-invalid="true"],
   &.invalid {
     --current-border-color: var(--color-error);
-    &:is(:active, :focus) {
-      --current-border-color: var(--color-error-tint);
-    }
   }
 }

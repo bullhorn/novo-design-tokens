@@ -7,16 +7,14 @@ module.exports = tokenize({
     active: "{button.shadow.active}",
   },
   color: {
-    background: "{color.selection}",
-    backgroundHover: "{color.selectionTint}",
-    backgroundActive: "{color.selectionShade}",
-    text: "{color.selectionContrast}",
+    background: "{color.primary}",
+    text: "{color.primaryContrast}",
     border: "transparent",
   },
 });
 
-// button.primary.color.background.@: color.selection.@
-// button.primary.color.background.hover = color.selection.tint
+// button.primary.color.background.@: color.primary.@
+// button.primary.color.background.hover = color.primary.tint
 
 // > Note: description using indexes starting at 1.
 //

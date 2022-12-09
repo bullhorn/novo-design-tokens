@@ -5,7 +5,6 @@ module.exports = describeWith(
     // Named Colors
     bright: "#f7f7f7",
     light: "#dbdbdb",
-    neutral: "#4f5361",
     dark: "#3d464d",
     navigation: "#202945",
     moonlight: "#1a242f", // "#2f384f",

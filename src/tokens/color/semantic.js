@@ -6,25 +6,25 @@ const { tokenize, describeWith } = require("../../utils/token-utils");
 // Subtle
 module.exports = tokenize({
   ...{
-    background: "{color.white}", // body Color
-    backgroundSubtle: "{palette.gray.98}", // alt background color for containers
-    backgroundMuted: "{palette.gray.95}", // a muted state for backgrounds, do we need this
-    backgroundDisabled: "{palette.gray.98}", // Background color for whenever a components is disabled
-    backgroundOverlay: "#0000001f",
+    primary: "{palette.blue.50}",
+    primaryTint: "{palette.blue.70}", // focus & hover
+    primaryShade: "{palette.blue.30}",
+    primaryContrast: "{palette.blue.contrast.50}",
+    primaryOverlay: "{palette.blue.alpha}",
   },
   ...{
-    text: `{palette.gray.10}`,
-    textSubtle: `{palette.gray.30}`,
-    textMuted: `{palette.gray.70}`,
-    textDisabled: `{palette.gray.50}`,
-    textCode: `{palette.red.30}`,
+    secondary: "{palette.orange.70}",
+    secondaryTint: "{palette.orange.80}", // focus & hover
+    secondaryShade: "{palette.orange.50}",
+    secondaryContrast: "{palette.orange.contrast.70}",
+    secondaryOverlay: "{palette.orange.alpha}",
   },
   ...{
-    selection: "{palette.blue.50}",
-    selectionTint: "{palette.blue.70}", // focus & hover
-    selectionShade: "{palette.blue.30}",
-    selectionContrast: "{palette.blue.contrast.50}",
-    selectionOverlay: "{palette.blue.alpha}",
+    positive: "{palette.blue.50}",
+    positiveTint: "{palette.blue.70}",
+    positiveShade: "{palette.blue.30}",
+    positiveContrast: "{palette.blue.contrast.50}",
+    positiveOverlay: "{palette.blue.alpha}",
   },
   ...{
     success: "{palette.green.50}",
@@ -34,18 +34,25 @@ module.exports = tokenize({
     successOverlay: "{palette.green.alpha}",
   },
   ...{
+    danger: "{palette.red.50}",
+    dangerTint: "{palette.red.70}",
+    dangerShade: "{palette.red.30}",
+    dangerContrast: "{palette.red.contrast.50}",
+    dangerOverlay: "{palette.red.alpha}",
+  },
+  ...{
+    neutral: "{palette.gray.90}",
+    neutralTint: "{palette.gray.95}",
+    neutralShade: "{palette.gray.80}",
+    neutralContrast: "{palette.gray.contrast.90}",
+    neutralOverlay: "{palette.gray.alpha}",
+  },
+  ...{
     warning: "{palette.yellow.90}",
     warningTint: "{palette.yellow.95}",
     warningShade: "{palette.yellow.80}",
     warningContrast: "{palette.yellow.contrast.90}",
     warningOverlay: "{palette.yellow.alpha}",
-  },
-  ...{
-    error: "{palette.red.50}",
-    errorTint: "{palette.red.70}",
-    errorShade: "{palette.red.30}",
-    errorContrast: "{palette.red.contrast.50}",
-    errorOverlay: "{palette.red.alpha}",
   },
   ...{
     info: "{palette.aqua.50}",
@@ -60,12 +67,5 @@ module.exports = tokenize({
     emptyShade: "{palette.gray.80}",
     emptyContrast: "{palette.gray.contrast.90}",
     emptyOverlay: "{palette.gray.alpha}",
-  },
-  ...{
-    disabled: "{palette.gray.70}",
-    disabledTint: "{palette.gray.80}",
-    disabledShade: "{palette.gray.60}",
-    disabledContrast: "{palette.gray.contrast.70}",
-    disabledOverlay: "{palette.gray.alpha}",
   },
 });

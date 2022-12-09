@@ -111,9 +111,9 @@
   }
 
   &:checked {
-    --current-background-color: var(--color-selection-tint);
-    --current-border-color: var(--color-selection-shade);
-    --current-text-color: var(--color-selection);
+    --current-background-color: var(--color-primary);
+    --current-border-color: var(--color-primary);
+    --current-text-color: var(--color-primary-contrast);
     --current-state: none;
     mask-image: none;
 

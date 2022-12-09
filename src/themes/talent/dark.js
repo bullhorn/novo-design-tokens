@@ -3,8 +3,8 @@ const { tokenize } = require("../../utils/token-utils.js");
 module.exports = tokenize({
   color: {
     ...{
-      background: "{color.named.midnight}", // body Color
-      backgroundSubtle: "{color.named.darkness}", // alt background color for containers
+      background: "{color.midnight}", // body Color
+      backgroundSubtle: "{color.darkness}", // alt background color for containers
       backgroundMuted: "{palette.gray.95}", // a muted state for backgrounds, do we need this
       backgroundDisabled: "{palette.gray.98}", // Background color for whenever a components is disabled
       backgroundOverlay: "#0000001f",

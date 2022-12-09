@@ -4,7 +4,7 @@ module.exports = tokenize({
   color: {
     ...{
       background: "{palette.gray.10}", // body Color
-      backgroundSubtle: "{color.named.darkness}", // alt background color for containers
+      backgroundSubtle: "{color.darkness}", // alt background color for containers
       backgroundMuted: "{palette.gray.15}", // a muted state for backgrounds, do we need this
       backgroundDisabled: "{palette.gray.50}", // Background color for whenever a components is disabled
       backgroundOverlay: "#0000001f",
@@ -20,6 +20,13 @@ module.exports = tokenize({
   card: {
     color: {
       background: "{color.backgroundSubtle}",
+    },
+  },
+  button: {
+    outlined: {
+      color: {
+        background: "{color.backgroundSubtle}",
+      },
     },
   },
 });

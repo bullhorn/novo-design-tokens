@@ -4,20 +4,20 @@ module.exports = tokenize({
   track: {
     color: {
       background: "{color.empty}",
-      selected: "{color.selectionOverlay}",
+      selected: "{color.primaryOverlay}",
     },
   },
   thumb: {
     color: {
-      text: "{color.selectionContrast}",
-      selected: "{color.selection}",
+      text: "{color.primaryContrast}",
+      selected: "{color.primary}",
       background: "{color.empty}",
     },
   },
   icon: {
     color: {
       text: "{color.text}",
-      selected: "{color.selectionContrast}",
+      selected: "{color.primaryContrast}",
     },
   },
   border: {

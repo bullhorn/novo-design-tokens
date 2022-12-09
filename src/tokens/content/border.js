@@ -4,7 +4,7 @@ module.exports = tokenize({
   width: "1px",
   radius: "0px",
   main: "{border.width} solid {color.border}",
-  disabled: "{border.width} dashed {color.disabled}",
+  disabled: "{border.width} dashed {color.textDisabled}",
   error: "{border.width} solid {color.error}",
 });
 

@@ -10,7 +10,7 @@ module.exports = {
   white: { value: "#fff" },
   ...system,
   brand,
-  named,
+  ...named,
   ...semantic,
   ...entity,
 };

@@ -1,6 +1,9 @@
 @import "./functions.scss";
 @import "./helpers.scss";
 
+$analyticKeys: "skyblue", "ocean", "mint", "grass", "sunflower", "bittersweet",
+  "grapefruit", "carnation", "lavender", "mountain";
+
 $paletteKeys: "red", "pink", "orange", "yellow", "green", "teal", "blue", "aqua",
   "indigo", "violet", "gray";
 $entityKeys: "person", "company", "candidate", "lead", "contact",
@@ -8,15 +11,25 @@ $entityKeys: "person", "company", "candidate", "lead", "contact",
   "placement", "note", "task", "distribution-list", "credential", "user",
   "corporate-user", "contract", "job-code", "earn-code", "billable-charge",
   "payable-charge", "invoice-statement";
-$semanticKeys: "selection", "positive", "success", "warning", "error", "info",
-  "disabled";
+$semanticKeys: "primary", "secondary", "positive", "success", "danger",
+  "warning", "info", "neutral", "error";
 
 /** THEMES **/
+@mixin single-colors() {
+  @each $name in $analyticKeys {
+    $color: var(--color-#{$name});
+    @content ($name, $color);
+  }
+  @each $name in $semanticKeys {
+    $color: var(--color-#{$name});
+    @content ($name, $color);
+  }
+}
 
 @mixin palette-colors() {
   @each $name in $paletteKeys {
     $color: var(--palette-#{$name}-50);
-    $contrast: var(--palette-#{$name}-50-contrast);
+    $contrast: var(--palette-#{$name}-contrast-50);
     $tint: var(--palette-#{$name}-70);
     $shade: var(--palette-#{$name}-30);
     $pale: var(--palette-#{$name}-98);

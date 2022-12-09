@@ -7,7 +7,7 @@ module.exports = tokenize({
   },
   color: {
     background: "transparent",
-    text: "{color.selection}",
-    border: "{color.selection}",
+    text: "{color.primary}",
+    border: "{color.primary}",
   },
 });
