@@ -1,3 +1,10 @@
+# [1.0.0-beta.9](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2022-12-09)
+
+
+### Bug Fixes
+
+* **tokens:** Updating Semantic Tokens ([cc1106c](https://github.com/bullhorn/novo-design-tokens/commit/cc1106c93530062250f5102bffe08c2d1c65e033))
+
 # [1.0.0-beta.8](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2022-11-15)
 
 
