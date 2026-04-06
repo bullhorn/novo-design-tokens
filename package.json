@@ -6,6 +6,13 @@
   "license": "MIT",
   "main": "lib/variables.js",
   "module": "lib/variables.esm.js",
+  "exports": {
+    ".": {
+      "import": "./lib/variables.esm.js",
+      "require": "./lib/variables.js",
+      "default": "./lib/variables.js"
+    }
+  },
   "files": [
     "lib",
     "css",
