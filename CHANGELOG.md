@@ -4,6 +4,20 @@
 ### Bug Fixes
 
 * adding color entry for task entity ([28e381d](https://github.com/bullhorn/novo-design-tokens/commit/28e381d7f060f0d9883b8af4b47d445493336a8f))
+* **ESM:** Add ESM export support ([5fc95ff](https://github.com/bullhorn/novo-design-tokens/commit/5fc95ff0c822aa6e6985f16064620878f44f1fbc))
+* **ESM:** Add ESM export support to novo-design-tokens ([b07d76e](https://github.com/bullhorn/novo-design-tokens/commit/b07d76e26040ce738b213040b8f3c131aae980ac))
+
+
+### Features
+
+* **Release:** Added Semantic Release ([dd359a7](https://github.com/bullhorn/novo-design-tokens/commit/dd359a7ca731028072354f7c3d7ae9625483f555))
+
+# [0.1.0](https://github.com/bullhorn/novo-design-tokens/compare/v0.0.9...v0.1.0) (2026-04-08)
+
+
+### Bug Fixes
+
+* adding color entry for task entity ([28e381d](https://github.com/bullhorn/novo-design-tokens/commit/28e381d7f060f0d9883b8af4b47d445493336a8f))
 * **ESM:** Add ESM export support to novo-design-tokens ([b07d76e](https://github.com/bullhorn/novo-design-tokens/commit/b07d76e26040ce738b213040b8f3c131aae980ac))
 
 
