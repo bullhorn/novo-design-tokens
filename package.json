@@ -22,7 +22,7 @@
     "build": "node build.js",
     "postbuild": "npm run postcss && npm run minifycss",
     "clean": "rm -rf build",
-    "prepublishOnly": "npm run build && npm run minify-css",
+    "prepublishOnly": "npm run build && npm run minifycss",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postcss": "postcss ./css/*.css --use autoprefixer --use postcss-prettify -d css/ --no-map",
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
