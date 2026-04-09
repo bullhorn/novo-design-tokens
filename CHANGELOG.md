@@ -1,3 +1,10 @@
+## [0.1.1](https://github.com/bullhorn/novo-design-tokens/compare/v0.1.0...v0.1.1) (2026-04-09)
+
+
+### Bug Fixes
+
+* **release:** Fix release scripts ([d576302](https://github.com/bullhorn/novo-design-tokens/commit/d576302c8905c07a045290202e0d77888307d806))
+
 # [0.1.0](https://github.com/bullhorn/novo-design-tokens/compare/v0.0.9...v0.1.0) (2026-04-08)
 
 
