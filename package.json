@@ -14,7 +14,12 @@
     },
     "./scss": "./scss/_index.scss",
     "./scss/*": "./scss/*",
-    "./css/*": "./css/*"
+    "./css/*": "./css/*",
+    "./css/variables": "./css/variables.css",
+    "./css/variables.min": "./css/variables.min.css",
+    "./css/variables-dark": "./css/variables-dark.css",
+    "./css/variables-dark.min": "./css/variables-dark.min.css",
+    "./lib/*": "./lib/*"
   },
   "files": [
     "lib",
