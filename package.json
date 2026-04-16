@@ -11,7 +11,10 @@
       "import": "./lib/variables.esm.js",
       "require": "./lib/variables.js",
       "default": "./lib/variables.js"
-    }
+    },
+    "./scss": "./scss/_index.scss",
+    "./scss/*": "./scss/*",
+    "./css/*": "./css/*"
   },
   "files": [
     "lib",
