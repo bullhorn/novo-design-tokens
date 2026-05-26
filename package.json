@@ -27,7 +27,7 @@
     "scss"
   ],
   "scripts": {
-    "build": "node build.js",
+    "build": "node build.mjs",
     "postbuild": "npm run postcss && npm run minifycss",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minifycss",
@@ -53,7 +53,7 @@
     "postcss-cli": "^11.0.1",
     "sass": "^1.100.0",
     "semantic-release": "^24.2.9",
-    "style-dictionary": "^3.7.0"
+    "style-dictionary": "^5.4.1"
   },
   "browserslist": [
     "> 1%",

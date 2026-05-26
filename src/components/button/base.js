@@ -1,4 +1,4 @@
 module.exports = {
-  padding: { value: "{spacing.md.value}" },
-  "font-size": { value: "{font.size.lg.value}" },
+  padding: { value: "{spacing.md}" },
+  "font-size": { value: "{font.size.lg}" },
 };

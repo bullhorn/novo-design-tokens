@@ -24,7 +24,7 @@ module.exports = {
     // mono: `'Roboto Mono', Menlo, Monaco, Consolas, "Courier New", monospace`,
     body: `'Montserrat', Helvetica, Arial, sans-serif`,
     mono: `'Fira Code', Menlo, Monaco, Consolas, "Courier New", monospace`,
-    base: `{font.family.body.value}`,
+    base: `{font.family.body}`,
   }),
 
   size: tokenize({
@@ -60,8 +60,8 @@ module.exports = {
   }),
 
   color: tokenize({
-    base: "{color.dark.value}",
-    secondary: "{color.light.value}",
-    link: "{color.ocean.value}",
+    base: "{color.dark}",
+    secondary: "{color.light}",
+    link: "{color.ocean}",
   }),
 };

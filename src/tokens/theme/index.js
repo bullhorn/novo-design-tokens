@@ -1,20 +1,20 @@
 module.exports = {
   background: {
     body: {
-      value: "{color.white.value}",
-      darkValue: "{color.midnight.value}",
+      value: "{color.white}",
+      darkValue: "{color.midnight}",
     },
     main: {
-      value: "{color.bright.value}",
-      darkValue: "{color.darkness.value}",
+      value: "{color.bright}",
+      darkValue: "{color.darkness}",
     },
     bright: {
-      value: "{color.white.value}",
-      darkValue: "{color.moonlight.value}",
+      value: "{color.white}",
+      darkValue: "{color.moonlight}",
     },
     muted: {
-      value: "{color.sand.value}",
-      darkValue: "{color.neutral.value}",
+      value: "{color.sand}",
+      darkValue: "{color.neutral}",
     },
   },
 };

@@ -1,6 +1,7 @@
-const PLATFORMS = ["css", "scss"];
+import StyleDictionary from "style-dictionary";
+import { minifyDictionary } from "style-dictionary/utils";
 
-const StyleDictionary = require("style-dictionary").extend({
+const sd = new StyleDictionary({
   source: ["src/tokens/index.js", "src/components/index.js"],
   platforms: {
     css: {
@@ -12,8 +13,8 @@ const StyleDictionary = require("style-dictionary").extend({
           format: "css/variables",
         },
         {
-          destination: `variables-dark.css`,
-          format: `css/dark`,
+          destination: "variables-dark.css",
+          format: "css/dark",
           filter: (token) => token.darkValue,
         },
       ],
@@ -58,27 +59,10 @@ const StyleDictionary = require("style-dictionary").extend({
   },
 });
 
-function minifyDictionary(obj) {
-  if (typeof obj !== "object" || Array.isArray(obj)) {
-    return obj;
-  }
-  var toRet = {};
-  if (obj.hasOwnProperty("value")) {
-    return obj.value;
-  } else {
-    for (var name in obj) {
-      if (obj.hasOwnProperty(name)) {
-        toRet[name] = minifyDictionary(obj[name]);
-      }
-    }
-  }
-  return toRet;
-}
-
-StyleDictionary.registerFormat({
+sd.registerFormat({
   name: "javascript/esm",
-  formatter: function (dictionary, options) {
-    const minified = minifyDictionary(dictionary.properties);
+  format: function ({ dictionary }) {
+    const minified = minifyDictionary(dictionary.tokens);
     const tokens = Object.keys(minified).map((name) => {
       const value = JSON.stringify(minified[name], null, 2);
       return `export const ${name} = ${value};`;
@@ -93,11 +77,12 @@ StyleDictionary.registerFormat({
     ].join("\n");
   },
 });
-StyleDictionary.registerFormat({
+
+sd.registerFormat({
   name: "javascript/module",
-  formatter: function (dictionary, options) {
+  format: function ({ dictionary }) {
     const tokens = JSON.stringify(
-      minifyDictionary(dictionary.properties),
+      minifyDictionary(dictionary.tokens),
       null,
       2
     );
@@ -111,29 +96,19 @@ StyleDictionary.registerFormat({
   },
 });
 
-function cssFormatWrapper(property) {
-  return function (args) {
-    const dictionary = Object.assign({}, args.dictionary);
-    // Override each token's `value` with `property` value
-    dictionary.allProperties = dictionary.allProperties.map((token) => {
-      const propValue = token[property];
-      if (propValue) {
-        return Object.assign({}, token, {
-          value: propValue,
-        });
-      } else {
-        return token;
-      }
-    });
-    // Use the built-in format but with our customized dictionary object
-    // so it will output the hcValue instead of the value
-    return StyleDictionary.format["css/variables"]({ ...args, dictionary });
-  };
-}
-
-StyleDictionary.registerFormat({
+sd.registerFormat({
   name: "css/dark",
-  formatter: cssFormatWrapper("darkValue"),
+  format: async function (args) {
+    const dictionary = { ...args.dictionary };
+    dictionary.allTokens = dictionary.allTokens.map((token) => {
+      if (token.darkValue) {
+        return { ...token, value: token.darkValue };
+      }
+      return token;
+    });
+    const cssVarsFormat = sd.hooks.formats["css/variables"];
+    return cssVarsFormat({ ...args, dictionary });
+  },
 });
 
-StyleDictionary.buildAllPlatforms();
+await sd.buildAllPlatforms();
