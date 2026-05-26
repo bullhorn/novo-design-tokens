@@ -36,11 +36,11 @@
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.1",
-    "@semantic-release/commit-analyzer": "^9.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/npm": "^9.0.1",
-    "@semantic-release/release-notes-generator": "^10.0.3",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "autoprefixer": "^10.5.0",
     "chroma-js": "^2.4.2",
     "clean-css-cli": "4.3.0",
@@ -52,7 +52,7 @@
     "postcss": "^8.5.15",
     "postcss-cli": "^9.1.0",
     "sass": "^1.50.1",
-    "semantic-release": "^19.0.3",
+    "semantic-release": "^24.2.9",
     "style-dictionary": "^3.7.0"
   },
   "browserslist": [
