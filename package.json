@@ -32,7 +32,7 @@
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minifycss",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postcss": "postcss ./css/*.css --use autoprefixer --use postcss-prettify -d css/ --no-map",
+    "postcss": "postcss ./css/*.css --use autoprefixer -d css/ --no-map",
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
   "devDependencies": {
@@ -41,22 +41,20 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^9.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "^10.5.0",
     "chroma-js": "^2.4.2",
     "clean-css-cli": "4.3.0",
     "foreach-cli": "1.8.1",
-    "handlebars": "^4.7.7",
+    "handlebars": "^4.7.9",
     "loggy": "^1.0.8",
     "mini-svg-data-uri": "^1.4.4",
-    "polished": "^4.1.2",
-    "postcss": "^8.4.13",
+    "polished": "^4.3.1",
+    "postcss": "^8.5.15",
     "postcss-cli": "^9.1.0",
-    "postcss-prettify": "^0.3.4",
     "sass": "^1.50.1",
-    "style-dictionary": "^3.7.0",
-    "semantic-release": "^19.0.3"
+    "semantic-release": "^19.0.3",
+    "style-dictionary": "^3.7.0"
   },
-  "dependencies": {},
   "browserslist": [
     "> 1%",
     "last 4 versions",
