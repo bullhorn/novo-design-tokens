@@ -12,4 +12,8 @@ module.exports = {
   disabled: core.stone,
   background: core.offWhite,
   backgroundDark: "#e2e2e2",
+  border: core.light,
+  border2: core.offWhite,
+  text: core.charcoal,
+
 };

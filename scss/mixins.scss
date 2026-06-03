@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import "./variables.scss";
 @import "./functions.scss";
 
@@ -91,29 +92,30 @@ $entityColors: (
 /*******************/
 /********COLOR******/
 /*******************/
-@function getColor($color) {
+@function getCssVarname($color, $subregion: '') {
   $colorTokens: map-get($tokens, "color");
-  @return map-get($colorTokens, $color);
+  $varNames: map-get($colorTokens, "varNames");
+  $region: $varNames;
+  @if $subregion != '' {
+    $region: map-get($varNames, $subregion);
+  }
+  @return map-get($region, $color);
+}
+
+@function getColor($color) {
+  @return getCssVarname($color);
 }
 @function getTintColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $tintTokens: map-get($colorTokens, "tint");
-  @return map-get($tintTokens, $color);
+  @return getCssVarname($color, 'tint');
 }
 @function getShadeColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $shadeTokens: map-get($colorTokens, "shade");
-  @return map-get($shadeTokens, $color);
+  @return getCssVarname($color, 'shade');
 }
 @function getContrastColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $contrastTokens: map-get($colorTokens, "contrast");
-  @return map-get($contrastTokens, $color);
+  @return getCssVarname($color, 'contrast');
 }
 @function getPaleColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $paleTokens: map-get($colorTokens, "pale");
-  @return map-get($paleTokens, $color);
+  @return getCssVarname($color, 'pale');
 }
 
 /**color**/
@@ -184,6 +186,15 @@ $textWeightTokens: map-get($tokens, "textWeight");
           background: $shade;
         }
       }
+    }
+  }
+}
+
+@mixin theme-backgrounds-live($prefix: "color", $interactive: false) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$prefix}="#{$name}"] {
+      color: var(--color-contrast-#{$name});
+      background: var(--color-#{$name});
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
@@ -208,4 +219,26 @@ $textWeightTokens: map-get($tokens, "textWeight");
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
+}
+
+@function strip-units($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+@function darkenLive($cvar, $amount: 15) {
+  $rawAmount: strip-units($amount);
+  @return hsl(from var(#{$cvar}) h s calc(l - #{$rawAmount}));
+  //@return hwb(from var(#{$cvar}) h calc(w - #{rawAmount / 2}) calc(b + #{$rawAmount}));
+}
+
+@function brightenLive($cvar, $amount: 15) {
+  $rawAmount: strip-units($amount);
+  @return hsl(from var(#{$cvar}) h s calc(l + #{$rawAmount}));
+  //@return hwb(from var(#{$cvar}) h calc(w + #{$rawAmount / 2}) calc(b - #{$rawAmount}));
+}
+
+@function fade($cvar, $amount: 15%) {
+  $fillPct: 100% - $amount;
+  $brightness: #fff;
+  @return color-mix(in srgb, var(#{$cvar}) #{$fillPct}, var(--theme-fade-target) #{$amount});
 }

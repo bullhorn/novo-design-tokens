@@ -5,4 +5,7 @@ module.exports = {
   presentation: core.steel,
   bullhorn: core.orange,
   pulse: core.aqua,
+
+  fastFind: core.navy,
+  toast: core.navy
 };

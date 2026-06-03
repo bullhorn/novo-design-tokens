@@ -11,6 +11,10 @@ const sd = new StyleDictionary({
         {
           destination: "variables.css",
           format: "css/variables",
+          filter: (token, a, b, c) => {
+            // varNames are dash-case versions of colors, only generated for SCSS convenience, and are not needed by CSS var() statements.
+            return !token.path.includes('varNames');
+          }
         },
         {
           destination: "variables-dark.css",

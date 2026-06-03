@@ -34,6 +34,7 @@ module.exports = {
   silver: "#e2e2e2",
   stone: "#bebebe",
   ash: "#a0a0a0",
+  anonymous: "#696d79",
   slate: "#707070",
   onyx: "#526980",
   charcoal: "#282828",

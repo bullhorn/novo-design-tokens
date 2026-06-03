@@ -1,3 +1,4 @@
+const { kebabCase } = require('change-case');
 const {
   darken,
   lighten,
@@ -74,6 +75,16 @@ const makeContrastColors = (colors, light, dark, overrides) =>
   }));
 const makePaleColors = (colors) =>
   loopColors(colors, (c) => ({ value: setLightness(0.9, c) }));
+const makeVarNames = (colors) => {
+  return Object.keys(colors).reduce((ret, name) => {
+    ret[name] = { value: `var(--color-${kebabCase(name)})` };
+    ret.shade[name] = { value: `var(--color-shade-${kebabCase(name)})` };
+    ret.tint[name] = { value: `var(--color-tint-${kebabCase(name)})` };
+    ret.contrast[name] = { value: `var(--color-contrast-${kebabCase(name)})` };
+    ret.pale[name] = { value: `var(--color-pale-${kebabCase(name)})` };
+    return ret;
+  }, { shade: {}, tint: {}, contrast: {}, pale: {}});
+};
 
 module.exports = {
   transparent,
@@ -87,4 +98,5 @@ module.exports = {
   makeContrastColors,
   makePaleColors,
   makeScaledColors,
+  makeVarNames,
 };

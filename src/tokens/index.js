@@ -1,5 +1,6 @@
 module.exports = {
-  theme: require("./theme"),
+  ...require("./theme"),
+  theme: require("./theme"), // "background" moving to root level, but left at 'theme' key for now for back-compatibility
   color: require("./color"),
   size: require("./size"),
   spacing: require("./spacing"),
@@ -15,6 +16,11 @@ module.exports = {
     square: { value: "0rem" },
     circle: { value: 99999 },
     default: { value: "{borderRadius.round}" },
+  },
+  divider: {
+    insetMargin: {
+      value: '80px'
+    }
   },
   shadow: {
     1: { value: "0 1px 2px rgba(0, 0, 0, 0.15)" },
