@@ -29,6 +29,7 @@
   "scripts": {
     "build": "node build.mjs",
     "postbuild": "npm run postcss && npm run minifycss",
+    "prepare": "npm run build",
     "clean": "rm -rf build",
     "prepublishOnly": "npm run build && npm run minifycss",
     "test": "echo \"Error: no test specified\" && exit 1",
