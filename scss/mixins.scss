@@ -251,7 +251,8 @@ $textWeightTokens: map-get($tokens, "textWeight");
   @if $alpha != 1 {
     $alphaBlock: '/ #{$alpha}';
   }
-  @return hsl(from var(#{$cvar}) h calc(s + #{$rawAmount}) l#{$alphaBlock});
+  $decimalAmt: 1 + (0.01 * $rawAmount);
+  @return hsl(from var(#{$cvar}) h calc(s * #{$decimalAmt}) l#{$alphaBlock});
 }
 
 @function adjustOpacity($cvar, $alpha) {
