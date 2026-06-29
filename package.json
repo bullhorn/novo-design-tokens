@@ -19,6 +19,8 @@
     "./css/variables.min": "./css/variables.min.css",
     "./css/variables-dark": "./css/variables-dark.css",
     "./css/variables-dark.min": "./css/variables-dark.min.css",
+    "./css/variables-modern": "./css/variables-modern.css",
+    "./css/variables-modern.min": "./css/variables-modern.min.css",
     "./lib/*": "./lib/*"
   },
   "files": [
