@@ -17,7 +17,7 @@ Referenced by the **components** file (button/card/input/header) but absent from
 The Tier-2 (semantic) screenshots show the layer was **restructured** since our export — it now uses `color/gray-charcoal/*` (content/text), `color/brand/primary/*` + `color/brand` / `color/brand-hover` (interactive), and branded links — none of which are in our export. A complete re-export captures all of this at once.
 
 ## C. Design decisions (not just tokens)
-1. **Primary / accent color.** What's the modern **primary/CTA** treatment (e.g. the teal "Amplify" gradient) and the **accent** for links, the stepper, and status? This maps to `--color-positive`, used in **~125 places** in the app, so we're holding it to avoid a sweeping unintended change. Also: do the status colors (positive / negative / warning / success) **change in modern**, or stay?
+1. **Primary / accent color.** What's the modern **primary/CTA** button treatment and the **accent** for links, the stepper, and status? This maps to `--color-positive`, used in **~125 places** in the app, so we're holding it to avoid a sweeping unintended change. Also: do the status colors (positive / negative / warning / success) **change in modern**, or stay? *(Note: the "Amplify" button is NOT the design-system primary — it's a separate custom app button with its own radial-gradient brand treatment that just gets a new form factor in the refresh. Don't conflate the two.)*
 2. **Stepper appearance.** Today it's filled colored badges; the Figma record shows **neutral outline circles**. Confirm the intended modern stepper look (token swap vs small restyle).
 
 ## D. "Chips" / "badges" = status callouts (USAGE RESOLVED — colors still open)
