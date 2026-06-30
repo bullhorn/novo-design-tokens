@@ -453,6 +453,138 @@
                   "$value": "#390e0e"
                 }
               }
+            },
+            "transparency": {
+              "white": {
+                "white-10": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.1)"
+                },
+                "white-20": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.2)"
+                },
+                "white-30": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.3)"
+                },
+                "white-40": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.4)"
+                },
+                "white-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.5)"
+                },
+                "white-60": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.6)"
+                },
+                "white-70": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.7)"
+                },
+                "white-80": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.8)"
+                },
+                "white-90": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.9)"
+                }
+              },
+              "black": {
+                "black-10": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.1)"
+                },
+                "black-20": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.2)"
+                },
+                "black-30": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.3)"
+                },
+                "black-40": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.4)"
+                },
+                "black-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.5)"
+                },
+                "black-60": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.6)"
+                },
+                "black-70": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.7)"
+                },
+                "black-80": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.8)"
+                },
+                "black-90": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.9)"
+                }
+              }
             }
           }
         }
@@ -464,6 +596,45 @@
       "modes": {
         "Mode 1": {
           "spacing": {
+            "gutter": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.24}"
+            },
+            "columns": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.12}"
+            },
+            "margin": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.24}"
+            },
             "padding": {
               "none": {
                 "$scopes": [
@@ -1905,8 +2076,8 @@
                 ],
                 "$type": "color",
                 "$libraryName": "",
-                "$collectionName": "core",
-                "$value": "{color.subtle}"
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.subtle-content}"
               },
               "link": {
                 "$scopes": [

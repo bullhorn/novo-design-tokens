@@ -156,10 +156,27 @@ function buildModern() {
   const tierLeaves = {};
   const isLeaf = (n) =>
     n && typeof n === "object" && Object.prototype.hasOwnProperty.call(n, "$value");
+  // Collapse a redundant ramp group when the leaf repeats its parent with a numeric
+  // suffix: transparency/white/white-80 -> transparency/white-80 (matches the Figma
+  // alias `{color.transparency.white-80}` and avoids the doubled --color-…-white-white-80
+  // var name). Numeric-only so non-numeric ramps like color/blue/blue-gray are untouched.
+  const normalizePath = (path) => {
+    const segs = path.split("/");
+    const out = [];
+    for (let i = 0; i < segs.length; i += 1) {
+      const next = segs[i + 1];
+      if (next && next.startsWith(`${segs[i]}-`) && /^\d/.test(next.slice(segs[i].length + 1))) {
+        continue; // drop the redundant parent; the next segment already carries the name
+      }
+      out.push(segs[i]);
+    }
+    return out.join("/");
+  };
   const walk = (node, path, out) => {
     if (isLeaf(node)) {
-      out.push([path, node.$value]);
-      ns.set(path.replace(/\//g, "."), node.$value);
+      const p = normalizePath(path);
+      out.push([p, node.$value]);
+      ns.set(p.replace(/\//g, "."), node.$value);
       return;
     }
     for (const [k, v] of Object.entries(node)) {
