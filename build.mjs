@@ -139,7 +139,9 @@ const MODERN_SOURCE = "src/tokens/modern/subatomic.figma-export.json";
 
 function buildModern() {
   const REM_BASE = 10;
-  const SELECTOR = '[data-theme="modern"], :root.theme-modern';
+  // :root-anchored so modern token values (e.g. --border-radius-round) win over the
+  // base :root tokens of the same name (equal specificity would otherwise depend on load order).
+  const SELECTOR = ':root[data-theme="modern"], :root.theme-modern';
   const ALIAS = /^\{(.+)\}$/;
 
   // The export is an array of collections: [{ "<name>": { modes: { "<mode>": {…} } } }].
