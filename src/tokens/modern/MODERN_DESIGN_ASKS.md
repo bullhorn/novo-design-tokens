@@ -1,7 +1,7 @@
 # Modern theme — open asks for UX Design
 
 **Purpose:** what engineering needs from design to finish the modern (2026) theme.
-**TL;DR:** the token export we're building from is **partial/stale** vs the current Figma. We need **one fresh, complete export** of the subatomic + components files, plus **a few design decisions**. Details below, grouped so they're actionable.
+**TL;DR:** the token export we're building from looks **partial/stale** vs the current Figma — several referenced tokens are missing, though a few appear to already exist in Figma. We're flagging what's missing and **leaving it to design** whether a fresh complete export or pointing us to items individually makes more sense, plus **a few design decisions**. Details below, grouped so they're actionable.
 
 ## A. Token groups referenced by components but missing from our export
 Referenced by the **components** file (button/card/input/header) but absent from the **subatomic** export we have. Please confirm they exist in Figma and are included in the re-export:
@@ -25,8 +25,12 @@ The Figma chips/badges are **status callouts** (e.g. the header "Pre-Registered"
 1. **Fill/text colors are status-tied** → rides on the accent/status-color decision in C. Confirm: per-status colors (which tokens?) or a neutral pill?
 2. **No component to map to yet** — novo-elements has no dedicated badge/status component (rendered ad-hoc at app level today), so this is partly a component question for us.
 
-## The single ask
-**One fresh, complete export** of the current Figma — **subatomic (all tiers/collections)** + **components** — ensuring A & B are included, plus answers to C & D.
+## The ask (deferred to design)
+Several of the items in A/B appear to **already exist in Figma** but aren't in the export we
+have — so this may just be export completeness. We're flagging what's missing and leaving the
+call to design: **would a fresh complete export make sense, or would you rather point us to the
+items individually?** Plus the genuine gaps (`brand/secondary` existence, the button focus
+background) and the decisions in C & D.
 
 ---
 *Deferred until the above lands: stepper, primary button, links, input focus/selected states, status badges. Everything else (button base, field typography, card, header border) is migrating now and doesn't depend on these.*
