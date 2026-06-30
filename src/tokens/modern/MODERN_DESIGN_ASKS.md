@@ -20,10 +20,9 @@ The Tier-2 (semantic) screenshots show the layer was **restructured** since our 
 1. **Primary / accent color.** What's the modern **primary/CTA** treatment (e.g. the teal "Amplify" gradient) and the **accent** for links, the stepper, and status? This maps to `--color-positive`, used in **~125 places** in the app, so we're holding it to avoid a sweeping unintended change. Also: do the status colors (positive / negative / warning / success) **change in modern**, or stay?
 2. **Stepper appearance.** Today it's filled colored badges; the Figma record shows **neutral outline circles**. Confirm the intended modern stepper look (token swap vs small restyle).
 
-## D. "Chips" / "badges" = status callouts (clarified)
-The Figma chips/badges are **status callouts** (e.g. the header "Pre-Registered" pill), **not** the multi-picker input chips. The shape tokens are fine (pill radius `round`, 1px border, small padding/gap), but:
-1. **Fill/text colors are status-tied** → rides on the accent/status-color decision in C. Confirm: per-status colors (which tokens?) or a neutral pill?
-2. **No component to map to yet** — novo-elements has no dedicated badge/status component (rendered ad-hoc at app level today), so this is partly a component question for us.
+## D. "Chips" / "badges" = status callouts (USAGE RESOLVED — colors still open)
+The Figma chips/badges are **status callouts** (e.g. the header "Pre-Registered" pill), **not** the multi-picker input chips. **Usage confirmed by product:** they replace the **record-header candidate-status `novo-select`** styling — the status stays a working dropdown, but the **pill (chip) becomes the dropdown's content/trigger**; when the field is **read-only**, only the pill shows (no dropdown affordance). Shape tokens are fine (pill radius `round`, 1px border, small padding/gap), so the structure is buildable now.
+- **Only open ask: fill/text colors are status-tied** → rides on the accent/status-color decision in C. Confirm the **per-status color mapping** (which token for each status: e.g. Pre-Registered / Active / Placed / Archived…), or whether it's a single neutral pill.
 
 ## The ask (deferred to design)
 Several of the items in A/B appear to **already exist in Figma** but aren't in the export we
