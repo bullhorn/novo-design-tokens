@@ -1,16 +1,30 @@
-# Theme rename plan — `modern` → `bh2026`
+# Theme rename plan — unified `bh<year>` scheme (`bh2022` + `bh2026`)
 
-**Status:** planned, not yet executed. **Decision:** the 2026 design refresh (product name
-"Modern") gets the code key **`bh2026`** to end the overload with the retired 5-year-old
-`modern-light`/`modern-dark` theme (and with `classic`, which now *is* the old modern-light look).
+**Status:** planned, not yet executed. **Decision:** adopt a self-documenting `bh<year>` naming
+scheme keyed to the release that introduced each look, replacing the overloaded `modern` /
+`modern-light` / `classic` names:
+
+- **`bh2026`** = the 2026 design refresh (product name "Modern"; Inter). Currently coded `modern` /
+  `modern-light`, applied via `data-theme="modern"`.
+- **`bh2022`** = the Novo Elements **v6 "golden" overhaul** (2022; Montserrat). This is *today's
+  base/default look* — currently coded `classic` (and historically `modern-light`, before this
+  project repurposed that name). It is the implicit `:root` base (no `data-theme`).
+- **Light/dark stays an orthogonal axis** — the existing `theme-dark` class + its own pref, layered
+  on either base. There is no `bh2022-dark`/`bh2026-dark` *themeName*.
 
 This document is the complete, no-loose-ends checklist to execute the rename across **novo-design-tokens**,
-**novo-elements**, and **novo**. Do the whole thing as a coordinated set on the existing
-`f/modern-theming` branches (the theme is pre-GA, behind the sticky switch), then merge together.
+**novo-elements**, and **novo**. **Do both renames together** — they share one normalization map
+(§5) and the same sticky switch, so a split would re-introduce ambiguity. Coordinated set on the
+existing `f/modern-theming` branches (the 2026 theme is pre-GA), merged together.
+
+> ⚠️ The one genuinely non-mechanical decision is the **legacy `modern-light` normalization** (§5) —
+> it's a product/rollout call, not a code call. Everything else is mechanical + verifiable.
 
 ---
 
 ## 1. Target naming scheme
+
+**bh2026** (the 2026 refresh — an explicit `data-theme` override theme):
 
 | Concept | Before | After |
 |---|---|---|
@@ -24,14 +38,27 @@ This document is the complete, no-loose-ends checklist to execute the rename acr
 | Package export | `./css/variables-modern(.min)` | `./css/variables-bh2026(.min)` |
 | Build fn | `buildModern()` | `buildBh2026()` |
 
+**bh2022** (the v6 golden overhaul — the **implicit base/default**, no `data-theme`):
+
+| Concept | Before | After |
+|---|---|---|
+| Code key (theme identity) | `classic` (and legacy `modern-light`) | **`bh2022`** |
+| `data-theme` attribute value | *(none — base `:root`)* | *(none — stays implicit base)* |
+| `themeName` string (service/prefs) | `classic` | `bh2022` |
+| Base token CSS | `css/variables.css` (`:root`) | **unchanged** (this *is* bh2022) |
+| Base theme SCSS | `themes/light.scss` + `themes/dark.scss` | unchanged, or optionally → `bh2022-light/dark.scss` |
+
 **Rules going forward**
-- `themeName` **equals** the `data-theme` value (both `bh2026`). No more `-light` suffix, no more
+- `themeName` **equals** the `data-theme` value for override themes (`bh2026`); the base theme
+  `bh2022` carries **no** `data-theme` (it's the `:root` fallback). No more `-light` suffix, no more
   `startsWith('modern')` mapping.
-- **Light/dark is orthogonal** — dark stays the existing `theme-dark` class layered on any base.
-  So there is no `bh2026-dark` themeName; a future dark variant is `bh2026` + `theme-dark`.
-- `classic` (default, today's production look) and the `theme-dark` class are **unchanged**.
-- `modern-light` / `modern-dark` / bare `modern` are **fully retired** as code identifiers. "Modern"
-  survives only as the *product* word in prose/docs, always paired with "(code: `bh2026`)".
+- **Light/dark is orthogonal** — dark stays the existing `theme-dark` class + its own pref, layered
+  on either base. There is no `bh2022-dark`/`bh2026-dark` *themeName*.
+- `modern-light` / `modern-dark` / bare `modern` / `classic` are **fully retired** as code
+  identifiers. "Modern"/"Classic" survive only as *product* words in prose, paired with the code key.
+- **bh2022 stays the implicit base** for now (lowest-risk retrofit). *Future option (not now):* make it
+  an explicit `[data-theme="bh2022"]` by scoping the base tokens, once a newer base overhaul needs
+  bh2022 to remain separately addressable.
 
 ---
 
@@ -114,8 +141,8 @@ private applyThemeToDom(themeName: string): void {
   else { root.removeAttribute('data-theme'); }
 }
 ```
-- `_defaultTheme` `{ themeName: 'modern-light' }` → `{ themeName: 'bh2026' }` (or `'classic'` — pick the
-  library default; app overrides it anyway). Update the "defaults to modern-light" JSDoc.
+- `_defaultTheme` `{ themeName: 'modern-light' }` → `{ themeName: 'bh2022' }` (the base default — see
+  §4b; the app overrides it anyway). Update the "defaults to modern-light" JSDoc.
 - Consider typing: `export type ThemeName = 'classic' | 'bh2026' | 'dark' | 'light';` and use it on
   `NovoThemeOptions.themeName` / `_ThemeService` instead of `string`.
 
@@ -156,21 +183,63 @@ prose. Republish the `novo-elements-snapshot` so the app gets `themes/bh2026.scs
 
 ---
 
+## 4b. bh2022 retrofit (golden v6 / `classic` → `bh2022`)
+
+The v6 golden overhaul **is the current base/default** — `variables.css` (`:root`), `themes/light.scss`,
+`themes/dark.scss` (Montserrat). It has no separate theme file and no `data-theme`; `classic` is just
+its themeName. So the retrofit is a **name-only change** (no CSS value moves, no token-build changes):
+
+**novo-design-tokens** — none required (`variables.css` `:root` *is* bh2022; leave it as the base).
+Docs only: note in `CLAUDE.md` that `:root` / `variables.css` = the bh2022 (v6 golden) base.
+
+**novo-elements**
+- `theme-options.ts`: standardize the library default `themeName` → `'bh2022'`; update the
+  `applyThemeToDom` doc comment ("`bh2022`/`light` clear the attribute"). `bh2022` is **not** in
+  `TOKEN_THEMES`, so it correctly falls back to `:root` (no code branch needed).
+- *Optional consistency:* `git mv themes/light.scss → bh2022-light.scss`, `dark.scss → bh2022-dark.scss`,
+  update `base.scss` imports + `@mixin` names. Lower value (`light`/`dark` name the *mode*), so optional.
+
+**novo (app)**
+- `novo.providers.ts` L251: default `{ themeName: 'classic' }` → `{ themeName: 'bh2022' }`.
+- `Mainframe.app.ts` L158: fallback `… || 'classic'` → `… || 'bh2022'` (inside `normalizeThemeName`, §5).
+- `Mainframe.app.ts` L636 (setter): off branch `'classic'` → `'bh2022'` (on branch → `'bh2026'`).
+
+**Result:** switch OFF → `themeName='bh2022'` → no `data-theme` → base `:root` (golden v6). Switch ON →
+`themeName='bh2026'` → `data-theme="bh2026"`. Consistent `bh<year>` identities on both ends.
+
+**Also:** delete the unused stray `themes/light-test.scss` (not imported anywhere) while here.
+
+---
+
 ## 5. Persistence & backward-compat (the critical piece)
 
 The switch is **sticky** — `themeName` is saved per-user (`preferences.save('NovoTheme', {themeName})`)
 and there is a server-side default (`settings.defaultNovoThemeName`). Existing stored values are
-`modern-light` (and possibly `modern` / `modern-dark`). Without handling, those users' switch would
-read as **off** after the rename.
+`classic`, `modern-light` (and possibly `modern` / `modern-dark`). Without handling, the rename would
+make those read as the wrong theme.
 
-**Fix: normalize on read (no data migration required).** Add a shared helper and apply it at every
-read point:
+> ⚠️ **PRODUCT DECISION — the `modern-light` value is overloaded.** Before this project,
+> `modern-light` was the **default** and meant the **v6 golden (bh2022)** look. This project then
+> *repurposed* `modern-light` (switch ON) to mean the **2026 refresh**. So a stored `modern-light`
+> is ambiguous: for the mass of users (and the server `defaultNovoThemeName`) it means **golden
+> base**; for a handful of pre-GA testers who used the new switch it means **2026**. You cannot tell
+> them apart by value.
+>
+> **Recommendation: map legacy `modern-light`/`modern-dark` → `bh2022`** (the safe, historical
+> meaning). This keeps the broad user base on the golden base — it does **not** silently GA the
+> unfinished 2026 theme. The few pre-GA testers who opted into 2026 simply **re-toggle once** (the new
+> switch writes the canonical `bh2026`, so it sticks). Going forward there is no ambiguity because the
+> setter (§4b) now saves `bh2026`/`bh2022`, never `modern-light`.
+
+**Fix: normalize on read (no data migration required).** Shared helper, applied at every read point:
 ```ts
 export function normalizeThemeName(name?: string): string {
   switch (name) {
-    case 'modern': case 'modern-light': case 'modern-dark': return 'bh2026';
-    case 'bh2026': return 'bh2026';
-    default: return 'classic'; // classic / light / undefined
+    case 'bh2026': case 'modern':           return 'bh2026'; // 'modern' was only ever the data-theme
+    case 'bh2022':
+    case 'classic': case 'light':
+    case 'modern-light': case 'modern-dark': return 'bh2022'; // legacy golden default (see decision above)
+    default:                                 return 'bh2022'; // undefined/unknown -> base
   }
 }
 ```
@@ -178,10 +247,11 @@ Apply at:
 - `Mainframe.app.ts` L158: `this.currentTheme = normalizeThemeName(savedTheme?.themeName ?? this.masterPageSDK.store.settings.defaultNovoThemeName);`
 - `novo.providers.ts` L249-250: wrap `defaultNovoThemeName` in `normalizeThemeName(...)`.
 
-On the next toggle the canonical `bh2026` is written back, so stored values self-heal. A backend
-migration of stored `NovoTheme` prefs / `defaultNovoThemeName` is an **optional** follow-up, not a
-blocker (normalization covers it indefinitely). Keep the legacy strings recognized in
-`normalizeThemeName` permanently (cheap insurance).
+On the next toggle the canonical value is written back, so prefs self-heal. A backend migration of
+stored `NovoTheme` prefs / `defaultNovoThemeName` is an **optional** follow-up, not a blocker. Keep the
+legacy strings recognized permanently (cheap insurance). *(If product instead wants legacy
+`modern-light` → `bh2026`, flip that one case — but weigh that it would move every default user onto
+the 2026 theme.)*
 
 ---
 
@@ -207,24 +277,36 @@ temporarily have `applyThemeToDom` set both attrs and let component selectors ma
 
 - **tokens:** `css/variables-bh2026.css` generated; selector + header say `bh2026`; 377/0-unresolved.
 - **novo-elements:** demo compiles clean; `grep -rIn -e "data-theme=.modern" -e "theme-modern" -e "'modern-light'" -e "variables-modern" -e "buildModern" projects/novo-elements/src` → empty.
-- **novo:** app compiles; `<html data-theme="bh2026">` when toggled on; a seeded legacy `modern-light`
-  pref reads as **on** (normalization); `--color-positive` / card / header / panels still modern.
-- **cross-repo sweep:** `grep -rIn -iw modern` in code (not docs/prose) across all three → nothing
-  left but intentional product-word mentions.
+- **novo:** app compiles; switch ON → `<html data-theme="bh2026">`; switch OFF → **no** `data-theme`
+  (bh2022 base); seeded legacy `classic`/`modern-light` prefs read as **OFF/bh2022** (per §5 decision);
+  `--color-positive` / card / header / panels still modern when on.
+- **cross-repo sweep:** `grep -rIn -iw -e modern -e classic` in code (not docs/prose) across all three
+  → nothing left but intentional product-word mentions.
 
 ## 8. Loose-ends checklist
+
+**bh2026 (override theme):**
 - [ ] `data-theme` value in all 30 component SCSS + theme file + 2 app SCSS
-- [ ] `themeName` strings (theme-options default, demo, Mainframe getter/setter)
-- [ ] `applyThemeToDom` `startsWith('modern')` hack replaced
-- [ ] **Persisted-pref + server-default normalization** (Mainframe L158, providers L249)
+- [ ] `themeName` strings (theme-options, demo, Mainframe setter ON-branch)
+- [ ] `applyThemeToDom` `startsWith('modern')` hack → `TOKEN_THEMES` set
 - [ ] Generated CSS filename + `.gitignore` + package `exports`
 - [ ] Theme SCSS file + `base.scss` import + `@mixin` name
 - [ ] Token source dir + `preview.css` + `build.mjs` (SOURCE/SELECTOR/fn/output/logs)
-- [ ] Provisional-accent selector (both novo-elements theme file + app `styles.scss`)
+- [ ] Provisional-accent selector (novo-elements theme file + app `styles.scss`)
 - [ ] Demo switch (var/method/automation-id)
-- [ ] Docs (both repos) + optional `MODERN_*.md` → `BH2026_*.md`
+
+**bh2022 (base retrofit):**
+- [ ] `themeName 'classic'` → `'bh2022'` (providers L251, Mainframe L158 + L636 OFF-branch, theme-options default)
+- [ ] Confirm `bh2022` NOT in `TOKEN_THEMES` (stays base, no `data-theme`)
+- [ ] Delete unused `themes/light-test.scss`
+- [ ] Optional: `themes/light.scss`/`dark.scss` → `bh2022-light/dark.scss` + imports/mixins
+
+**Shared / both:**
+- [ ] **Persisted-pref + server-default normalization** (`normalizeThemeName` at Mainframe L158 + providers L249) — includes the §5 product decision
+- [ ] Docs (both repos) — code identifiers + product-word mapping note; optional `MODERN_*.md` → `BH2026_*.md`
 - [ ] Snapshot republish coordination (tokens + novo-elements)
-- [ ] Optional: `ThemeName` union type; `isModernTheme`→`isBh2026Theme`; branch rename `f/bh2026-theming`
+- [ ] Execute bh2022 + bh2026 **together** (shared normalization)
+- [ ] Optional: `ThemeName` union type; `isModernTheme`→`isBh2026Theme`; branch rename `f/bh<year>-theming`
 
 ## 9. Rollback
 All work is on unmerged feature branches with no GA impact — revert the coordinated commits if needed.
