@@ -44,7 +44,7 @@
     "prepare": "npm run build",
     "clean": "rm -rf css lib",
     "prepublishOnly": "npm run build && npm run minifycss",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "postcss": "postcss ./css/*.css --use autoprefixer -d css/ --no-map",
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
