@@ -6,7 +6,7 @@ Generated 2026-06. **356 tokens, 0 unresolved aliases.**
 ## Artifacts
 - `subatomic.figma-export.json` — the **source of truth**. The raw Figma "subatomic" variables export (W3C design-tokens format, alias-preserving). `build.mjs` reads this directly to generate the modern CSS — drop in a fresh export and rebuild.
 - `components.figma-export.json` — Tier-3 component tokens (button/card/input/…); not yet wired into the build.
-- `variables-modern.css` — fully **resolved** CSS custom properties (preview of the end result), scoped to `[data-theme="modern"], :root.theme-modern`.
+- `variables-bh2026.css` — fully **resolved** CSS custom properties (preview of the end result), scoped to `[data-theme="modern"], :root.theme-modern`.
 
 ## Structure (3-tier)
 | Tier | Collection | Mode | Count | Role |

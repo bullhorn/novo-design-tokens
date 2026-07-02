@@ -15,9 +15,9 @@ Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
 
 ```
 src/tokens/        → Classic tokens (color, typography, spacing, size, theme) — JS modules, Style Dictionary
-src/tokens/modern/ → Modern theme: Figma exports (source of truth) + docs (next-gen tiered model)
+src/tokens/bh2026/ → Modern theme: Figma exports (source of truth) + docs (next-gen tiered model)
 src/components/    → Component-specific tokens (button, tooltip)
-build.mjs          → Style Dictionary v5 config + custom formatters, PLUS buildModern() (ESM, async)
+build.mjs          → Style Dictionary v5 config + custom formatters, PLUS buildBh2026() (ESM, async)
 scss/              → Hand-authored SCSS utilities (mixins, functions) + generated variables
 css/              → Generated CSS custom properties (light + dark + modern)
 lib/              → Generated JS (CJS + ESM) and JSON
@@ -73,7 +73,7 @@ Color tokens use `polished` and `chroma-js` to auto-generate shade, tint, contra
 | `novo-design-tokens/css/variables` | `css/variables.css` |
 | `novo-design-tokens/css/variables.min` | `css/variables.min.css` |
 | `novo-design-tokens/css/variables-dark` | `css/variables-dark.css` |
-| `novo-design-tokens/css/variables-modern` | `css/variables-modern.css` (+ `.min`) |
+| `novo-design-tokens/css/variables-bh2026` | `css/variables-bh2026.css` (+ `.min`) |
 
 ## How Downstream Projects Use This Package
 
@@ -142,10 +142,10 @@ systems at once — on purpose. This is a migration in progress, not a permanent
    `var(--color-*)` so colors resolve at **runtime**, with live helpers
    (`elevate()`/`recede()`/`darkenLive()`, driven by `--bg-fade-multiplier`) for derived states.
 2. **Modern (next-gen).** Sourced from the Figma "subatomic" export
-   (`src/tokens/modern/subatomic.figma-export.json`) — a **tiered, semantic, aliased** model
-   (core → Tier 1 → Tier 2 → Tier 3 components). Built by `buildModern()` in `build.mjs`
-   (a dedicated resolver, **not** Style Dictionary) into `css/variables-modern.css`, scoped to
-   `[data-theme="modern"]`.
+   (`src/tokens/bh2026/subatomic.figma-export.json`) — a **tiered, semantic, aliased** model
+   (core → Tier 1 → Tier 2 → Tier 3 components). Built by `buildBh2026()` in `build.mjs`
+   (a dedicated resolver, **not** Style Dictionary) into `css/variables-bh2026.css`, scoped to
+   `[data-theme="bh2026"]`.
 
 **Why modern bypasses Style Dictionary:** its aliases use a flat namespace where tier-1
 `color.border` (a leaf) and tier-2 `color.border.*` (a group) coexist — they collide in SD's
@@ -164,7 +164,7 @@ Classic is what migrates *onto* it. Direction of travel:
 - **Tokens flow primitives → semantic → component (Tier 3)**, consumed by novo-elements through
   the semantic CSS-var contract; the live color helpers remain the runtime mechanism.
 - **Unify the build** — either fold modern into SD (pre-resolve the flat-alias collision) or grow
-  `buildModern()` into the single path. Avoid a permanent two-build setup.
+  `buildBh2026()` into the single path. Avoid a permanent two-build setup.
 
 Until then we are **mid-migration, intentionally.** The risk to avoid is *calcification* — two
 parallel systems becoming permanent. New work should move us toward convergence, not entrench the split.
@@ -172,12 +172,12 @@ parallel systems becoming permanent. New work should move us toward convergence,
 ### Which system do I add to? (contributor guidance)
 
 - **Modern theme values** → update the Figma file and re-export
-  `src/tokens/modern/subatomic.figma-export.json` (the build reads it directly). Component-level →
+  `src/tokens/bh2026/subatomic.figma-export.json` (the build reads it directly). Component-level →
   `components.figma-export.json` (not yet wired into the build).
 - **Classic light/dark changes** → the existing `src/tokens/**` JS modules (`value`/`darkValue`).
 - **Don't invent a third pattern.** If a change could go either way, prefer the modern model and
   note it — classic is being migrated onto modern.
 
 See `MODERN_THEME_PLAN.md`, `MODERN_DESIGN_IMPLEMENTATION.md`, `MODERN_NAMING_REVIEW.md`, and
-`src/tokens/modern/NAMING_ALIGNMENT.md` for detail. (`THEMING_PLAN.md` is the original
+`src/tokens/bh2026/NAMING_ALIGNMENT.md` for detail. (`THEMING_PLAN.md` is the original
 runtime-theming plan that this trajectory builds on.)
