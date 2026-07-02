@@ -39,6 +39,7 @@
     "scss"
   ],
   "scripts": {
+    "start": "npm run build",
     "build": "node build.mjs",
     "postbuild": "npm run postcss && npm run minifycss",
     "prepare": "npm run build",

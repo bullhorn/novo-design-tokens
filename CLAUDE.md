@@ -6,7 +6,8 @@ Design tokens for the Novo Design System (Bullhorn). Transforms token definition
 
 ```bash
 npm install        # Install dependencies
-npm run build      # Build all token outputs (runs build.mjs + postcss + minify)
+npm start          # Build all token outputs (alias for `npm run build`: build.mjs + postcss + minify)
+npm test           # Build + regression suite (snapshots + invariants)
 ```
 
 Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
