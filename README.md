@@ -113,7 +113,15 @@ your components.
 
 ## Development
 
-Read more [here](DEVELOPMENT.md).
+```bash
+npm install   # install dependencies
+npm start     # build all token outputs
+npm test      # build + regression suite
+```
+
+Themes are declared in `manifest.mjs`; the build is `build.mjs`. `bh2022` is authored as DTCG
+under `src/core` + `src/themes/bh2022`; `bh2026` is generated from its Figma export in
+`src/themes/bh2026`. See `CLAUDE.md` for architecture and contribution details.
 
 ## Built with
 

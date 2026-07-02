@@ -17,7 +17,7 @@ Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
 ```
 src/core/          → bh2022 primitives (DTCG $value): color, size, typography, border, effect — theme-agnostic
 src/themes/bh2022/ → bh2022 semantic (background, +dark) + components (button, tooltip) — reference core
-src/themes/bh2026/ → bh2026 (modern): Figma exports (source of truth) + docs (tiered model)
+src/themes/bh2026/ → bh2026 (modern): Figma exports (source of truth)
 manifest.mjs       → Theme registry (single source of truth): bh2022 (dtcg base) + bh2026 (figma)
 build.mjs          → Style Dictionary v5 config + custom formatters + `figma/subatomic` parser (ESM, async)
 scss/              → Hand-authored SCSS utilities (mixins, functions) + generated variables
@@ -54,9 +54,8 @@ the `css/dark` format swaps it into `$value`.
 ```
 
 bh2022's derived color scales (`color.shade/tint/contrast/pale/varNames`) are **frozen literals** —
-they were computed once (by `polished`) and baked in; the color-math build deps were removed. To change
-a bh2022 color you edit the literal(s) directly. New color work happens in bh2026 (Figma). See the P3
-notes in `TOKENS_MULTITHEME_REFACTOR.md`.
+computed once (by `polished`) and baked in; the color-math build deps were removed. To change a bh2022
+color, edit the literal(s) directly. New color work happens in bh2026 (Figma).
 
 ### Custom Formatters (build.mjs)
 
@@ -133,11 +132,18 @@ novo (application)
 **bh2026 (modern):** update the Figma file → re-export `src/themes/bh2026/subatomic.figma-export.json`
 → `npm run build` (the `figma/subatomic` parser reads it directly).
 
+## Testing & CI
+
+- `npm test` — Node's built-in runner (`test/build.test.mjs`): builds, then snapshots the outputs
+  against `test/fixtures/` and asserts invariants (token counts, no unresolved refs, exports resolve).
+  If an output change is intentional, update the fixtures.
+- `.github/workflows/ci.yml` runs `npm test` on PRs + feature-branch pushes; `release.yml` runs it
+  before releasing.
+
 ## Release
 
-Automated via semantic-release v24 on push to main/next/beta/alpha. Commit messages drive version bumps (conventional commits). CI runs in GitHub Actions (`.github/workflows/release.yml`).
-
-Release config: `release.config.mjs` (ESM `export default`).
+Automated via semantic-release v24 on push to main/next/beta/alpha. Commit messages drive version bumps
+(conventional commits); a `BREAKING CHANGE:` footer cuts a major. Config: `release.config.mjs`.
 
 ## Conventions
 
@@ -146,17 +152,15 @@ Release config: `release.config.mjs` (ESM `export default`).
 - `$type` is intentionally omitted (typing triggers value-normalizing transforms — see Token Source Format)
 - No production dependencies — everything is devDependencies; consumers get pre-built outputs
 - Build script and release config are `.mjs` files (project is not `"type": "module"`)
-- No test suite currently exists
 - `sass@1.100` emits `@import` deprecation warnings — non-blocking, but `scss/_index.scss` will eventually need `@use`/`@forward` migration (breaking change for consumers)
 
 ## Theming Architecture
 
-**Read this before adding tokens or changing the build.** As of the P1–P3 refactor, both themes share
-**one source format (DTCG `$value`) and one build engine (Style Dictionary)**, driven by `manifest.mjs`.
-The former two-parallel-systems split is resolved; what remains are two *source shapes* feeding the same
-pipeline.
+**Read this before adding tokens or changing the build.** Both themes share one source format
+(DTCG `$value`) and one build engine (Style Dictionary), driven by `manifest.mjs` — two *source shapes*
+feeding the same pipeline.
 
-### The two themes (today)
+### The two themes
 
 1. **bh2022 (base, `:root`).** Tiered DTCG source: primitives in `src/core/**`, semantic + components in
    `src/themes/bh2022/**` (which reference core). Built by the base `StyleDictionary` instance from
@@ -188,10 +192,8 @@ committed source of truth; re-export → `npm run build`.
 ### Adding a future theme (bh2030)
 
 `bh2030` is a Figma-sourced theme: drop `src/themes/bh2030/subatomic.figma-export.json`, add a `figma`
-entry to `manifest.mjs` — no new build code (the parser + loop handle it). A hand-authored theme would
-follow the bh2022 shape (DTCG tiers under `src/core` shared + `src/themes/bh2030/**`). See
-`TOKENS_MULTITHEME_REFACTOR.md` for the full multi-theme plan (remaining: P4 — per-theme export scheme +
-`1.0.0` major) and `src/themes/bh2026/NAMING_ALIGNMENT.md` for the bh2026 var mapping.
+entry to `manifest.mjs` — no new build code (the parser + loop handle it). A hand-authored theme follows
+the bh2022 shape (DTCG tiers under shared `src/core` + `src/themes/bh2030/**`).
 
 ### Which theme do I add to? (contributor guidance)
 

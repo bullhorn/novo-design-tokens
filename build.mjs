@@ -3,10 +3,8 @@ import { minifyDictionary } from "style-dictionary/utils";
 import { writeFileSync } from "node:fs";
 import { THEMES, BASE_THEME, FIGMA_THEMES } from "./manifest.mjs";
 
-// Base theme (bh2022) — tiered DTCG source (`$value`). NOTE: `$type` is intentionally
-// omitted. SD's type-specific transforms normalize values (e.g. #fff -> #ffffff, hex
-// casing, dimension rounding) which would change the frozen output; the DTCG values are
-// already authored in final CSS form, so we skip typing and keep byte-identical output.
+// Base theme (bh2022): tiered DTCG source. `$type` is intentionally omitted — typing
+// triggers SD transforms that normalize values (#fff -> #ffffff, etc.) and would change output.
 const sd = new StyleDictionary({
   source: BASE_THEME.sources,
   usesDtcg: true,
@@ -125,32 +123,15 @@ sd.registerFormat({
 
 await sd.buildAllPlatforms();
 
-/**
- * Figma-sourced themes (bh2026, and any future bh<YYYY>) build through Style
- * Dictionary — same engine as the classic base above — via a custom parser that
- * normalizes the committed Figma "subatomic" export in-memory at build time.
- *
- * The export is a self-contained 3-tier collection (core / Tier 1 / Tier 2) whose
- * aliases ({color.border}, {spacing.16}) resolve across tiers in a *flat* namespace.
- * That does not fit SD's single nested tree — tier-1 `color.border` (a leaf) and
- * tier-2 `color.border.*` (a group) collide. The parser de-collides by flattening
- * every leaf to a single dashed-name token whose value is already resolved and
- * unit-converted, so SD sees a clean, reference-free token set.
- *
- * Figma forward-generation is preserved: the raw export stays the committed source
- * of truth and the parser reads it directly — re-export from Figma, rebuild, done.
- *
- * Lengths convert px -> rem at Novo's 10px root (rem = px / 10). Border widths stay
- * px (hairline), font-weights stay unitless, and the `round` radius sentinel (>=999)
- * stays px. See src/themes/bh2026/NAMING_ALIGNMENT.md.
- */
+// Figma-sourced themes build through Style Dictionary via a custom parser that resolves
+// the committed export in-memory, flattening each leaf to a single dashed-name token. (SD's
+// nested tree can't hold the export's flat aliases, where e.g. `color.border` is both a leaf
+// and a group.) Re-export from Figma + rebuild — nothing else.
 const REM_BASE = 10;
 const ALIAS = /^\{(.+)\}$/;
 
-// Collapse a redundant ramp group when the leaf repeats its parent with a numeric
-// suffix: transparency/white/white-80 -> transparency/white-80 (matches the Figma
-// alias `{color.transparency.white-80}` and avoids the doubled --color-…-white-white-80
-// var name). Numeric-only so non-numeric ramps like color/blue/blue-gray are untouched.
+// Collapse a redundant numeric ramp: transparency/white/white-80 -> transparency/white-80
+// (avoids a doubled `white-white-80` var name). Numeric-only, so color/blue/blue-gray is kept.
 const normalizePath = (path) => {
   const segs = path.split("/");
   const out = [];
@@ -166,12 +147,8 @@ const normalizePath = (path) => {
 
 const toRem = (n) => (n === 0 ? "0" : `${parseFloat((n / REM_BASE).toFixed(4))}rem`);
 
-/**
- * Parse a Figma "subatomic" export string into a flat, resolved, reference-free
- * Style Dictionary token set: { "<dashed-name>": { value: "<final-css-value>" } }.
- * Aliases are resolved and lengths unit-converted here so SD needs no further
- * transforms (the flat de-collided names are exactly the emitted `--<name>`).
- */
+// Parse the Figma export into a flat, resolved token set: { "<dashed-name>": { value } }.
+// Aliases resolved + lengths unit-converted here, so SD needs no further transforms.
 function parseFigmaExport(contents, label = "figma export") {
   // The export is an array of collections: [{ "<name>": { modes: { "<mode>": {…} } } }].
   // Each collection has a single mode today; we take the first.
@@ -241,9 +218,7 @@ function parseFigmaExport(contents, label = "figma export") {
   return tokens;
 }
 
-// Register the Figma parser + a thin CSS-vars format globally so every theme's SD
-// instance shares them. The parser fully resolves values, so the css platform runs
-// no value transforms — the emitted `--<name>` is the token's flat path verbatim.
+// Register the Figma parser + CSS-vars format globally (shared by all figma theme instances).
 StyleDictionary.registerParser({
   name: "figma/subatomic",
   pattern: /subatomic\.figma-export\.json$/,
@@ -264,9 +239,7 @@ StyleDictionary.registerFormat({
   },
 });
 
-// Build every Figma-sourced theme in the manifest through Style Dictionary. One entry
-// per theme; adding a theme needs no new build code. (Classic-sd themes are built by
-// the base SD instance above; P3 folds them into this manifest-driven model too.)
+// Build each Figma-sourced theme through its own SD instance (adding a theme needs no new code).
 for (const theme of FIGMA_THEMES) {
   const themeSd = new StyleDictionary({
     source: [theme.source],
@@ -290,9 +263,7 @@ for (const theme of FIGMA_THEMES) {
   await themeSd.buildAllPlatforms();
 }
 
-// Publish the theme registry for consumers (novo-elements/novo) so they can enumerate
-// themes + their selectors and CSS entry points without hardcoding paths. Exported as
-// `novo-design-tokens/manifest`.
+// Publish the theme registry for consumers (`novo-design-tokens/manifest`).
 const publishedManifest = {
   themes: THEMES.map((theme) => {
     const css = Object.fromEntries(

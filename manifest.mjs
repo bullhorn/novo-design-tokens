@@ -1,6 +1,6 @@
 /**
  * Theme registry — the single source of truth for the multi-theme build.
- * See TOKENS_MULTITHEME_REFACTOR.md. Adding a theme = one entry here (+ its source).
+ * Adding a theme = one entry here (+ its source).
  *
  * `kind`:
  *   - 'dtcg'  : built via Style Dictionary from tiered DTCG source (`$value`) under
@@ -39,9 +39,8 @@ export const THEMES = [
     isBase: false,
     kind: 'figma',
     source: 'src/themes/bh2026/subatomic.figma-export.json',
-    // Tier-3 components (src/themes/bh2026/components.figma-export.json) are committed as the source of
-    // truth but not yet wired in — design still in flux. Wire via a `componentsSource` here + parser
-    // support when it stabilizes (see TOKENS_MULTITHEME_REFACTOR.md §5 P5).
+    // Tier-3 components (components.figma-export.json) are committed but not yet wired in —
+    // design still in flux. Add a `componentsSource` here + parser support when it stabilizes.
     selector: ':root[data-theme="bh2026"], :root.theme-bh2026',
     modes: ['light'],
     outputs: { light: 'css/bh2026.css' },
