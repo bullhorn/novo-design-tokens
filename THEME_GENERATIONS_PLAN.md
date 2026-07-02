@@ -117,8 +117,9 @@ small delta between the two.
 
 ## 6. Phase A migration — the rename (concrete, per repo)
 
-Execute **bh2022 + bh2026 together** on the `f/modern-theming` branches (shared normalization; the
-2026 theme is pre-GA). Dependency order: tokens → novo-elements → novo; publish snapshots between.
+Execute **bh2022 + bh2026 together** on the working branches (`f/modern-theming`, being renamed to
+`f/BH-101949-novo-refresh`) — shared normalization; the 2026 theme is pre-GA. Dependency order:
+tokens → novo-elements → novo; publish snapshots between.
 
 ### 6.1 novo-design-tokens (bh2026 build)
 - `build.mjs`: `MODERN_SOURCE` → `src/tokens/bh2026/subatomic.figma-export.json`; `SELECTOR` →
@@ -135,7 +136,8 @@ Execute **bh2022 + bh2026 together** on the `f/modern-theming` branches (shared 
 - `git mv styles/themes/modern.scss` → `themes/bh2026.scss`; inside: `@mixin modern-variables` →
   `bh2026-variables`, selector → `[data-theme='bh2026']`, header/provisional-accent comments.
 - `styles/base.scss` import → `./themes/bh2026`.
-- **30 component SCSS files** — swap every `data-theme='modern'` / `data-theme="modern"` / `theme-modern`
+- **31 component SCSS files** (grew via Wave-3 + polish; the sed is list-agnostic so it catches all) —
+  swap every `data-theme='modern'` / `data-theme="modern"` / `theme-modern`
   → `bh2026`. Scripted from `projects/novo-elements/src/elements`:
   ```bash
   grep -rlZ -e "data-theme='modern'" -e 'data-theme="modern"' -e 'theme-modern' . \
@@ -156,10 +158,21 @@ Execute **bh2022 + bh2026 together** on the `f/modern-theming` branches (shared 
 - Republish `novo-elements-snapshot`.
 
 ### 6.3 novo (app — bh2026 side)
-- `apps/novo/styles.scss`: `@import '…/themes/modern'` → `…/themes/bh2026`; provisional-accent selector
-  `[data-theme='modern']` → `bh2026`.
-- `apps/novo/app/record/Record.main.scss`: frosted `#novo-record-header` selector `data-theme='modern'`
-  → `bh2026`.
+The visual-polish work added more `[data-theme='modern']` styling — now **5 app/lib scss files** (was 2).
+Swap the attribute value across all of them with the same sed, from the novo repo root:
+```bash
+grep -rlZ -e "data-theme='modern'" -e 'data-theme="modern"' -e 'theme-modern' apps libs \
+  | xargs -0 sed -i '' -e "s/data-theme='modern'/data-theme='bh2026'/g" \
+                       -e 's/data-theme="modern"/data-theme="bh2026"/g' \
+                       -e 's/theme-modern/theme-bh2026/g'
+```
+Covers: `apps/novo/styles.scss` (incl. the provisional-accent selector),
+`apps/novo/app/record/Record.main.scss` (frosted `#novo-record-header`),
+`apps/novo/app/record/components/workflow/Workflow.scss` (neutral workflow),
+`apps/novo/app/resources/components/dashboard/extras/two-column-layout/TwoColumnLayout.scss` (24px gaps),
+`libs/shared/src/components/profile-header-fields/profile-header-fields.component.scss` (airy header).
+Then, not caught by the sed:
+- `apps/novo/styles.scss` import: `@import 'novo-elements/styles/themes/modern'` → `…/themes/bh2026`.
 - `Mainframe.app.ts` L632 (`isModernTheme`): `=== 'modern-light'` → `=== 'bh2026'`; L636 setter ON-branch
   → `'bh2026'`. Optional: rename `isModernTheme`→`isBh2026Theme` (+ template binding).
 
@@ -251,7 +264,7 @@ attrs + selectors match `[data-theme='modern'], [data-theme='bh2026']`, then dro
 ## 10. Loose-ends checklist
 
 **bh2026 (override theme)**
-- [ ] `data-theme` value: 30 component SCSS + theme file + 2 app SCSS
+- [ ] `data-theme` value: 31 component SCSS + theme file (novo-elements) + 5 app/lib SCSS (novo)
 - [ ] `themeName` strings: theme-options, demo, Mainframe setter ON-branch
 - [ ] `applyThemeToDom` `startsWith('modern')` → registry lookup
 - [ ] generated CSS name + `.gitignore` + package `exports`
