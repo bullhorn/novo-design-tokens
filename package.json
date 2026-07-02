@@ -4,6 +4,9 @@
   "description": "Design tokens for the Novo Design System",
   "homepage": "https://github.com/bullhorn/novo-design-tokens#readme",
   "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "main": "lib/variables.js",
   "module": "lib/variables.esm.js",
   "exports": {
@@ -39,7 +42,7 @@
     "build": "node build.mjs",
     "postbuild": "npm run postcss && npm run minifycss",
     "prepare": "npm run build",
-    "clean": "rm -rf build",
+    "clean": "rm -rf css lib",
     "prepublishOnly": "npm run build && npm run minifycss",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postcss": "postcss ./css/*.css --use autoprefixer -d css/ --no-map",
