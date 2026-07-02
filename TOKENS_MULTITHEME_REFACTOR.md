@@ -121,15 +121,22 @@ for one major cycle (point them at the new files) so consumers migrate without a
 3. `npm run build` → `css/bh2030.css` (`[data-theme="bh2030"]`) + the export is generated from the manifest.
 No new build code, no bespoke resolver, no format decision — it's additive.
 
-## 8. Decisions to confirm
-1. **Build engine:** unify on **Style Dictionary** (recommended — standard, less bespoke code) vs generalize
-   the custom resolver into the manifest loop (less migration risk, keeps the flat-alias handling).
-2. **Classic → DTCG migration scope:** full migration to DTCG (recommended — one format) vs keep classic JS
-   modules behind a small adapter (faster, but the dual format lingers).
-3. **Base vs explicit:** keep `bh2022` as the implicit `:root` base vs make **every** theme an explicit
-   `[data-theme]` peer (ties to `THEME_GENERATIONS_PLAN.md` Phase A/B).
-4. **Dark modes:** DTCG `$modes` vs per-theme `*.dark.json` overlays vs the existing `.theme-dark` class contract.
-5. **Component (Tier-3) tokens:** wire `components.json` into the build now (emit `--button-*` etc.) vs defer.
+## 8. Decisions
+
+**Resolved:**
+1. **Build engine → Style Dictionary (unified).** Retire the custom `buildBh2026()` resolver; everything
+   builds through SD's multi-theme loop. Requires de-colliding the Figma tiers at **ingest** (§4.1).
+2. **Classic → full DTCG migration.** Convert the classic JS modules to DTCG (`$value`/`$type`) in the
+   `core/` + `themes/bh2022/` structure. One source format everywhere.
+3. **Base model → `bh2022` is the implicit `:root` base** (Phase A); other themes are `[data-theme]`
+   overrides. Lower risk, matches the current app; §2 `manifest.mjs` `isBase: true` reflects this.
+
+**Still open (recommendations):**
+4. **Dark modes → per-theme `*.dark.json` overlays** (recommended): simplest with SD v5, emits the existing
+   `:root.theme-dark` contract; DTCG `$modes` is newer/less-supported. (`themes/bh2022/semantic.dark.json`.)
+5. **Component (Tier-3) tokens → wire in now** (recommended): `bh2026` already has `components.figma-export.json`,
+   and the tiered model expects it; emit `--<component>-*` under the theme selector. Additive, so it *could*
+   defer if it risks the P2 timeline.
 
 ## 9. Consumer impact
 novo-elements consumes `scss` (getColor/mixins — **unchanged**) and the per-theme CSS; novo consumes the CSS.
