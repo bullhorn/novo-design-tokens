@@ -8,8 +8,68 @@ This replaces the overloaded `modern` / `modern-light` / `modern-dark` / `classi
 the two generations that exist today (**bh2022**, **bh2026**) and defines exactly how a future
 **bh2030** would be added. Spans **novo-design-tokens**, **novo-elements**, **novo**.
 
-> ⚠️ The only non-mechanical decision in here is the **legacy `modern-light` normalization** (§7) —
-> a product/rollout call. Everything else is mechanical + verifiable.
+> ⚠️ Two non-mechanical decisions now: the legacy normalization (§7) **and** the new
+> `novoRefresh2026Enabled` gating (§0). Everything else is mechanical + verifiable.
+
+---
+
+## 0. UPDATE (BH-101955) — mode-suffixed names + `novoRefresh2026Enabled` gating
+
+**This section supersedes the orthogonal-mode naming in §2/§3 and the normalization in §7 where they
+conflict.** Two changes landed after the original plan: theme names now carry the light/dark mode as a
+suffix, and the whole 2026 refresh is gated behind a new user security setting.
+
+### 0.1 Theme names (themeName / persisted `NovoTheme` pref)
+| themeName | = | maps from (legacy) | CSS |
+|---|---|---|---|
+| `bh2022-light` | 2022 v6 golden, light — the base | `modern-light`, `classic`, `light` | base `:root` (no `data-theme`) |
+| `bh2022-dark`  | 2022 v6 golden, dark | `modern-dark`, `dark` | base `:root` + `.theme-dark` |
+| `bh2026-light` | 2026 refresh, light | `modern` | `data-theme="bh2026"` |
+
+No `bh2026-dark` yet (no dark refresh provided — out of scope; a future one = `data-theme="bh2026"` +
+`.theme-dark`). **The `data-theme` CSS hook stays the *generation* (`bh2026`)**; the `-light`/`-dark`
+mode maps to the existing orthogonal `.theme-dark` class. So the 31 component selectors + token CSS use
+`[data-theme="bh2026"]` (swap `modern`→`bh2026`, *not* `bh2026-light`).
+
+### 0.2 The gate: `security.has('novoRefresh2026Enabled')`
+The boolean flows in via the existing settings→security grant loop (`Mainframe.app.ts` L98-102: any
+`store.settings[key] === true` is granted). The offline script sets `novoRefresh2026Enabled: true` for
+the test user, so `security.has('novoRefresh2026Enabled')` resolves true.
+
+- **Flag ABSENT / false → behave EXACTLY as main.** The refresh is neither offered nor applied. The
+  data-theme CSS is already inert (never set), but the refresh's **unconditional** baseline changes must
+  ALSO be gated on the flag so flag-off === main. Candidates to gate (verify the full set in impl):
+  - theme default flip to `classic`/`bh2022-light` (`novo.providers.ts`, `Mainframe.app.ts` L158),
+  - `accent.directive` always-neutral (novo-elements),
+  - `Record.app.html` / `FastAdd.app.html` neutral-header edits,
+  - the settings-dropdown switch offering "Modern".
+- **Flag TRUE → refresh enabled:**
+  - The switch toggles **`bh2022-light`** (off / "Classic") ↔ **`bh2026-light`** (on / "Modern").
+  - **Defaults to Modern** (`bh2026-light`) so script-enabled users see the refresh immediately.
+  - `applyThemeToDom('bh2026-light')` → `data-theme="bh2026"`; `bh2022-light` clears it.
+
+### 0.3 Switch ↔ pref ↔ setting reconciliation
+Single source of truth: `refreshEnabled = security.has('novoRefresh2026Enabled')`. On theme init
+(`Mainframe.app.ts` L157-159):
+```
+saved = preferences.fetch('NovoTheme')?.themeName
+currentTheme = refreshEnabled
+  ? (isRefreshEraPref(saved) ? saved : 'bh2026-light')   // default ON; force-on for legacy/no pref
+  : normalizeToMain(saved ?? defaultNovoThemeName ?? 'classic')  // main behavior; ignore bh2026 prefs
+```
+- `isModernTheme` getter → `refreshEnabled && currentTheme === 'bh2026-light'`.
+- setter → `currentTheme = isModern ? 'bh2026-light' : 'bh2022-light'` (refresh world), then save + `theme.use`.
+- **Inconsistencies resolved:** flag-on + legacy/no pref → default `bh2026-light` (button ON, immediate
+  enable); flag-on + explicit `bh2022-light` pref → respect it (button OFF); flag-off + any `bh2026`
+  pref → ignored, main behavior. `isRefreshEraPref` = pref is `bh2022-light`/`bh2026-light` (written by
+  the new switch); legacy (`classic`/`modern-light`) counts as "no explicit refresh choice".
+
+### 0.4 Open decisions
+1. **First-enable default:** newly-flagged user with an OLD `classic`/`modern-light` pref → **force-on
+   to Modern** (recommended: script immediately shows the refresh) vs **respect** the old pref (off).
+2. **"flag-off === main" scope:** gating the baseline changes in §0.2 (default flip, accent/header
+   flattening) is more work than just the data-theme CSS — confirm it's in scope vs accepting those as
+   always-on.
 
 ---
 
@@ -61,25 +121,29 @@ e.g. *"the Modern theme (code: `bh2026`)."*
 
 The mechanism that keeps generations straight and makes them additive. One registry per side.
 
-**novo-elements — runtime catalog** (new file, e.g. `elements/common/theme/theme-generations.ts`):
+**novo-elements — runtime catalog** (new file, e.g. `elements/common/theme/theme-generations.ts`).
+Per §0, themeNames are mode-suffixed but the `data-theme` hook is the generation:
 ```ts
-export interface ThemeGeneration {
-  name: string;            // 'bh2022' | 'bh2026'
-  releaseYear: number;
-  isBase?: boolean;        // true = implicit :root base (no data-theme). Exactly one today (bh2022).
-  legacyAliases: string[]; // stored strings that normalize to this generation
+export interface Theme {
+  name: string;                 // themeName / pref: 'bh2022-light' | 'bh2022-dark' | 'bh2026-light'
+  generation: string;           // 'bh2022' | 'bh2026' — the data-theme value
+  mode: 'light' | 'dark';
+  isBase?: boolean;             // generation renders as the :root base (no data-theme)
+  legacyAliases: string[];      // stored strings that normalize to this theme
 }
 
-export const THEME_GENERATIONS: ThemeGeneration[] = [
-  { name: 'bh2022', releaseYear: 2022, isBase: true,  legacyAliases: ['classic', 'light', 'modern-light', 'modern-dark'] },
-  { name: 'bh2026', releaseYear: 2026, isBase: false, legacyAliases: ['modern'] },
+export const THEMES: Theme[] = [
+  { name: 'bh2022-light', generation: 'bh2022', mode: 'light', isBase: true,  legacyAliases: ['classic', 'light', 'modern-light'] },
+  { name: 'bh2022-dark',  generation: 'bh2022', mode: 'dark',  isBase: true,  legacyAliases: ['dark', 'modern-dark'] },
+  { name: 'bh2026-light', generation: 'bh2026', mode: 'light', isBase: false, legacyAliases: ['modern'] },
 ];
-export const DEFAULT_THEME = 'bh2022';
+export const DEFAULT_THEME = 'bh2022-light';   // main default; the flag-on default is 'bh2026-light' (§0.3)
 ```
 Drives:
-- `applyThemeToDom(name)`: look up the generation; `if (gen && !gen.isBase) root.dataset.theme = gen.name; else root.removeAttribute('data-theme')`. Replaces today's `themeName.startsWith('modern')` hack.
+- `applyThemeToDom(name)`: look up the theme; `if (!t.isBase) root.dataset.theme = t.generation; else remove`;
+  `root.classList.toggle('theme-dark', t.mode === 'dark')`. Replaces the `startsWith('modern')` hack.
 - `normalizeThemeName(stored)` (§7): match `stored` against `name`/`legacyAliases`.
-- The app's theme-switch options.
+- The app's theme-switch options + the `novoRefresh2026Enabled` gate (§0.2–0.3).
 
 **novo-design-tokens — build manifest** (`build.mjs`): replace the single `buildModern()` with a
 generation loop, so adding a generation is one array entry:
@@ -203,17 +267,24 @@ maybe `modern` / `modern-dark`.
 > **not** silently GA the unfinished 2026 theme to every default user). Pre-GA 2026 testers re-toggle
 > **once** (the setter now writes canonical `bh2026`, so it sticks). No forward ambiguity.
 
-**Fix: normalize on read (no data migration required)** — registry-driven, applied at every read point:
+**DECIDED (per product):** `modern-light` → `bh2022-light`, `modern-dark` → `bh2022-dark`,
+`modern` → `bh2026-light`. (So legacy does **not** silently move onto the 2026 refresh — it maps to the
+golden generation.) Raw legacy→name mapping:
 ```ts
 export function normalizeThemeName(stored?: string): string {
-  const hit = THEME_GENERATIONS.find(g => g.name === stored || g.legacyAliases.includes(stored ?? ''));
-  return hit?.name ?? DEFAULT_THEME; // unknown/undefined -> base (bh2022)
+  switch (stored) {
+    case 'bh2026-light': case 'modern':                    return 'bh2026-light';
+    case 'bh2022-dark':  case 'modern-dark':  case 'dark':  return 'bh2022-dark';
+    case 'bh2022-light': case 'modern-light': case 'classic': case 'light':
+    default:                                               return 'bh2022-light'; // base
+  }
 }
 ```
-Apply at `Mainframe.app.ts` L158 and `novo.providers.ts` L249-250 (wrap `defaultNovoThemeName`). Prefs
-self-heal on next toggle. Keep legacy aliases in the registry permanently (cheap insurance). *(To
-instead send legacy `modern-light` → bh2026, move that alias to the bh2026 entry — but weigh that it
-moves every default user onto 2026.)*
+This is the pure name mapping. **The flag-gated default/override behavior in §0.3 takes precedence** —
+e.g. when `novoRefresh2026Enabled` is on with no explicit refresh-era pref, the theme defaults to
+`bh2026-light` (Modern) regardless of this mapping; when the flag is off, any `bh2026-light` pref is
+ignored (main behavior). Apply normalization at `Mainframe.app.ts` L157-159 and `novo.providers.ts`
+L249-250. Keep legacy aliases recognized permanently (cheap insurance).
 
 ---
 
@@ -278,6 +349,12 @@ attrs + selectors match `[data-theme='modern'], [data-theme='bh2026']`, then dro
 - [ ] `bh2022` marked `isBase` in registry → stays base (no `data-theme`)
 - [ ] delete `themes/light-test.scss`
 - [ ] optional: `themes/light.scss`/`dark.scss` → `bh2022-light/dark.scss`
+
+**`novoRefresh2026Enabled` gating (§0)**
+- [ ] mode-suffixed themeNames (`bh2022-light`/`bh2022-dark`/`bh2026-light`); `data-theme="bh2026"` (generation) + `.theme-dark` for mode
+- [ ] `refreshEnabled = security.has('novoRefresh2026Enabled')` gate; flag OFF === main (gate the baseline changes in §0.2, not just the CSS)
+- [ ] switch getter/setter → `bh2026-light` (on) / `bh2022-light` (off); default Modern when flag-on
+- [ ] switch ↔ pref ↔ setting reconciliation (§0.3); resolve §0.4 open decisions with product
 
 **Shared / architecture**
 - [ ] theme **registry** added (novo-elements catalog + tokens build manifest) — the "keep-them-straight" backbone
