@@ -64,12 +64,17 @@ currentTheme = refreshEnabled
   pref → ignored, main behavior. `isRefreshEraPref` = pref is `bh2022-light`/`bh2026-light` (written by
   the new switch); legacy (`classic`/`modern-light`) counts as "no explicit refresh choice".
 
-### 0.4 Open decisions
-1. **First-enable default:** newly-flagged user with an OLD `classic`/`modern-light` pref → **force-on
-   to Modern** (recommended: script immediately shows the refresh) vs **respect** the old pref (off).
-2. **"flag-off === main" scope:** gating the baseline changes in §0.2 (default flip, accent/header
-   flattening) is more work than just the data-theme CSS — confirm it's in scope vs accepting those as
-   always-on.
+### 0.4 Decisions (resolved with product)
+1. **First-enable default → FORCE-ON to Modern.** A newly-flagged user with an OLD `classic`/`modern-light`
+   pref (or no pref) defaults to `bh2026-light` (Modern) so the script enables them immediately. Only an
+   explicit refresh-era pref (`bh2022-light`/`bh2026-light`, written by the new switch) is respected. This
+   is exactly the §0.3 `isRefreshEraPref` logic.
+2. **"flag-off === main" → GATE EVERYTHING.** All baseline changes are gated behind the flag so flag-off
+   is byte-identical to main — not just the (already-inert) data-theme CSS, but also: the theme default
+   flip (`novo.providers.ts`, `Mainframe.app.ts` L158), `accent.directive` always-neutral,
+   `Record.app.html`/`FastAdd.app.html` neutral headers, and the switch offering "Modern". Enumerate the
+   full set during implementation (grep for the baseline commits) and wrap each in the `refreshEnabled`
+   gate (or its `data-theme`/security equivalent).
 
 ---
 
