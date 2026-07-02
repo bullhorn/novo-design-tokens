@@ -122,8 +122,15 @@ export const THEMES = [
   simpler than a separate overlay for a 4-token surface. **All six outputs are byte-identical** to the
   pre-P3 build (`variables.css`, `variables-dark.css`, `scss/variables.scss`, `lib/variables.json`, and
   `lib/variables.{js,esm.js}` modulo the regenerated timestamp). Old `src/tokens/**` (classic) + `src/components/**` deleted.
-- **P4 — new exports + cut the major:** switch to a consistent per-theme export scheme (below), deprecate the old
-  flat exports, and release `1.0.0` (semantic-release `BREAKING CHANGE:`). Coordinate novo-elements + novo dep bumps.
+- **P4 — new exports + cut the major:** ✅ *tokens-repo mechanics done* — per-theme output files
+  (`css/bh2022.css`, `css/bh2022-dark.css`, `css/bh2026.css` + `.min`), per-theme export subpaths
+  (`./css/bh2022`, `./css/bh2026`, …), the old flat exports kept as **deprecated aliases** pointing at the
+  new files, and a published theme registry at `./manifest` (`lib/manifest.json`, emitted by `build.mjs`).
+  New files are byte-identical to the old ones (just renamed). *Remaining (release/coordination — human):*
+  land this with a `BREAKING CHANGE:` commit footer so semantic-release cuts `1.0.0`, then bump the
+  `novo-design-tokens` dep in novo-elements + novo. No consumer code changes are required to keep working
+  (the deprecated aliases preserve every documented import path); the dep bump + eventual alias removal is
+  the migration.
 
 ## 6. Exports & versioning (the breaking part)
 Move from flat per-file exports to a per-theme scheme, e.g.:

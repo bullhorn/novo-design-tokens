@@ -30,7 +30,7 @@ export const THEMES = [
       'src/core/effect.json',
       'src/themes/bh2022/components.json',
     ],
-    outputs: { light: 'css/variables.css', dark: 'css/variables-dark.css' },
+    outputs: { light: 'css/bh2022.css', dark: 'css/bh2022-dark.css' },
   },
   {
     name: 'bh2026',
@@ -39,7 +39,7 @@ export const THEMES = [
     source: 'src/tokens/bh2026/subatomic.figma-export.json',
     selector: ':root[data-theme="bh2026"], :root.theme-bh2026',
     modes: ['light'],
-    output: 'css/variables-bh2026.css',
+    output: 'css/bh2026.css',
   },
 ];
 

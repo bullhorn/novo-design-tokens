@@ -1,6 +1,7 @@
 import StyleDictionary from "style-dictionary";
 import { minifyDictionary } from "style-dictionary/utils";
-import { BASE_THEME, FIGMA_THEMES } from "./manifest.mjs";
+import { writeFileSync } from "node:fs";
+import { THEMES, BASE_THEME, FIGMA_THEMES } from "./manifest.mjs";
 
 // Base theme (bh2022) — tiered DTCG source (`$value`). NOTE: `$type` is intentionally
 // omitted. SD's type-specific transforms normalize values (e.g. #fff -> #ffffff, hex
@@ -15,7 +16,7 @@ const sd = new StyleDictionary({
       buildPath: "css/",
       files: [
         {
-          destination: "variables.css",
+          destination: BASE_THEME.outputs.light.replace(/^css\//, ""),
           format: "css/variables",
           filter: (token, a, b, c) => {
             // varNames are dash-case versions of colors, only generated for SCSS convenience, and are not needed by CSS var() statements.
@@ -23,7 +24,7 @@ const sd = new StyleDictionary({
           }
         },
         {
-          destination: "variables-dark.css",
+          destination: BASE_THEME.outputs.dark.replace(/^css\//, ""),
           format: "css/dark",
           filter: (token) => token.darkValue,
         },
@@ -288,3 +289,18 @@ for (const theme of FIGMA_THEMES) {
   });
   await themeSd.buildAllPlatforms();
 }
+
+// Publish the theme registry for consumers (novo-elements/novo) so they can enumerate
+// themes + their selectors and CSS entry points without hardcoding paths. Exported as
+// `novo-design-tokens/manifest`.
+const publishedManifest = {
+  themes: THEMES.map((theme) => {
+    const outputs = theme.isBase ? theme.outputs : { light: theme.output };
+    const css = Object.fromEntries(
+      Object.entries(outputs).map(([mode, path]) => [mode, `./${path}`])
+    );
+    return { name: theme.name, isBase: !!theme.isBase, selector: theme.selector, modes: theme.modes, css };
+  }),
+};
+writeFileSync("lib/manifest.json", JSON.stringify(publishedManifest, null, 2) + "\n");
+console.log("lib/manifest.json — published theme registry");

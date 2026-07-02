@@ -75,14 +75,19 @@ notes in `TOKENS_MULTITHEME_REFACTOR.md`.
 
 ## Package Exports
 
+Per-theme export scheme (`./css/<theme>`). Each theme is `css/<name>.css` (+ `.min`, + `-dark` where it has a dark mode). Adding `bh2030` is additive — no export changes needed (covered by the `./css/*` wildcard + `./manifest`).
+
 | Import path | Resolves to |
 |---|---|
-| `novo-design-tokens` | `lib/variables.js` (CJS) or `lib/variables.esm.js` (ESM) |
+| `novo-design-tokens` | `lib/variables.js` (CJS) or `lib/variables.esm.js` (ESM) — base (bh2022) JS |
 | `novo-design-tokens/scss` | `scss/_index.scss` (variables + mixins + functions) |
-| `novo-design-tokens/css/variables` | `css/variables.css` |
-| `novo-design-tokens/css/variables.min` | `css/variables.min.css` |
-| `novo-design-tokens/css/variables-dark` | `css/variables-dark.css` |
-| `novo-design-tokens/css/variables-bh2026` | `css/variables-bh2026.css` (+ `.min`) |
+| `novo-design-tokens/manifest` | `lib/manifest.json` (published theme registry: name, selector, modes, css paths) |
+| `novo-design-tokens/css/bh2022` | `css/bh2022.css` (+ `.min`) — base, `:root` |
+| `novo-design-tokens/css/bh2022-dark` | `css/bh2022-dark.css` (+ `.min`) |
+| `novo-design-tokens/css/bh2026` | `css/bh2026.css` (+ `.min`) — `[data-theme="bh2026"]` |
+
+**Deprecated aliases** (kept for one major cycle; point at the new files — migrate off them):
+`./css/variables` → `bh2022.css`, `./css/variables-dark` → `bh2022-dark.css`, `./css/variables-bh2026` → `bh2026.css` (each with `.min`). Direct file-path imports with the `.css` extension (e.g. `css/variables.css`) no longer resolve — use the extensionless export subpaths above.
 
 ## How Downstream Projects Use This Package
 
