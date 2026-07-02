@@ -14,53 +14,52 @@ npm install novo-design-tokens
 
 ```
 novo-design-tokens/
-├── tokens/                                 # token source files
-├── lib/                                    # generated js & json files
-├── css/                                    # generated css files
-└── scss/                                   # generated scss files
-    ├── mixins/                             # pre-built mixins for applying
-    ├── breakpoint/
-    │    ├── all (.scss|.css)
-    │    ├── breakpoint (.scss|.css)        # breakpoint variables
-    │    └── container-width (.scss|.css)   # container-width variables
-    ├── color/
-    │    ├── all (.scss|.css)
-    │    ├── brand (.scss|.css)             # brand color variables
-    │    └── ui (.scss|.css)                # ui color variables
-    ├── spacing/
-    │   ├── all (.scss|.css)
-    │   ├── layout (.scss|.css)             # layout spacing variables
-    │   └── spacing (.scss|.css)            # component spacing variables
-    ├── typography/
-    │   ├── all (.scss|.css)
-    │   ├── font (.scss|.css)               # font variables
-    │   ├── font-size (.scss|.css)          # font-size variables
-    │   └── line-height (.scss|.css)        # line-height variables
-    └── all (.scss|.css)                    # all variables
+├── lib/                    # generated js (CJS + ESM), json, and manifest.json (theme registry)
+├── css/                    # generated per-theme css: bh2022(.min), bh2022-dark(.min), bh2026(.min)
+└── scss/                   # scss consumption layer (variables + mixins + functions)
 ```
+
+### Themes
+
+Two themes ship today, both as CSS custom properties:
+
+| Theme | Selector | CSS entry |
+|---|---|---|
+| `bh2022` (base) | `:root` (+ dark) | `novo-design-tokens/css/bh2022`, `.../bh2022-dark` |
+| `bh2026` | `[data-theme="bh2026"]` | `novo-design-tokens/css/bh2026` |
+
+The theme registry is published at `novo-design-tokens/manifest` (`lib/manifest.json`) — name,
+selector, modes, and css paths per theme — so you can enumerate themes without hardcoding.
 
 ### Using the tokens
 
-Tokens are available for web platforms for now and can be included in your project as JS, CSS variables, or SCSS variables and mixins.
+Tokens are available for web and can be included as JS, CSS variables, or SCSS variables and mixins.
 
 #### JS
 
 ```js
-import { color, size } from "novo-design-tokens";
+import { color, spacing } from "novo-design-tokens";
 
-document.querySelector("#el").style.backgroundColor = color.entity.candidate;
-document.querySelector("#el").style.color = color.grass.contrast;
-document.querySelector("#el").style.padding = size.spacing.lg;
+document.querySelector("#el").style.backgroundColor = color.candidate; // entity color
+document.querySelector("#el").style.color = color.contrast.grass; // computed contrast
+document.querySelector("#el").style.padding = spacing.lg;
 ```
 
-#### CSS with webpack
+#### CSS
 
-Import the available `variables.css` or `variables.min.css` file. Imported CSS variables will be applied to the `:root` element.
+Import a theme's variables. The base theme (`bh2022`) applies to `:root`; add `data-theme="bh2026"`
+on a container (or `:root`) to activate the modern theme.
 
 ```js
-// import all tokens
-import "novo-design-tokens/css/variables.css";
+import "novo-design-tokens/css/bh2022";       // base (:root)
+import "novo-design-tokens/css/bh2022-dark";  // optional dark overrides
+import "novo-design-tokens/css/bh2026";       // modern ([data-theme="bh2026"])
 ```
+
+> Deprecated: `css/variables`, `css/variables-dark`, `css/variables-bh2026` still resolve (aliases to
+> the new files) but will be removed in a future major — migrate to the `css/<theme>` paths above.
+> Direct `.css`-extension imports (e.g. `css/variables.css`) no longer resolve; use the extensionless
+> subpaths shown here.
 
 #### SCSS
 

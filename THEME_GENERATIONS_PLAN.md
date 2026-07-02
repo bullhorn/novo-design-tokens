@@ -1,6 +1,14 @@
 # Novo Theme Generations — naming convention, architecture & migration
 
-**Status:** plan, not executed. **Decision:** name every Novo design generation **`bh<YYYY>`** by the
+> ⚠️ **Partially implemented — read scope.** This doc owns the **`bh<YYYY>` naming convention** and the
+> **app-side wiring** (novo-elements / novo), which remain the reference. The **tokens-repo build**
+> details below (the `GENERATIONS` loop, `buildBh2026()`, `MODERN_SOURCE`, `css/variables-<name>.css`
+> names) are **superseded by the implemented build** — see `TOKENS_MULTITHEME_REFACTOR.md` (P1–P4):
+> the registry is `manifest.mjs` (`THEMES`), figma themes build via the `figma/subatomic` SD parser,
+> sources live under `src/core/**` + `src/themes/<name>/**`, and outputs are `css/<theme>.css`.
+
+**Status:** naming + app-side wiring = reference; tokens-repo build = superseded (see banner).
+**Decision:** name every Novo design generation **`bh<YYYY>`** by the
 year its overhaul shipped, and manage the set through a **single theme registry**, so themes stay
 unambiguous at the code level forever and new generations slot in by a fixed recipe (§8).
 
@@ -111,7 +119,7 @@ For a generation `bh<YYYY>`:
 | `themeName` (service + persisted pref) | `bh<YYYY>` |
 | `data-theme` attribute value | `bh<YYYY>` (override themes only; the base carries none — see §5) |
 | Root class | `.theme-bh<YYYY>` |
-| Token source dir | `src/tokens/bh<YYYY>/` |
+| Token source dir | `src/themes/bh<YYYY>/` |
 | Generated token CSS | `css/variables-bh<YYYY>.css(.min)`, scoped `:root[data-theme="bh<YYYY>"], :root.theme-bh<YYYY>` |
 | Package export | `./css/variables-bh<YYYY>(.min)` |
 | Semantic theme SCSS (novo-elements) | `themes/bh<YYYY>.scss` (+ `@mixin bh<YYYY>-variables`) |
@@ -154,7 +162,7 @@ Drives:
 generation loop, so adding a generation is one array entry:
 ```js
 const GENERATIONS = [
-  { name: 'bh2026', source: 'src/tokens/bh2026/subatomic.figma-export.json' },
+  { name: 'bh2026', source: 'src/themes/bh2026/subatomic.figma-export.json' },
   // bh2022 currently uses the classic value/darkValue pipeline (the :root base) — not this loop yet.
 ];
 GENERATIONS.forEach(buildGeneration); // emits css/variables-<name>.css scoped [data-theme="<name>"]
@@ -191,12 +199,12 @@ Execute **bh2022 + bh2026 together** on the working branches (`f/modern-theming`
 tokens → novo-elements → novo; publish snapshots between.
 
 ### 6.1 novo-design-tokens (bh2026 build)
-- `build.mjs`: `MODERN_SOURCE` → `src/tokens/bh2026/subatomic.figma-export.json`; `SELECTOR` →
+- `build.mjs`: `MODERN_SOURCE` → `src/themes/bh2026/subatomic.figma-export.json`; `SELECTOR` →
   `:root[data-theme="bh2026"], :root.theme-bh2026`; `buildModern()` → `buildBh2026()` (or the §4
   `GENERATIONS` loop); output `css/variables-bh2026.css`; header comment + `console.log` string.
 - `package.json` exports `./css/variables-modern(.min)` → `…-bh2026(.min)`.
 - `.gitignore`: `css/variables-modern.*` → `css/variables-bh2026.*`.
-- `git mv src/tokens/modern/` → `src/tokens/bh2026/` (incl. `variables-modern.preview.css` →
+- `git mv src/tokens/modern/` → `src/themes/bh2026/` (incl. `variables-modern.preview.css` →
   `variables-bh2026.preview.css`).
 - **bh2022:** none — `variables.css` (`:root`) *is* bh2022 in Phase A. Docs note only.
 - **Verify:** `npm run build` → `css/variables-bh2026.css`, selector/header say `bh2026`, 377/0-unresolved.
@@ -298,8 +306,8 @@ L249-250. Keep legacy aliases recognized permanently (cheap insurance).
 With the convention + registry, a new generation is **additive** — no renames, no hunting:
 
 **novo-design-tokens**
-1. Add the Figma export at `src/tokens/bh2030/subatomic.figma-export.json`.
-2. Add `{ name: 'bh2030', source: 'src/tokens/bh2030/subatomic.figma-export.json' }` to `GENERATIONS`.
+1. Add the Figma export at `src/themes/bh2030/subatomic.figma-export.json`.
+2. Add `{ name: 'bh2030', source: 'src/themes/bh2030/subatomic.figma-export.json' }` to `GENERATIONS`.
 3. `npm run build` → `css/variables-bh2030.css` (scoped `[data-theme="bh2030"]`); add the package export.
 
 **novo-elements**

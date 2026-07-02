@@ -15,7 +15,7 @@ Today the repo runs **two parallel, differently-shaped token pipelines**:
 
 | | Classic (`bh2022`) | Refresh (`bh2026`) |
 |---|---|---|
-| Source | hand-authored **JS modules** `src/tokens/**` (`value`/`darkValue`) | **Figma DTCG export** `src/tokens/bh2026/subatomic.figma-export.json` (`$value`, 3-tier) |
+| Source | hand-authored **JS modules** `src/tokens/**` (`value`/`darkValue`) | **Figma DTCG export** `src/themes/bh2026/subatomic.figma-export.json` (`$value`, 3-tier) |
 | Build | **Style Dictionary v5** | a **custom `buildBh2026()`** resolver in `build.mjs` (bypasses SD) |
 | Output | `css/variables.css` (`:root`) + `variables-dark.css` (`:root.theme-dark`) + `scss/` + `lib/` | `css/variables-bh2026.css` (`[data-theme="bh2026"]`) |
 | Theming | `value` vs `darkValue` pairs | `data-theme` scoping |
@@ -34,7 +34,9 @@ Adopt the widely-used **layered, multi-theme** model (Style Dictionary multi-bra
 **Principles**
 1. **One source format — DTCG** (`$value`/`$type`). The Figma export is already DTCG; migrate classic onto it.
 2. **Three tiers**: **core** (primitives, theme-agnostic) → **semantic** (roles, per-theme) → **component** (per-theme).
-3. **Shared core, per-theme overlays**: every theme = `core` + its own `semantic` (+ optional `components`).
+3. **Two theme shapes** (deliberate — see §8.6): **hand-authored themes** share `src/core` primitives +
+   add their own `semantic` (+ optional `components`); **Figma-sourced themes are self-contained** — each
+   carries its own primitives from its Figma export (parsed at build) rather than referencing `src/core`.
 4. **A theme manifest** is the single source of truth (which sets compose each theme, its selector, its modes).
 5. **One build engine** — Style Dictionary, looping the manifest. Retire the custom resolver.
 6. **Preserve the scss consumption contract** — `getColor()`/`getTint*()`/live math (`darkenLive`/`elevate`/
@@ -131,6 +133,16 @@ export const THEMES = [
   `novo-design-tokens` dep in novo-elements + novo. No consumer code changes are required to keep working
   (the deprecated aliases preserve every documented import path); the dep bump + eventual alias removal is
   the migration.
+- **P5 — bh2026 Tier-3 components (deferred, near-term):** wire `src/themes/bh2026/components.figma-export.json`
+  into the build once the design stabilizes (currently in flux). Scope when ready:
+  1. Add a `componentsSource` field to the bh2026 manifest entry (the committed export path).
+  2. Extend/generalize the `figma/subatomic` parser (or add a `figma/components` parser) to handle the
+     components export shape — it differs from `subatomic`: a single `modes.default` root, and leaves carry
+     `$scopes`/`$type`/`$libraryName`/`$collectionName` metadata. Reuse the same resolve + de-collide logic.
+  3. **Validate cross-refs:** its aliases (e.g. `{spacing.padding.xxsm}`) must resolve against the subatomic
+     namespace — confirm the names exist (they may need normalization) before shipping.
+  4. Emit `--<component>-*` appended under the bh2026 selector (same `figma/css-vars` format/file).
+  Additive and low-risk; no consumer breakage. Until then bh2026 ships tokens only (today's behavior).
 
 ## 6. Exports & versioning (the breaking part)
 Move from flat per-file exports to a per-theme scheme, e.g.:
@@ -160,13 +172,26 @@ No new build code, no bespoke resolver, no format decision — it's additive.
    `core/` + `themes/bh2022/` structure. One source format everywhere.
 3. **Base model → `bh2022` is the implicit `:root` base** (Phase A); other themes are `[data-theme]`
    overrides. Lower risk, matches the current app; §2 `manifest.mjs` `isBase: true` reflects this.
+6. **Core is shared only among hand-authored themes; Figma themes are self-contained.** `bh2022` uses
+   `src/core/**`; `bh2026` (and future Figma themes) carry their own primitives from the Figma export — we
+   do **not** rebase them onto `src/core`. Rationale: the Figma file *is* the theme's source of truth
+   (primitives included), and forward-generation (re-export → rebuild) must stay lossless; forcing a Figma
+   theme to reference `src/core` would split its source across Figma + hand-authored JSON and break that
+   guarantee. The shared-core ideal (§2.3) therefore applies to hand-authored themes; Figma themes trade
+   primitive-sharing for a clean, self-contained regeneration path. The common contract is the emitted
+   `--*` CSS var names (consumed by the scss layer), not a shared source tier.
 
-**Still open (recommendations):**
-4. **Dark modes → per-theme `*.dark.json` overlays** (recommended): simplest with SD v5, emits the existing
-   `:root.theme-dark` contract; DTCG `$modes` is newer/less-supported. (`themes/bh2022/semantic.dark.json`.)
-5. **Component (Tier-3) tokens → wire in now** (recommended): `bh2026` already has `components.figma-export.json`,
-   and the tiered model expects it; emit `--<component>-*` under the theme selector. Additive, so it *could*
-   defer if it risks the P2 timeline.
+**Resolved (cont.):**
+4. **Dark modes → `darkValue` sibling on the semantic tokens** (not a separate overlay file). bh2022's
+   dark surface is tiny (4 `background` roles); SD resolves the `darkValue` reference and the `css/dark`
+   format swaps it into `$value`. Simpler than a second build for 4 tokens; revisit if a theme grows a
+   large dark palette (then a `semantic.dark.json` overlay is the move).
+
+**Deferred:**
+5. **Component (Tier-3) tokens for bh2026 → deferred, near-term.** `components.figma-export.json` is committed
+   as the source of truth but **not wired into the build** — the design is still in flux (designer actively
+   iterating). Wire it in once the export stabilizes; it's a small, additive change (see §5.P5 below). Until
+   then bh2026 ships tokens only (no `--<component>-*`), which is exactly today's behavior.
 
 ## 9. Consumer impact
 novo-elements consumes `scss` (getColor/mixins — **unchanged**) and the per-theme CSS; novo consumes the CSS.

@@ -16,7 +16,7 @@ Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
 ```
 src/core/          → bh2022 primitives (DTCG $value): color, size, typography, border, effect — theme-agnostic
 src/themes/bh2022/ → bh2022 semantic (background, +dark) + components (button, tooltip) — reference core
-src/tokens/bh2026/ → bh2026 (modern): Figma exports (source of truth) + docs (tiered model)
+src/themes/bh2026/ → bh2026 (modern): Figma exports (source of truth) + docs (tiered model)
 manifest.mjs       → Theme registry (single source of truth): bh2022 (dtcg base) + bh2026 (figma)
 build.mjs          → Style Dictionary v5 config + custom formatters + `figma/subatomic` parser (ESM, async)
 scss/              → Hand-authored SCSS utilities (mixins, functions) + generated variables
@@ -95,7 +95,7 @@ Per-theme export scheme (`./css/<theme>`). Each theme is `css/<name>.css` (+ `.m
 
 - **Dependency**: `novo-design-tokens@^0.1.4`
 - **SCSS import**: `@import 'novo-design-tokens/scss';` for SCSS variables/mixins
-- **CSS import**: `@import 'novo-design-tokens/css/variables.min';` for CSS custom properties
+- **CSS import**: `@import 'novo-design-tokens/css/variables.min';` (deprecated alias → `css/bh2022.min`; migrate to the per-theme path)
 - **TypeScript import**: `import { spacing } from 'novo-design-tokens';` in space.directive.ts
 - **Theme layer**: Light theme (`styles/themes/light.scss`) maps token values to semantic CSS custom properties like `--background-main`, `--text-muted`, `--focus`
 - Components reference CSS variables with fallbacks: `var(--background-main, $color-bright)`
@@ -129,7 +129,7 @@ novo (application)
 2. If it's a new source file, add it to `BASE_THEME.sources` in `manifest.mjs` (order sets emit order).
 3. Run `npm run build` and verify output in `css/`, `scss/`, `lib/`.
 
-**bh2026 (modern):** update the Figma file → re-export `src/tokens/bh2026/subatomic.figma-export.json`
+**bh2026 (modern):** update the Figma file → re-export `src/themes/bh2026/subatomic.figma-export.json`
 → `npm run build` (the `figma/subatomic` parser reads it directly).
 
 ## Release
@@ -159,14 +159,19 @@ pipeline.
 
 1. **bh2022 (base, `:root`).** Tiered DTCG source: primitives in `src/core/**`, semantic + components in
    `src/themes/bh2022/**` (which reference core). Built by the base `StyleDictionary` instance from
-   `BASE_THEME.sources` into `css/variables.css` + `variables-dark.css` (+ scss/js/mjs/json). Dark mode
+   `BASE_THEME.sources` into `css/bh2022.css` + `css/bh2022-dark.css` (+ scss/js/mjs/json). Dark mode
    (four `background` roles) uses a `darkValue` sibling. Its derived color scales
    (`color.shade/tint/contrast/pale/varNames`) are **frozen literals** (once computed by `polished`, now
    baked in — the color-math deps were removed since bh2022 is the stable legacy theme).
 2. **bh2026 (modern, `[data-theme="bh2026"]`).** Sourced from the Figma "subatomic" export
-   (`src/tokens/bh2026/subatomic.figma-export.json`) — a tiered/semantic/aliased model. Built through SD
+   (`src/themes/bh2026/subatomic.figma-export.json`) — a tiered/semantic/aliased model. Built through SD
    via the `figma/subatomic` custom parser (one `new StyleDictionary(...)` per figma theme, looped from
-   `manifest.mjs`) into `css/variables-bh2026.css`.
+   `manifest.mjs`) into `css/bh2026.css`.
+
+**Two theme shapes (deliberate).** bh2022 (hand-authored) shares `src/core` primitives; **Figma themes
+like bh2026 are self-contained** — each carries its own primitives from its Figma export and does *not*
+reference `src/core`. This keeps Figma forward-generation lossless (the Figma file is the whole source of
+truth). The shared contract between themes is the emitted `--*` CSS var names, not a shared source tier.
 
 The `f/cssvar-theming` runtime layer sits on top of both: `getColor()`/`getTint*()`/etc. return
 `var(--color-*)` so colors resolve at **runtime**, with live helpers (`elevate()`/`recede()`/`darkenLive()`,
@@ -181,15 +186,15 @@ committed source of truth; re-export → `npm run build`.
 
 ### Adding a future theme (bh2030)
 
-`bh2030` is a Figma-sourced theme: drop `src/tokens/bh2030/subatomic.figma-export.json`, add a `figma`
+`bh2030` is a Figma-sourced theme: drop `src/themes/bh2030/subatomic.figma-export.json`, add a `figma`
 entry to `manifest.mjs` — no new build code (the parser + loop handle it). A hand-authored theme would
 follow the bh2022 shape (DTCG tiers under `src/core` shared + `src/themes/bh2030/**`). See
 `TOKENS_MULTITHEME_REFACTOR.md` for the full multi-theme plan (remaining: P4 — per-theme export scheme +
-`1.0.0` major) and `src/tokens/bh2026/NAMING_ALIGNMENT.md` for the bh2026 var mapping.
+`1.0.0` major) and `src/themes/bh2026/NAMING_ALIGNMENT.md` for the bh2026 var mapping.
 
 ### Which theme do I add to? (contributor guidance)
 
-- **bh2026 values** → update Figma → re-export `src/tokens/bh2026/subatomic.figma-export.json`.
+- **bh2026 values** → update Figma → re-export `src/themes/bh2026/subatomic.figma-export.json`.
   Component-level → `components.figma-export.json` (not yet wired into the build).
 - **bh2022 changes** → the DTCG files in `src/core/**` / `src/themes/bh2022/**` (`$value`, no `$type`).
 - **Don't invent a third pattern** or re-introduce `$type` on bh2022 (it changes the frozen output).

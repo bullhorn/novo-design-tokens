@@ -142,7 +142,7 @@ await sd.buildAllPlatforms();
  *
  * Lengths convert px -> rem at Novo's 10px root (rem = px / 10). Border widths stay
  * px (hairline), font-weights stay unitless, and the `round` radius sentinel (>=999)
- * stays px. See src/tokens/bh2026/NAMING_ALIGNMENT.md.
+ * stays px. See src/themes/bh2026/NAMING_ALIGNMENT.md.
  */
 const REM_BASE = 10;
 const ALIAS = /^\{(.+)\}$/;
@@ -279,7 +279,7 @@ for (const theme of FIGMA_THEMES) {
         buildPath: "css/",
         files: [
           {
-            destination: theme.output.replace(/^css\//, ""),
+            destination: theme.outputs.light.replace(/^css\//, ""),
             format: "figma/css-vars",
             options: { selector: theme.selector, name: theme.name, source: theme.source },
           },
@@ -295,9 +295,8 @@ for (const theme of FIGMA_THEMES) {
 // `novo-design-tokens/manifest`.
 const publishedManifest = {
   themes: THEMES.map((theme) => {
-    const outputs = theme.isBase ? theme.outputs : { light: theme.output };
     const css = Object.fromEntries(
-      Object.entries(outputs).map(([mode, path]) => [mode, `./${path}`])
+      Object.entries(theme.outputs).map(([mode, path]) => [mode, `./${path}`])
     );
     return { name: theme.name, isBase: !!theme.isBase, selector: theme.selector, modes: theme.modes, css };
   }),

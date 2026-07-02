@@ -5,14 +5,16 @@
  * `kind`:
  *   - 'dtcg'  : built via Style Dictionary from tiered DTCG source (`$value`) under
  *              `src/core/**` (primitives) + `src/themes/<name>/**` (semantic + components).
- *   - 'figma' : built from a committed Figma export via the Style Dictionary
- *              `figma/subatomic` custom parser (resolved + unit-converted at build time).
+ *              Uses `sources` (ordered list).
+ *   - 'figma' : built from a committed Figma export (`src/themes/<name>/`) via the Style
+ *              Dictionary `figma/subatomic` parser (resolved + unit-converted at build time).
+ *              Uses `source` (single export file).
  *
- * `isBase` : renders at `:root` (no data-theme) and also emits the scss/js/mjs/json
- *            consumption artifacts. Exactly one base today (bh2022).
- *
- * `sources` (dtcg): ordered source globs. Order is significant — it sets the emitted
- *            token order (core primitives resolve refs from any set; ordering is cosmetic).
+ * `isBase`  : renders at `:root` (no data-theme) and also emits the scss/js/mjs/json
+ *             consumption artifacts. Exactly one base today (bh2022).
+ * `outputs` : per-mode emitted CSS ({ light, dark? }). Every theme has this.
+ * `sources` (dtcg): ordered source list. Order sets the emitted token order (refs resolve
+ *             across sets regardless; ordering is cosmetic).
  */
 export const THEMES = [
   {
@@ -36,10 +38,13 @@ export const THEMES = [
     name: 'bh2026',
     isBase: false,
     kind: 'figma',
-    source: 'src/tokens/bh2026/subatomic.figma-export.json',
+    source: 'src/themes/bh2026/subatomic.figma-export.json',
+    // Tier-3 components (src/themes/bh2026/components.figma-export.json) are committed as the source of
+    // truth but not yet wired in — design still in flux. Wire via a `componentsSource` here + parser
+    // support when it stabilizes (see TOKENS_MULTITHEME_REFACTOR.md §5 P5).
     selector: ':root[data-theme="bh2026"], :root.theme-bh2026',
     modes: ['light'],
-    output: 'css/bh2026.css',
+    outputs: { light: 'css/bh2026.css' },
   },
 ];
 
