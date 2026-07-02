@@ -104,12 +104,24 @@ export const THEMES = [
 ## 5. Migration (phased → one major release `1.0.0`)
 - **P1 — scaffolding (non-breaking):** add `src/core/`, `src/themes/`, `manifest.mjs`, and the SD multi-theme
   loop *alongside* today's build; keep emitting the current filenames so nothing downstream breaks yet.
-- **P2 — bh2026 via the SD parser:** move the flat-alias/de-collide logic from `buildBh2026()` into a reusable
-  SD custom parser that reads the committed Figma export directly (no intermediate file); build bh2026 through
-  the loop; delete the standalone `buildBh2026()`. Verify `css/bh2026.css` is byte-equivalent (377 tokens, 0
-  unresolved) and that re-exporting from Figma + rebuild still works end-to-end.
-- **P3 — migrate classic → bh2022:** extract primitives to `core/`; move semantic/component into `themes/bh2022/`
-  (`darkValue` → `semantic.dark.json`); build via the loop. Verify `variables.css`/`-dark.css` unchanged.
+- **P2 — bh2026 via the SD parser ✅ DONE:** the flat-alias/de-collide logic now lives in a reusable SD custom
+  parser (`figma/subatomic` in `build.mjs`) that reads the committed Figma export directly (no intermediate file);
+  bh2026 builds through a per-theme `new StyleDictionary(...)` instance (opted in via `parsers: [...]`) using a
+  thin `figma/css-vars` format for the selector; the standalone `buildFigmaTheme()` resolver is deleted. Output
+  is **value-identical** to P1 (377 tokens, 0 unresolved — verified by a normalized `--var: value` set diff) and
+  re-exporting from Figma + rebuild still works end-to-end (the parser reads the committed export in-memory).
+- **P3 — migrate classic → bh2022 ✅ DONE:** the classic JS modules are converted to tiered DTCG source —
+  primitives in `src/core/{color,size,typography,border,effect}.json`, semantic + components in
+  `src/themes/bh2022/{semantic,components}.json` (which reference core). The base build reads its ordered
+  sources from `manifest.mjs` (`BASE_THEME.sources`) with `usesDtcg: true`. **Decision (freeze):** the
+  `polished`-computed color scales (`shade/tint/contrast/pale/varNames`) are frozen as literals and the
+  `polished`/`chroma-js`/`change-case` deps removed — bh2022 is the stable legacy theme, so live
+  regeneration has no value. **`$type` is intentionally omitted** (typing triggers SD transforms that
+  normalize values — `#fff`→`#ffffff` etc. — which would change output). Dark mode stays a `darkValue`
+  sibling on the four `background` roles (SD resolves it; the `css/dark` format swaps it into `$value`) —
+  simpler than a separate overlay for a 4-token surface. **All six outputs are byte-identical** to the
+  pre-P3 build (`variables.css`, `variables-dark.css`, `scss/variables.scss`, `lib/variables.json`, and
+  `lib/variables.{js,esm.js}` modulo the regenerated timestamp). Old `src/tokens/**` (classic) + `src/components/**` deleted.
 - **P4 — new exports + cut the major:** switch to a consistent per-theme export scheme (below), deprecate the old
   flat exports, and release `1.0.0` (semantic-release `BREAKING CHANGE:`). Coordinate novo-elements + novo dep bumps.
 

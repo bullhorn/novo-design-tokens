@@ -1,0 +1,86 @@
+{
+  "size": {
+    "space": {
+      "none": {
+        "$value": "0"
+      },
+      "px": {
+        "$value": "1px"
+      },
+      "xs": {
+        "$value": "0.25rem"
+      },
+      "sm": {
+        "$value": "0.5rem"
+      },
+      "md": {
+        "$value": "1rem"
+      },
+      "lg": {
+        "$value": "1.25rem"
+      },
+      "xl": {
+        "$value": "1.5rem"
+      }
+    },
+    "border": {
+      "width": {
+        "none": {
+          "$value": "0"
+        },
+        "thin": {
+          "$value": "1px"
+        },
+        "thick": {
+          "$value": "2px"
+        },
+        "base": {
+          "$value": "{size.border.width.none}"
+        }
+      },
+      "radius": {
+        "round": {
+          "$value": "0.4rem"
+        },
+        "square": {
+          "$value": "0rem"
+        },
+        "circle": {
+          "$value": 99999
+        },
+        "base": {
+          "$value": "{size.border.radius.round}"
+        }
+      }
+    }
+  },
+  "spacing": {
+    "none": {
+      "$value": "0"
+    },
+    "px": {
+      "$value": "1px"
+    },
+    "xs": {
+      "$value": "0.25rem"
+    },
+    "sm": {
+      "$value": "0.5rem"
+    },
+    "md": {
+      "$value": "1rem"
+    },
+    "lg": {
+      "$value": "1.25rem"
+    },
+    "xl": {
+      "$value": "1.5rem"
+    },
+    "2xl": {
+      "$value": "2rem"
+    },
+    "3xl": {
+      "$value": "3rem"
+    }
+  }
+}

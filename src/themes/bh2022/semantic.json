@@ -1,0 +1,40 @@
+{
+  "background": {
+    "body": {
+      "$value": "{color.white}",
+      "darkValue": "{color.midnight}"
+    },
+    "main": {
+      "$value": "{color.bright}",
+      "darkValue": "{color.darkness}"
+    },
+    "bright": {
+      "$value": "{color.white}",
+      "darkValue": "{color.moonlight}"
+    },
+    "muted": {
+      "$value": "{color.sand}",
+      "darkValue": "{color.neutral}"
+    }
+  },
+  "theme": {
+    "background": {
+      "body": {
+        "$value": "{color.white}",
+        "darkValue": "{color.midnight}"
+      },
+      "main": {
+        "$value": "{color.bright}",
+        "darkValue": "{color.darkness}"
+      },
+      "bright": {
+        "$value": "{color.white}",
+        "darkValue": "{color.moonlight}"
+      },
+      "muted": {
+        "$value": "{color.sand}",
+        "darkValue": "{color.neutral}"
+      }
+    }
+  }
+}

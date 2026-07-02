@@ -3,20 +3,33 @@
  * See TOKENS_MULTITHEME_REFACTOR.md. Adding a theme = one entry here (+ its source).
  *
  * `kind`:
- *   - 'classic-sd' : built via Style Dictionary from the classic `src/tokens/**` JS modules.
- *                    (P3 will migrate this to DTCG tiers under `src/core` + `src/themes/bh2022`.)
- *   - 'figma'      : built from a committed Figma export (resolved at build time).
- *                    (P2 will re-home the resolver as a Style Dictionary custom parser.)
+ *   - 'dtcg'  : built via Style Dictionary from tiered DTCG source (`$value`) under
+ *              `src/core/**` (primitives) + `src/themes/<name>/**` (semantic + components).
+ *   - 'figma' : built from a committed Figma export via the Style Dictionary
+ *              `figma/subatomic` custom parser (resolved + unit-converted at build time).
  *
- * `isBase` : renders at `:root` (no data-theme). Exactly one base today (bh2022).
+ * `isBase` : renders at `:root` (no data-theme) and also emits the scss/js/mjs/json
+ *            consumption artifacts. Exactly one base today (bh2022).
+ *
+ * `sources` (dtcg): ordered source globs. Order is significant — it sets the emitted
+ *            token order (core primitives resolve refs from any set; ordering is cosmetic).
  */
 export const THEMES = [
   {
     name: 'bh2022',
     isBase: true,
-    kind: 'classic-sd',
+    kind: 'dtcg',
     selector: ':root',
     modes: ['light', 'dark'],
+    sources: [
+      'src/themes/bh2022/semantic.json',
+      'src/core/color.json',
+      'src/core/size.json',
+      'src/core/typography.json',
+      'src/core/border.json',
+      'src/core/effect.json',
+      'src/themes/bh2022/components.json',
+    ],
     outputs: { light: 'css/variables.css', dark: 'css/variables-dark.css' },
   },
   {
@@ -30,5 +43,8 @@ export const THEMES = [
   },
 ];
 
-/** Convenience selectors used by the build/consumers. */
+/** The single base theme (renders at :root + emits scss/js/mjs/json). */
+export const BASE_THEME = THEMES.find((t) => t.isBase);
+
+/** Figma-sourced themes (built via the `figma/subatomic` parser). */
 export const FIGMA_THEMES = THEMES.filter((t) => t.kind === 'figma');

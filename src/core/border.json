@@ -1,0 +1,32 @@
+{
+  "borderWidth": {
+    "none": {
+      "$value": "0"
+    },
+    "thin": {
+      "$value": "1px"
+    },
+    "thick": {
+      "$value": "2px"
+    }
+  },
+  "borderRadius": {
+    "round": {
+      "$value": "0.4rem"
+    },
+    "square": {
+      "$value": "0rem"
+    },
+    "circle": {
+      "$value": 99999
+    },
+    "default": {
+      "$value": "{borderRadius.round}"
+    }
+  },
+  "divider": {
+    "insetMargin": {
+      "$value": "80px"
+    }
+  }
+}

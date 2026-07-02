@@ -14,46 +14,55 @@ Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
 ## Architecture
 
 ```
-src/tokens/        → Classic tokens (color, typography, spacing, size, theme) — JS modules, Style Dictionary
-src/tokens/bh2026/ → Modern theme: Figma exports (source of truth) + docs (next-gen tiered model)
-src/components/    → Component-specific tokens (button, tooltip)
-build.mjs          → Style Dictionary v5 config + custom formatters, PLUS buildBh2026() (ESM, async)
+src/core/          → bh2022 primitives (DTCG $value): color, size, typography, border, effect — theme-agnostic
+src/themes/bh2022/ → bh2022 semantic (background, +dark) + components (button, tooltip) — reference core
+src/tokens/bh2026/ → bh2026 (modern): Figma exports (source of truth) + docs (tiered model)
+manifest.mjs       → Theme registry (single source of truth): bh2022 (dtcg base) + bh2026 (figma)
+build.mjs          → Style Dictionary v5 config + custom formatters + `figma/subatomic` parser (ESM, async)
 scss/              → Hand-authored SCSS utilities (mixins, functions) + generated variables
-css/              → Generated CSS custom properties (light + dark + modern)
-lib/              → Generated JS (CJS + ESM) and JSON
+css/               → Generated CSS custom properties (light + dark + bh2026)
+lib/               → Generated JS (CJS + ESM) and JSON
 ```
 
-> ⚠️ The repo currently runs **two token systems** (classic + modern) — a deliberate
-> migration in progress. Read **Theming Architecture & Long-Term Trajectory** below before
-> adding tokens or touching the build.
+> Both themes now build through **Style Dictionary from DTCG source** (`$value`). bh2022 is a
+> tiered DTCG theme (`src/core` + `src/themes/bh2022`); bh2026 is parsed from its Figma export
+> via the `figma/subatomic` parser. See **Theming Architecture** below before adding tokens or
+> touching the build.
 
 ### Build Pipeline
 
-`build.mjs` uses Style Dictionary v5 to read `src/tokens/index.js` and `src/components/index.js`, then outputs to 5 platforms: css, scss, js, mjs, json. PostCSS (autoprefixer) and clean-css run after to produce minified CSS.
+`build.mjs` uses Style Dictionary v5. The **base theme (bh2022)** reads its ordered DTCG sources from
+`manifest.mjs` (`BASE_THEME.sources`) and outputs 5 platforms: css (light + dark), scss, js, mjs, json.
+Each **figma theme** (bh2026) builds via its own `StyleDictionary` instance using the `figma/subatomic`
+parser + `figma/css-vars` format. PostCSS (autoprefixer) and clean-css run after to produce minified CSS.
 
-### Token Source Format
+### Token Source Format (DTCG)
 
-Tokens are JS objects with a `value` property. References use `"{category.token}"` syntax (no `.value` suffix — that was v3 syntax). Dark theme variants use a `darkValue` property alongside `value`.
+Tokens are DTCG (`$value`) JSON. References use `"{path.to.token}"` syntax. `$type` is **intentionally
+omitted** — SD's type-specific transforms normalize values (e.g. `#fff` → `#ffffff`, dimension rounding),
+which would change the frozen output; DTCG values are authored in final CSS form. bh2022's dark mode uses
+a non-standard `darkValue` sibling on the four semantic `background` tokens (SD resolves its reference);
+the `css/dark` format swaps it into `$value`.
 
-```javascript
-// Example token with dark variant
-module.exports = {
-  background: {
-    body: {
-      value: "{color.white}",
-      darkValue: "{color.midnight}",
-    }
+```json
+{
+  "background": {
+    "body": { "$value": "{color.white}", "darkValue": "{color.midnight}" }
   }
-};
+}
 ```
 
-Color tokens use `polished` and `chroma-js` to auto-generate shade, tint, contrast, and pale variants.
+bh2022's derived color scales (`color.shade/tint/contrast/pale/varNames`) are **frozen literals** —
+they were computed once (by `polished`) and baked in; the color-math build deps were removed. To change
+a bh2022 color you edit the literal(s) directly. New color work happens in bh2026 (Figma). See the P3
+notes in `TOKENS_MULTITHEME_REFACTOR.md`.
 
 ### Custom Formatters (build.mjs)
 
-- `javascript/esm` — named exports per token category
-- `javascript/module` — CJS `module.exports`
-- `css/dark` — CSS variables using `darkValue` instead of `value`, delegates to built-in `css/variables` formatter
+- `javascript/esm` — named exports per token category (`minifyDictionary(tokens, true)` for DTCG)
+- `javascript/module` — CJS `module.exports` (DTCG)
+- `css/dark` — CSS variables using `darkValue` instead of `$value`, delegates to built-in `css/variables`
+- `figma/css-vars` — bh2026: emits `--<path>: <value>` under the theme selector (paired with `figma/subatomic` parser)
 
 ### Style Dictionary v5 API Notes
 
@@ -108,10 +117,15 @@ novo (application)
 
 ## Adding Tokens
 
-1. Create/edit a `.js` file in `src/tokens/<category>/` following CTI (Category/Type/Item) structure
-2. Export it from the category's `index.js` (or `src/tokens/index.js` / `src/components/index.js`)
-3. Run `npm run build` and verify output in `css/`, `scss/`, `lib/`
-4. Token references use `"{path.to.token}"` syntax (curly braces, no `.value` suffix)
+**bh2022 (base):**
+1. Edit the DTCG file for the tier: primitives → `src/core/<category>.json`; semantic/components →
+   `src/themes/bh2022/{semantic,components}.json`. Use `$value` (and `"{path.to.token}"` references).
+   Do **not** add `$type` (see Token Source Format — it would change the frozen output).
+2. If it's a new source file, add it to `BASE_THEME.sources` in `manifest.mjs` (order sets emit order).
+3. Run `npm run build` and verify output in `css/`, `scss/`, `lib/`.
+
+**bh2026 (modern):** update the Figma file → re-export `src/tokens/bh2026/subatomic.figma-export.json`
+→ `npm run build` (the `figma/subatomic` parser reads it directly).
 
 ## Release
 
@@ -121,63 +135,56 @@ Release config: `release.config.mjs` (ESM `export default`).
 
 ## Conventions
 
-- Style Dictionary v5 — ESM, async API, `value` property (not `$value` DTCG format)
+- Style Dictionary v5 — ESM, async API, DTCG source (`$value`, `usesDtcg: true`)
 - Token references use `"{path.to.token}"` curly-brace syntax without `.value` suffix
-- Color utilities from `polished` (shade, tint) and `chroma-js` (contrast)
+- `$type` is intentionally omitted (typing triggers value-normalizing transforms — see Token Source Format)
 - No production dependencies — everything is devDependencies; consumers get pre-built outputs
 - Build script and release config are `.mjs` files (project is not `"type": "module"`)
 - No test suite currently exists
 - `sass@1.100` emits `@import` deprecation warnings — non-blocking, but `scss/_index.scss` will eventually need `@use`/`@forward` migration (breaking change for consumers)
 
-## Theming Architecture & Long-Term Trajectory
+## Theming Architecture
 
-**Read this before adding tokens or changing the build.** The repo currently runs **two token
-systems at once — on purpose. This is a migration in progress, not a permanent split.**
+**Read this before adding tokens or changing the build.** As of the P1–P3 refactor, both themes share
+**one source format (DTCG `$value`) and one build engine (Style Dictionary)**, driven by `manifest.mjs`.
+The former two-parallel-systems split is resolved; what remains are two *source shapes* feeding the same
+pipeline.
 
-### The two systems (today)
+### The two themes (today)
 
-1. **Classic (legacy).** Hand-authored JS modules in `src/tokens/**`, built by Style Dictionary,
-   themed via `value` / `darkValue` pairs (light = `:root`, dark = `:root.theme-dark`). The
-   `f/cssvar-theming` runtime layer sits on top: `getColor()`/`getTint*()`/etc. return
-   `var(--color-*)` so colors resolve at **runtime**, with live helpers
-   (`elevate()`/`recede()`/`darkenLive()`, driven by `--bg-fade-multiplier`) for derived states.
-2. **Modern (next-gen).** Sourced from the Figma "subatomic" export
-   (`src/tokens/bh2026/subatomic.figma-export.json`) — a **tiered, semantic, aliased** model
-   (core → Tier 1 → Tier 2 → Tier 3 components). Built by `buildBh2026()` in `build.mjs`
-   (a dedicated resolver, **not** Style Dictionary) into `css/variables-bh2026.css`, scoped to
-   `[data-theme="bh2026"]`.
+1. **bh2022 (base, `:root`).** Tiered DTCG source: primitives in `src/core/**`, semantic + components in
+   `src/themes/bh2022/**` (which reference core). Built by the base `StyleDictionary` instance from
+   `BASE_THEME.sources` into `css/variables.css` + `variables-dark.css` (+ scss/js/mjs/json). Dark mode
+   (four `background` roles) uses a `darkValue` sibling. Its derived color scales
+   (`color.shade/tint/contrast/pale/varNames`) are **frozen literals** (once computed by `polished`, now
+   baked in — the color-math deps were removed since bh2022 is the stable legacy theme).
+2. **bh2026 (modern, `[data-theme="bh2026"]`).** Sourced from the Figma "subatomic" export
+   (`src/tokens/bh2026/subatomic.figma-export.json`) — a tiered/semantic/aliased model. Built through SD
+   via the `figma/subatomic` custom parser (one `new StyleDictionary(...)` per figma theme, looped from
+   `manifest.mjs`) into `css/variables-bh2026.css`.
 
-**Why modern bypasses Style Dictionary:** its aliases use a flat namespace where tier-1
-`color.border` (a leaf) and tier-2 `color.border.*` (a group) coexist — they collide in SD's
-single nested tree. The custom resolver handles that. Deliberate; documented in `build.mjs`.
+The `f/cssvar-theming` runtime layer sits on top of both: `getColor()`/`getTint*()`/etc. return
+`var(--color-*)` so colors resolve at **runtime**, with live helpers (`elevate()`/`recede()`/`darkenLive()`,
+driven by `--bg-fade-multiplier`). This layer is unchanged by the refactor — it reads the same `--color-*`
+var names either theme emits.
 
-### The target (the trajectory — don't lose this)
+**Why bh2026 needs a custom parser:** its aliases use a flat namespace where tier-1 `color.border` (a leaf)
+and tier-2 `color.border.*` (a group) coexist — they collide in SD's single nested tree. The
+`figma/subatomic` parser de-collides + resolves + unit-converts the export in-memory at build time, handing
+SD a clean, reference-free token set. **Figma forward-generation is preserved:** the raw export stays the
+committed source of truth; re-export → `npm run build`.
 
-The Figma-sourced **tiered/semantic/aliased model is the intended end-state architecture.**
-Classic is what migrates *onto* it. Direction of travel:
+### Adding a future theme (bh2030)
 
-- **Converge on the modern model.** Light and dark become **themes/modes** expressed in the same
-  tiered, Figma-sourced system, selected via `[data-theme="…"]` — not bespoke `value`/`darkValue`
-  pairs.
-- **Retire the `value`/`darkValue` + hand-authored-JS path** once light/dark are migrated, so the
-  repo ends with **one source format, one build path, one theming model.**
-- **Tokens flow primitives → semantic → component (Tier 3)**, consumed by novo-elements through
-  the semantic CSS-var contract; the live color helpers remain the runtime mechanism.
-- **Unify the build** — either fold modern into SD (pre-resolve the flat-alias collision) or grow
-  `buildBh2026()` into the single path. Avoid a permanent two-build setup.
+`bh2030` is a Figma-sourced theme: drop `src/tokens/bh2030/subatomic.figma-export.json`, add a `figma`
+entry to `manifest.mjs` — no new build code (the parser + loop handle it). A hand-authored theme would
+follow the bh2022 shape (DTCG tiers under `src/core` shared + `src/themes/bh2030/**`). See
+`TOKENS_MULTITHEME_REFACTOR.md` for the full multi-theme plan (remaining: P4 — per-theme export scheme +
+`1.0.0` major) and `src/tokens/bh2026/NAMING_ALIGNMENT.md` for the bh2026 var mapping.
 
-Until then we are **mid-migration, intentionally.** The risk to avoid is *calcification* — two
-parallel systems becoming permanent. New work should move us toward convergence, not entrench the split.
+### Which theme do I add to? (contributor guidance)
 
-### Which system do I add to? (contributor guidance)
-
-- **Modern theme values** → update the Figma file and re-export
-  `src/tokens/bh2026/subatomic.figma-export.json` (the build reads it directly). Component-level →
-  `components.figma-export.json` (not yet wired into the build).
-- **Classic light/dark changes** → the existing `src/tokens/**` JS modules (`value`/`darkValue`).
-- **Don't invent a third pattern.** If a change could go either way, prefer the modern model and
-  note it — classic is being migrated onto modern.
-
-See `MODERN_THEME_PLAN.md`, `MODERN_DESIGN_IMPLEMENTATION.md`, `MODERN_NAMING_REVIEW.md`, and
-`src/tokens/bh2026/NAMING_ALIGNMENT.md` for detail. (`THEMING_PLAN.md` is the original
-runtime-theming plan that this trajectory builds on.)
+- **bh2026 values** → update Figma → re-export `src/tokens/bh2026/subatomic.figma-export.json`.
+  Component-level → `components.figma-export.json` (not yet wired into the build).
+- **bh2022 changes** → the DTCG files in `src/core/**` / `src/themes/bh2022/**` (`$value`, no `$type`).
+- **Don't invent a third pattern** or re-introduce `$type` on bh2022 (it changes the frozen output).
