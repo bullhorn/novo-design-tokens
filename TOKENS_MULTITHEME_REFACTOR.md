@@ -51,9 +51,9 @@ src/
       semantic.dark.json    # dark-mode overlay (or a DTCG mode)
       components.json        # Tier 3 (button/card/... → semantic)
     bh2026/
-      semantic.json         # ingested from the Figma Tier-2 export
-      components.json        # ingested from components.figma-export.json
-    <bh2030>/ ...
+      subatomic.figma-export.json     # Figma source of truth (parsed in-memory; NOT hand-edited)
+      components.figma-export.json    # Figma Tier-3 source of truth
+    <bh2030>/ ...                     # Figma-sourced themes keep their raw export here
   manifest.mjs              # [{ name, isBase, selector, modes, sets:[...] }]  ← single source of truth
 scss/                      # unchanged consumption layer (getColor, mixins, live math)
 build/ (or css/, lib/)     # generated (gitignored)
@@ -84,10 +84,18 @@ export const THEMES = [
 
 ## 4. Resolving the two things that forced the bolt-on
 1. **The flat-alias collision** (why `buildBh2026` bypassed SD: tier-1 `color.border` leaf vs tier-2
-   `color.border.*` group collide in SD's single tree). Fix at **ingest**: normalize the Figma export into
-   clean tiers with non-colliding namespaces — primitives under `color.palette.*` / `color.core.*`, semantic
-   under `color.<role>.*`. Then standard SD reference resolution works; the custom resolver is retired.
-   (An `ingest` script converts a raw Figma export → the `themes/<name>/*.json` DTCG files.)
+   `color.border.*` group collide in SD's single tree). Fix with a **Style Dictionary custom parser /
+   preprocessor** that normalizes the Figma export **in-memory at build time** — de-colliding namespaces
+   (primitives under `color.palette.*` / `color.core.*`, semantic under `color.<role>.*`) and rewriting the
+   aliases accordingly. This is exactly what `buildBh2026()` does today, re-homed as a standard SD extension;
+   the standalone resolver is retired but the capability is not.
+
+   > 🔑 **Figma forward-generation is preserved.** The raw Figma export
+   > (`subatomic.figma-export.json` + `components.figma-export.json`) stays the **committed source of truth**;
+   > the parser reads it directly. The workflow is unchanged — **re-export from Figma → drop the JSON →
+   > `npm run build`.** No manual "ingest" step, no hand-edited intermediate, nothing lossy. The parser is
+   > reusable, so any future Figma-sourced theme (`bh2030`) gets the same drop-in regeneration for free.
+   > (Hand-authored themes like `bh2022` simply don't use the parser — they're DTCG source directly.)
 2. **Classic's `value`/`darkValue`** → becomes a **theme with light/dark modes** (`themes/bh2022/semantic.json`
    + `semantic.dark.json`), built by the same loop. `:root`/`:root.theme-dark` selectors preserved.
 
@@ -96,8 +104,10 @@ export const THEMES = [
 ## 5. Migration (phased → one major release `1.0.0`)
 - **P1 — scaffolding (non-breaking):** add `src/core/`, `src/themes/`, `manifest.mjs`, and the SD multi-theme
   loop *alongside* today's build; keep emitting the current filenames so nothing downstream breaks yet.
-- **P2 — ingest bh2026:** convert the Figma export → `themes/bh2026/{semantic,components}.json` (DTCG, de-collided);
-  build bh2026 through the loop; delete `buildBh2026()`. Verify `css/bh2026.css` is byte-equivalent (377 tokens, 0 unresolved).
+- **P2 — bh2026 via the SD parser:** move the flat-alias/de-collide logic from `buildBh2026()` into a reusable
+  SD custom parser that reads the committed Figma export directly (no intermediate file); build bh2026 through
+  the loop; delete the standalone `buildBh2026()`. Verify `css/bh2026.css` is byte-equivalent (377 tokens, 0
+  unresolved) and that re-exporting from Figma + rebuild still works end-to-end.
 - **P3 — migrate classic → bh2022:** extract primitives to `core/`; move semantic/component into `themes/bh2022/`
   (`darkValue` → `semantic.dark.json`); build via the loop. Verify `variables.css`/`-dark.css` unchanged.
 - **P4 — new exports + cut the major:** switch to a consistent per-theme export scheme (below), deprecate the old
@@ -124,8 +134,9 @@ No new build code, no bespoke resolver, no format decision — it's additive.
 ## 8. Decisions
 
 **Resolved:**
-1. **Build engine → Style Dictionary (unified).** Retire the custom `buildBh2026()` resolver; everything
-   builds through SD's multi-theme loop. Requires de-colliding the Figma tiers at **ingest** (§4.1).
+1. **Build engine → Style Dictionary (unified).** Retire the standalone `buildBh2026()` resolver; everything
+   builds through SD's multi-theme loop, with the Figma de-collide re-homed as a reusable **SD custom parser**
+   (§4.1). **Figma forward-generation is preserved** (drop a fresh export → rebuild).
 2. **Classic → full DTCG migration.** Convert the classic JS modules to DTCG (`$value`/`$type`) in the
    `core/` + `themes/bh2022/` structure. One source format everywhere.
 3. **Base model → `bh2022` is the implicit `:root` base** (Phase A); other themes are `[data-theme]`
