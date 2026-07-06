@@ -41,12 +41,11 @@
   "scripts": {
     "start": "npm run build",
     "build": "node build.mjs",
-    "postbuild": "npm run postcss && npm run minifycss",
+    "postbuild": "npm run minifycss",
     "prepare": "npm run build",
     "clean": "rm -rf css lib",
-    "prepublishOnly": "npm run build && npm run minifycss",
+    "prepublishOnly": "npm run build",
     "test": "node --test",
-    "postcss": "postcss ./css/*.css --use autoprefixer -d css/ --no-map",
     "minifycss": "foreach -g \"css/**/*.css\" -i \"css/**/*.min.css\" -t 10 -x \"npx cleancss -o #{dir}/#{name}.min.css #{path}\""
   },
   "devDependencies": {
@@ -55,21 +54,9 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "autoprefixer": "^10.5.2",
     "clean-css-cli": "^5.6.3",
     "foreach-cli": "1.8.1",
-    "handlebars": "^4.7.9",
-    "loggy": "^1.0.8",
-    "mini-svg-data-uri": "^1.4.4",
-    "postcss": "^8.5.16",
-    "postcss-cli": "^11.0.1",
-    "sass": "^1.101.0",
     "semantic-release": "^25.0.5",
     "style-dictionary": "^5.5.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 4 versions",
-    "not dead"
-  ]
+  }
 }
