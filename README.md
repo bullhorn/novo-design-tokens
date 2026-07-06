@@ -56,9 +56,12 @@ import "novo-design-tokens/css/bh2022-dark";  // optional dark overrides
 import "novo-design-tokens/css/bh2026";       // modern ([data-theme="bh2026"])
 ```
 
-> Deprecated aliases `css/variables`, `css/variables-dark`, `css/variables-bh2026` still resolve but
-> will be removed in a future major — use the `css/<theme>` paths above. Extension-suffixed imports
-> (`css/variables.css`) do not resolve.
+> In **Sass**, use the extensionless path (as above) so the variables are inlined; a `.css` suffix
+> makes Sass emit a passthrough `@import` instead. In **JS/bundlers** either form works — the manifest
+> (`lib/manifest.json`) advertises the `.css` paths.
+>
+> Deprecated aliases `css/variables`, `css/variables-dark`, `css/variables-bh2026` (each + `.min`) still
+> resolve but will be removed in a future major — migrate to the `css/<theme>` paths above.
 
 #### SCSS
 

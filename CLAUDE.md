@@ -77,7 +77,6 @@ Then `npm run build` and verify `css/`, `scss/`, `lib/`.
 ## Package exports
 
 Per-theme scheme `./css/<theme>`; each theme is `css/<name>.css` (+ `.min`, + `-dark` where it has a dark mode).
-Adding a theme is additive (covered by the `./css/*` wildcard + `./manifest`).
 
 | Import path | Resolves to |
 |---|---|
@@ -87,12 +86,18 @@ Adding a theme is additive (covered by the `./css/*` wildcard + `./manifest`).
 | `novo-design-tokens/css/bh2022` (+ `-dark`, + `.min`) | bh2022 CSS — `:root` |
 | `novo-design-tokens/css/bh2026` (+ `.min`) | bh2026 CSS — `[data-theme="bh2026"]` |
 
-Deprecated aliases still resolve but will be removed in a future major: `css/variables` → `bh2022`,
-`css/variables-dark` → `bh2022-dark`, `css/variables-bh2026` → `bh2026`. Extension-suffixed imports
-(`css/variables.css`) do not resolve — use the extensionless subpaths.
+Two access forms, for two consumer types:
+- **Explicit extensionless entries** (`css/bh2022`, …) — for **Sass `@import`/`@use`**, which *inlines* the
+  vars. A `.css` suffix would make Sass emit a passthrough `@import` instead, so Sass consumers must use
+  the extensionless path. Adding a theme needs a new entry here.
+- **`./css/*` wildcard** — serves extension-ful imports (`css/bh2022.css`) for JS/bundlers and the paths the
+  `./manifest` advertises. Additive for new themes on this axis (drop the `.css` file, no export edit).
 
 Consumers import the CSS/SCSS/JS above; **novo-elements** maps these tokens to its own semantic vars
 (`--background-main`, `--text-muted`, …) in its theme layer — that mapping lives in novo-elements, not here.
+
+> Deprecated `css/variables*` aliases (`variables`, `variables-dark`, `variables-bh2026`, each + `.min`)
+> still resolve but will be removed in a future major — use the `css/<theme>` paths.
 
 ## Testing & release
 
