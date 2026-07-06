@@ -56,58 +56,23 @@ import "novo-design-tokens/css/bh2022-dark";  // optional dark overrides
 import "novo-design-tokens/css/bh2026";       // modern ([data-theme="bh2026"])
 ```
 
-> Deprecated: `css/variables`, `css/variables-dark`, `css/variables-bh2026` still resolve (aliases to
-> the new files) but will be removed in a future major — migrate to the `css/<theme>` paths above.
-> Direct `.css`-extension imports (e.g. `css/variables.css`) no longer resolve; use the extensionless
-> subpaths shown here.
+> Deprecated aliases `css/variables`, `css/variables-dark`, `css/variables-bh2026` still resolve but
+> will be removed in a future major — use the `css/<theme>` paths above. Extension-suffixed imports
+> (`css/variables.css`) do not resolve.
 
 #### SCSS
 
-The design tokens are also shipped with utility mixins to make it easier to apply design tokens to
-your components.
+Ships with utility mixins and functions for applying tokens in components:
 
 ```scss
 @use "novo-design-tokens/scss";
 
-.mything {
-  margin-right: 0.8rem;
-}
-
 .box {
-  @include background-color(gray);
-  @include color(gray, "contrast");
-  @include padding("md");
-
-  // padding: 0.6rem;
-  padding-top: $spacing-md;
-  color: rgba($candidate, 0.3);
-  @include margin("xs");
-  @include background-color(blue, "dark");
+  @include padding("md");                 // spacing scale
+  @include background-color(blue, "dark"); // color + variant
+  @include font("lg");                     // type scale
   border: 2px solid getColor(gray, "light");
-
-  &:hover {
-    color: darken($candidate, 0.13333);
-  }
-}
-
-.text {
-  color: $candidate;
-  @include color(blue); // base
-  &.xs {
-    @include font("xs");
-  }
-  &.sm {
-    @include font("sm");
-  }
-  &.md {
-    @include font("md");
-  }
-  &.lg {
-    @include font("lg");
-  }
-  &.xl {
-    @include font("xl");
-  }
+  color: rgba($candidate, 0.3);            // entity color as a var
 }
 ```
 
