@@ -10,7 +10,7 @@ npm start          # Build all token outputs (alias for `npm run build`: build.m
 npm test           # Build + regression suite (snapshots + invariants)
 ```
 
-Requires **Node.js >= 22.0.0** (Style Dictionary v5 requirement).
+Requires **Node.js >= 22.14.0** (semantic-release 25 floor; Style Dictionary v5 needs >= 22).
 
 ## Architecture
 
