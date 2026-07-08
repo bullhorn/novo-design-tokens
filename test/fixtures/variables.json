@@ -1,19 +1,6 @@
 {
-  "background": {
-    "body": "#fff",
-    "main": "#f7f7f7",
-    "bright": "#fff",
-    "muted": "#f4f4f4"
-  },
-  "theme": {
-    "background": {
-      "body": "#fff",
-      "main": "#f7f7f7",
-      "bright": "#fff",
-      "muted": "#f4f4f4"
-    }
-  },
   "color": {
+    "border-default": "#dbdbdb",
     "black": "#000",
     "white": "#fff",
     "gray": "#9e9e9e",
@@ -823,6 +810,20 @@
       "person": "var(--color-person)"
     }
   },
+  "background": {
+    "body": "#fff",
+    "main": "#f7f7f7",
+    "bright": "#fff",
+    "muted": "#f4f4f4"
+  },
+  "theme": {
+    "background": {
+      "body": "#fff",
+      "main": "#f7f7f7",
+      "bright": "#fff",
+      "muted": "#f4f4f4"
+    }
+  },
   "size": {
     "space": {
       "none": "0",
@@ -917,6 +918,12 @@
     "thick": "2px"
   },
   "borderRadius": {
+    "xxsm": "0.1rem",
+    "xsm": "0.2rem",
+    "sm": "0.3rem",
+    "md": "0.4rem",
+    "lg": "0.6rem",
+    "xl": "0.8rem",
     "round": "0.4rem",
     "square": "0rem",
     "circle": 99999,

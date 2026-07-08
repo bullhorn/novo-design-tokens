@@ -3,14 +3,7 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-$background-body: #fff !default;
-$background-main: #f7f7f7 !default;
-$background-bright: #fff !default;
-$background-muted: #f4f4f4 !default;
-$theme-background-body: #fff !default;
-$theme-background-main: #f7f7f7 !default;
-$theme-background-bright: #fff !default;
-$theme-background-muted: #f4f4f4 !default;
+$color-border-default: #dbdbdb !default;
 $color-black: #000 !default;
 $color-white: #fff !default;
 $color-gray: #9e9e9e !default;
@@ -801,6 +794,14 @@ $color-var-names-corporate-user: var(--color-corporate-user) !default;
 $color-var-names-distribution-list: var(--color-distribution-list) !default;
 $color-var-names-credential: var(--color-credential) !default;
 $color-var-names-person: var(--color-person) !default;
+$background-body: #fff !default;
+$background-main: #f7f7f7 !default;
+$background-bright: #fff !default;
+$background-muted: #f4f4f4 !default;
+$theme-background-body: #fff !default;
+$theme-background-main: #f7f7f7 !default;
+$theme-background-bright: #fff !default;
+$theme-background-muted: #f4f4f4 !default;
 $size-space-none: 0 !default;
 $size-space-px: 1px !default;
 $size-space-xs: 0.25rem !default;
@@ -866,6 +867,12 @@ $font-color-link: #4a89dc !default;
 $border-width-none: 0 !default;
 $border-width-thin: 1px !default;
 $border-width-thick: 2px !default;
+$border-radius-xxsm: 0.1rem !default;
+$border-radius-xsm: 0.2rem !default;
+$border-radius-sm: 0.3rem !default;
+$border-radius-md: 0.4rem !default;
+$border-radius-lg: 0.6rem !default;
+$border-radius-xl: 0.8rem !default;
 $border-radius-round: 0.4rem !default;
 $border-radius-square: 0rem !default;
 $border-radius-circle: 99999 !default;
@@ -895,21 +902,8 @@ $tooltip-border-radius: 0.4rem !default;
 $tooltip-background-color: var(--color-tint-black) !default;
 
 $tokens: (
-  'background': (
-    'body': $background-body,
-    'main': $background-main,
-    'bright': $background-bright,
-    'muted': $background-muted
-  ),
-  'theme': (
-    'background': (
-      'body': $theme-background-body,
-      'main': $theme-background-main,
-      'bright': $theme-background-bright,
-      'muted': $theme-background-muted
-    )
-  ),
   'color': (
+    'border-default': $color-border-default,
     'black': $color-black,
     'white': $color-white,
     'gray': $color-gray,
@@ -1719,6 +1713,20 @@ $tokens: (
       'person': $color-var-names-person
     )
   ),
+  'background': (
+    'body': $background-body,
+    'main': $background-main,
+    'bright': $background-bright,
+    'muted': $background-muted
+  ),
+  'theme': (
+    'background': (
+      'body': $theme-background-body,
+      'main': $theme-background-main,
+      'bright': $theme-background-bright,
+      'muted': $theme-background-muted
+    )
+  ),
   'size': (
     'space': (
       'none': $size-space-none,
@@ -1813,6 +1821,12 @@ $tokens: (
     'thick': $border-width-thick
   ),
   'borderRadius': (
+    'xxsm': $border-radius-xxsm,
+    'xsm': $border-radius-xsm,
+    'sm': $border-radius-sm,
+    'md': $border-radius-md,
+    'lg': $border-radius-lg,
+    'xl': $border-radius-xl,
     'round': $border-radius-round,
     'square': $border-radius-square,
     'circle': $border-radius-circle,

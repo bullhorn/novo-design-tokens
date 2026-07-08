@@ -1,4 +1,9 @@
 {
+  "color": {
+    "border-default": {
+      "$value": "{color.border}"
+    }
+  },
   "background": {
     "body": {
       "$value": "{color.white}",
