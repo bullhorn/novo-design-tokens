@@ -232,7 +232,6 @@ $textWeightTokens: map-get($tokens, "textWeight");
     $alphaBlock: '/ #{$alpha}';
   }
   @return hsl(from var(#{$cvar}) h s calc(l - #{$rawAmount})#{$alphaBlock});
-  //@return hwb(from var(#{$cvar}) h calc(w - #{rawAmount / 2}) calc(b + #{$rawAmount}));
 }
 
 @function brightenLive($cvar, $amount: 15, $alpha: 1) {
@@ -242,7 +241,6 @@ $textWeightTokens: map-get($tokens, "textWeight");
     $alphaBlock: '/ #{$alpha}';
   }
   @return hsl(from var(#{$cvar}) h s calc(l + #{$rawAmount})#{$alphaBlock});
-  //@return hwb(from var(#{$cvar}) h calc(w + #{$rawAmount / 2}) calc(b - #{$rawAmount}));
 }
 
 @function saturateLive($cvar, $amount: 15, $alpha: 1) {
