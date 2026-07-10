@@ -1,0 +1,2392 @@
+{
+  "color": {
+    "black": {
+      "$value": "#000"
+    },
+    "white": {
+      "$value": "#fff"
+    },
+    "gray": {
+      "$value": "#9e9e9e"
+    },
+    "grey": {
+      "$value": "#9e9e9e"
+    },
+    "offWhite": {
+      "$value": "#f7f7f7"
+    },
+    "bright": {
+      "$value": "#f7f7f7"
+    },
+    "light": {
+      "$value": "#dbdbdb"
+    },
+    "neutral": {
+      "$value": "#4f5361"
+    },
+    "dark": {
+      "$value": "#3d464d"
+    },
+    "orange": {
+      "$value": "#ff6900"
+    },
+    "navigation": {
+      "$value": "#202945"
+    },
+    "skyBlue": {
+      "$value": "#009bdf"
+    },
+    "steel": {
+      "$value": "#5b6770"
+    },
+    "metal": {
+      "$value": "#637893"
+    },
+    "sand": {
+      "$value": "#f4f4f4"
+    },
+    "silver": {
+      "$value": "#e2e2e2"
+    },
+    "stone": {
+      "$value": "#bebebe"
+    },
+    "ash": {
+      "$value": "#a0a0a0"
+    },
+    "anonymous": {
+      "$value": "#696d79"
+    },
+    "slate": {
+      "$value": "#707070"
+    },
+    "onyx": {
+      "$value": "#526980"
+    },
+    "charcoal": {
+      "$value": "#282828"
+    },
+    "moonlight": {
+      "$value": "#1a242f"
+    },
+    "midnight": {
+      "$value": "#202945"
+    },
+    "darkness": {
+      "$value": "#161f27"
+    },
+    "navy": {
+      "$value": "#0d2d42"
+    },
+    "aqua": {
+      "$value": "#3bafda"
+    },
+    "ocean": {
+      "$value": "#4a89dc"
+    },
+    "mint": {
+      "$value": "#37bc9b"
+    },
+    "grass": {
+      "$value": "#8cc152"
+    },
+    "sunflower": {
+      "$value": "#f6b042"
+    },
+    "bittersweet": {
+      "$value": "#eb6845"
+    },
+    "grapefruit": {
+      "$value": "#da4453"
+    },
+    "carnation": {
+      "$value": "#d770ad"
+    },
+    "lavender": {
+      "$value": "#967adc"
+    },
+    "mountain": {
+      "$value": "#9678b6"
+    },
+    "info": {
+      "$value": "#4a89dc"
+    },
+    "positive": {
+      "$value": "#4a89dc"
+    },
+    "success": {
+      "$value": "#8cc152"
+    },
+    "negative": {
+      "$value": "#da4453"
+    },
+    "danger": {
+      "$value": "#da4453"
+    },
+    "error": {
+      "$value": "#da4453"
+    },
+    "warning": {
+      "$value": "#f6b042"
+    },
+    "empty": {
+      "$value": "#cccdcc"
+    },
+    "disabled": {
+      "$value": "#bebebe"
+    },
+    "background": {
+      "$value": "#f7f7f7"
+    },
+    "backgroundDark": {
+      "$value": "#e2e2e2"
+    },
+    "border": {
+      "$value": "#dbdbdb"
+    },
+    "border2": {
+      "$value": "#f7f7f7"
+    },
+    "text": {
+      "$value": "#282828"
+    },
+    "presentation": {
+      "$value": "#5b6770"
+    },
+    "bullhorn": {
+      "$value": "#ff6900"
+    },
+    "pulse": {
+      "$value": "#3bafda"
+    },
+    "fastFind": {
+      "$value": "#0d2d42"
+    },
+    "toast": {
+      "$value": "#0d2d42"
+    },
+    "company": {
+      "$value": "#3399dd"
+    },
+    "candidate": {
+      "$value": "#44bb77"
+    },
+    "lead": {
+      "$value": "#aa6699"
+    },
+    "contact": {
+      "$value": "#ffaa44"
+    },
+    "clientcontact": {
+      "$value": "#ffaa44"
+    },
+    "opportunity": {
+      "$value": "#662255"
+    },
+    "job": {
+      "$value": "#bb5566"
+    },
+    "joborder": {
+      "$value": "#bb5566"
+    },
+    "submission": {
+      "$value": "#a9adbb"
+    },
+    "sendout": {
+      "$value": "#747884"
+    },
+    "placement": {
+      "$value": "#0b344f"
+    },
+    "note": {
+      "$value": "#747884"
+    },
+    "contract": {
+      "$value": "#454ea0"
+    },
+    "task": {
+      "$value": "#4f5361"
+    },
+    "jobCode": {
+      "$value": "#696d79"
+    },
+    "earnCode": {
+      "$value": "#696d79"
+    },
+    "invoiceStatement": {
+      "$value": "#696d79"
+    },
+    "billableCharge": {
+      "$value": "#696d79"
+    },
+    "payableCharge": {
+      "$value": "#696d79"
+    },
+    "user": {
+      "$value": "#696d79"
+    },
+    "corporateUser": {
+      "$value": "#696d79"
+    },
+    "distributionList": {
+      "$value": "#696d79"
+    },
+    "credential": {
+      "$value": "#696d79"
+    },
+    "person": {
+      "$value": "#696d79"
+    },
+    "shade": {
+      "black": {
+        "$value": "#000"
+      },
+      "white": {
+        "$value": "#ccc"
+      },
+      "gray": {
+        "$value": "#7e7e7e"
+      },
+      "grey": {
+        "$value": "#7e7e7e"
+      },
+      "offWhite": {
+        "$value": "#c5c5c5"
+      },
+      "bright": {
+        "$value": "#c5c5c5"
+      },
+      "light": {
+        "$value": "#afafaf"
+      },
+      "neutral": {
+        "$value": "#3f424d"
+      },
+      "dark": {
+        "$value": "#30383d"
+      },
+      "orange": {
+        "$value": "#cc5400"
+      },
+      "navigation": {
+        "$value": "#192037"
+      },
+      "skyBlue": {
+        "$value": "#007cb2"
+      },
+      "steel": {
+        "$value": "#485259"
+      },
+      "metal": {
+        "$value": "#4f6075"
+      },
+      "sand": {
+        "$value": "#c3c3c3"
+      },
+      "silver": {
+        "$value": "#b4b4b4"
+      },
+      "stone": {
+        "$value": "#989898"
+      },
+      "ash": {
+        "$value": "#808080"
+      },
+      "anonymous": {
+        "$value": "#545760"
+      },
+      "slate": {
+        "$value": "#595959"
+      },
+      "onyx": {
+        "$value": "#415466"
+      },
+      "charcoal": {
+        "$value": "#202020"
+      },
+      "moonlight": {
+        "$value": "#141c25"
+      },
+      "midnight": {
+        "$value": "#192037"
+      },
+      "darkness": {
+        "$value": "#11181f"
+      },
+      "navy": {
+        "$value": "#0a2434"
+      },
+      "aqua": {
+        "$value": "#2f8cae"
+      },
+      "ocean": {
+        "$value": "#3b6db0"
+      },
+      "mint": {
+        "$value": "#2c967c"
+      },
+      "grass": {
+        "$value": "#709a41"
+      },
+      "sunflower": {
+        "$value": "#c48c34"
+      },
+      "bittersweet": {
+        "$value": "#bc5337"
+      },
+      "grapefruit": {
+        "$value": "#ae3642"
+      },
+      "carnation": {
+        "$value": "#ac598a"
+      },
+      "lavender": {
+        "$value": "#7861b0"
+      },
+      "mountain": {
+        "$value": "#786091"
+      },
+      "info": {
+        "$value": "#3b6db0"
+      },
+      "positive": {
+        "$value": "#3b6db0"
+      },
+      "success": {
+        "$value": "#709a41"
+      },
+      "negative": {
+        "$value": "#ae3642"
+      },
+      "danger": {
+        "$value": "#ae3642"
+      },
+      "error": {
+        "$value": "#ae3642"
+      },
+      "warning": {
+        "$value": "#c48c34"
+      },
+      "empty": {
+        "$value": "#a3a4a3"
+      },
+      "disabled": {
+        "$value": "#989898"
+      },
+      "background": {
+        "$value": "#c5c5c5"
+      },
+      "backgroundDark": {
+        "$value": "#b4b4b4"
+      },
+      "border": {
+        "$value": "#afafaf"
+      },
+      "border2": {
+        "$value": "#c5c5c5"
+      },
+      "text": {
+        "$value": "#202020"
+      },
+      "presentation": {
+        "$value": "#485259"
+      },
+      "bullhorn": {
+        "$value": "#cc5400"
+      },
+      "pulse": {
+        "$value": "#2f8cae"
+      },
+      "fastFind": {
+        "$value": "#0a2434"
+      },
+      "toast": {
+        "$value": "#0a2434"
+      },
+      "company": {
+        "$value": "#287ab0"
+      },
+      "candidate": {
+        "$value": "#36955f"
+      },
+      "lead": {
+        "$value": "#88517a"
+      },
+      "contact": {
+        "$value": "#cc8836"
+      },
+      "clientcontact": {
+        "$value": "#cc8836"
+      },
+      "opportunity": {
+        "$value": "#511b44"
+      },
+      "job": {
+        "$value": "#954451"
+      },
+      "joborder": {
+        "$value": "#954451"
+      },
+      "submission": {
+        "$value": "#878a95"
+      },
+      "sendout": {
+        "$value": "#5c6069"
+      },
+      "placement": {
+        "$value": "#08293f"
+      },
+      "note": {
+        "$value": "#5c6069"
+      },
+      "contract": {
+        "$value": "#373e80"
+      },
+      "task": {
+        "$value": "#3f424d"
+      },
+      "jobCode": {
+        "$value": "#545760"
+      },
+      "earnCode": {
+        "$value": "#545760"
+      },
+      "invoiceStatement": {
+        "$value": "#545760"
+      },
+      "billableCharge": {
+        "$value": "#545760"
+      },
+      "payableCharge": {
+        "$value": "#545760"
+      },
+      "user": {
+        "$value": "#545760"
+      },
+      "corporateUser": {
+        "$value": "#545760"
+      },
+      "distributionList": {
+        "$value": "#545760"
+      },
+      "credential": {
+        "$value": "#545760"
+      },
+      "person": {
+        "$value": "#545760"
+      }
+    },
+    "tint": {
+      "black": {
+        "$value": "#333"
+      },
+      "white": {
+        "$value": "#fff"
+      },
+      "gray": {
+        "$value": "#b1b1b1"
+      },
+      "grey": {
+        "$value": "#b1b1b1"
+      },
+      "offWhite": {
+        "$value": "#f8f8f8"
+      },
+      "bright": {
+        "$value": "#f8f8f8"
+      },
+      "light": {
+        "$value": "#e2e2e2"
+      },
+      "neutral": {
+        "$value": "#727580"
+      },
+      "dark": {
+        "$value": "#636b70"
+      },
+      "orange": {
+        "$value": "#ff8733"
+      },
+      "navigation": {
+        "$value": "#4c536a"
+      },
+      "skyBlue": {
+        "$value": "#33afe5"
+      },
+      "steel": {
+        "$value": "#7b858c"
+      },
+      "metal": {
+        "$value": "#8293a8"
+      },
+      "sand": {
+        "$value": "#f6f6f6"
+      },
+      "silver": {
+        "$value": "#e7e7e7"
+      },
+      "stone": {
+        "$value": "#cbcbcb"
+      },
+      "ash": {
+        "$value": "#b3b3b3"
+      },
+      "anonymous": {
+        "$value": "#878a93"
+      },
+      "slate": {
+        "$value": "#8c8c8c"
+      },
+      "onyx": {
+        "$value": "#748799"
+      },
+      "charcoal": {
+        "$value": "#535353"
+      },
+      "moonlight": {
+        "$value": "#474f58"
+      },
+      "midnight": {
+        "$value": "#4c536a"
+      },
+      "darkness": {
+        "$value": "#444b52"
+      },
+      "navy": {
+        "$value": "#3d5767"
+      },
+      "aqua": {
+        "$value": "#62bfe1"
+      },
+      "ocean": {
+        "$value": "#6ea0e3"
+      },
+      "mint": {
+        "$value": "#5fc9af"
+      },
+      "grass": {
+        "$value": "#a3cd74"
+      },
+      "sunflower": {
+        "$value": "#f7bf67"
+      },
+      "bittersweet": {
+        "$value": "#ef866a"
+      },
+      "grapefruit": {
+        "$value": "#e16975"
+      },
+      "carnation": {
+        "$value": "#df8cbd"
+      },
+      "lavender": {
+        "$value": "#ab94e3"
+      },
+      "mountain": {
+        "$value": "#ab93c4"
+      },
+      "info": {
+        "$value": "#6ea0e3"
+      },
+      "positive": {
+        "$value": "#6ea0e3"
+      },
+      "success": {
+        "$value": "#a3cd74"
+      },
+      "negative": {
+        "$value": "#e16975"
+      },
+      "danger": {
+        "$value": "#e16975"
+      },
+      "error": {
+        "$value": "#e16975"
+      },
+      "warning": {
+        "$value": "#f7bf67"
+      },
+      "empty": {
+        "$value": "#d6d7d6"
+      },
+      "disabled": {
+        "$value": "#cbcbcb"
+      },
+      "background": {
+        "$value": "#f8f8f8"
+      },
+      "backgroundDark": {
+        "$value": "#e7e7e7"
+      },
+      "border": {
+        "$value": "#e2e2e2"
+      },
+      "border2": {
+        "$value": "#f8f8f8"
+      },
+      "text": {
+        "$value": "#535353"
+      },
+      "presentation": {
+        "$value": "#7b858c"
+      },
+      "bullhorn": {
+        "$value": "#ff8733"
+      },
+      "pulse": {
+        "$value": "#62bfe1"
+      },
+      "fastFind": {
+        "$value": "#3d5767"
+      },
+      "toast": {
+        "$value": "#3d5767"
+      },
+      "company": {
+        "$value": "#5bade3"
+      },
+      "candidate": {
+        "$value": "#69c892"
+      },
+      "lead": {
+        "$value": "#bb84ad"
+      },
+      "contact": {
+        "$value": "#ffbb69"
+      },
+      "clientcontact": {
+        "$value": "#ffbb69"
+      },
+      "opportunity": {
+        "$value": "#844e77"
+      },
+      "job": {
+        "$value": "#c87784"
+      },
+      "joborder": {
+        "$value": "#c87784"
+      },
+      "submission": {
+        "$value": "#babdc8"
+      },
+      "sendout": {
+        "$value": "#8f939c"
+      },
+      "placement": {
+        "$value": "#3b5c72"
+      },
+      "note": {
+        "$value": "#8f939c"
+      },
+      "contract": {
+        "$value": "#6a71b3"
+      },
+      "task": {
+        "$value": "#727580"
+      },
+      "jobCode": {
+        "$value": "#878a93"
+      },
+      "earnCode": {
+        "$value": "#878a93"
+      },
+      "invoiceStatement": {
+        "$value": "#878a93"
+      },
+      "billableCharge": {
+        "$value": "#878a93"
+      },
+      "payableCharge": {
+        "$value": "#878a93"
+      },
+      "user": {
+        "$value": "#878a93"
+      },
+      "corporateUser": {
+        "$value": "#878a93"
+      },
+      "distributionList": {
+        "$value": "#878a93"
+      },
+      "credential": {
+        "$value": "#878a93"
+      },
+      "person": {
+        "$value": "#878a93"
+      }
+    },
+    "contrast": {
+      "black": {
+        "$value": "#fff"
+      },
+      "white": {
+        "$value": "#3d464d"
+      },
+      "gray": {
+        "$value": "#3d464d"
+      },
+      "grey": {
+        "$value": "#3d464d"
+      },
+      "offWhite": {
+        "$value": "#3d464d"
+      },
+      "bright": {
+        "$value": "#3d464d"
+      },
+      "light": {
+        "$value": "#3d464d"
+      },
+      "neutral": {
+        "$value": "#fff"
+      },
+      "dark": {
+        "$value": "#fff"
+      },
+      "orange": {
+        "$value": "#3d464d"
+      },
+      "navigation": {
+        "$value": "#fff"
+      },
+      "skyBlue": {
+        "$value": "#fff"
+      },
+      "steel": {
+        "$value": "#fff"
+      },
+      "metal": {
+        "$value": "#fff"
+      },
+      "sand": {
+        "$value": "#3d464d"
+      },
+      "silver": {
+        "$value": "#3d464d"
+      },
+      "stone": {
+        "$value": "#3d464d"
+      },
+      "ash": {
+        "$value": "#3d464d"
+      },
+      "anonymous": {
+        "$value": "#fff"
+      },
+      "slate": {
+        "$value": "#fff"
+      },
+      "onyx": {
+        "$value": "#fff"
+      },
+      "charcoal": {
+        "$value": "#fff"
+      },
+      "moonlight": {
+        "$value": "#fff"
+      },
+      "midnight": {
+        "$value": "#fff"
+      },
+      "darkness": {
+        "$value": "#fff"
+      },
+      "navy": {
+        "$value": "#fff"
+      },
+      "aqua": {
+        "$value": "#3d464d"
+      },
+      "ocean": {
+        "$value": "#fff"
+      },
+      "mint": {
+        "$value": "#3d464d"
+      },
+      "grass": {
+        "$value": "#fff"
+      },
+      "sunflower": {
+        "$value": "#fff"
+      },
+      "bittersweet": {
+        "$value": "#fff"
+      },
+      "grapefruit": {
+        "$value": "#fff"
+      },
+      "carnation": {
+        "$value": "#fff"
+      },
+      "lavender": {
+        "$value": "#fff"
+      },
+      "mountain": {
+        "$value": "#fff"
+      },
+      "info": {
+        "$value": "#fff"
+      },
+      "positive": {
+        "$value": "#fff"
+      },
+      "success": {
+        "$value": "#fff"
+      },
+      "negative": {
+        "$value": "#fff"
+      },
+      "danger": {
+        "$value": "#fff"
+      },
+      "error": {
+        "$value": "#fff"
+      },
+      "warning": {
+        "$value": "#fff"
+      },
+      "empty": {
+        "$value": "#3d464d"
+      },
+      "disabled": {
+        "$value": "#3d464d"
+      },
+      "background": {
+        "$value": "#3d464d"
+      },
+      "backgroundDark": {
+        "$value": "#3d464d"
+      },
+      "border": {
+        "$value": "#3d464d"
+      },
+      "border2": {
+        "$value": "#3d464d"
+      },
+      "text": {
+        "$value": "#fff"
+      },
+      "presentation": {
+        "$value": "#fff"
+      },
+      "bullhorn": {
+        "$value": "#3d464d"
+      },
+      "pulse": {
+        "$value": "#3d464d"
+      },
+      "fastFind": {
+        "$value": "#fff"
+      },
+      "toast": {
+        "$value": "#fff"
+      },
+      "company": {
+        "$value": "#fff"
+      },
+      "candidate": {
+        "$value": "#fff"
+      },
+      "lead": {
+        "$value": "#fff"
+      },
+      "contact": {
+        "$value": "#fff"
+      },
+      "clientcontact": {
+        "$value": "#fff"
+      },
+      "opportunity": {
+        "$value": "#fff"
+      },
+      "job": {
+        "$value": "#fff"
+      },
+      "joborder": {
+        "$value": "#fff"
+      },
+      "submission": {
+        "$value": "#3d464d"
+      },
+      "sendout": {
+        "$value": "#fff"
+      },
+      "placement": {
+        "$value": "#fff"
+      },
+      "note": {
+        "$value": "#fff"
+      },
+      "contract": {
+        "$value": "#fff"
+      },
+      "task": {
+        "$value": "#fff"
+      },
+      "jobCode": {
+        "$value": "#fff"
+      },
+      "earnCode": {
+        "$value": "#fff"
+      },
+      "invoiceStatement": {
+        "$value": "#fff"
+      },
+      "billableCharge": {
+        "$value": "#fff"
+      },
+      "payableCharge": {
+        "$value": "#fff"
+      },
+      "user": {
+        "$value": "#fff"
+      },
+      "corporateUser": {
+        "$value": "#fff"
+      },
+      "distributionList": {
+        "$value": "#fff"
+      },
+      "credential": {
+        "$value": "#fff"
+      },
+      "person": {
+        "$value": "#fff"
+      }
+    },
+    "pale": {
+      "black": {
+        "$value": "#e6e6e6"
+      },
+      "white": {
+        "$value": "#e6e6e6"
+      },
+      "gray": {
+        "$value": "#e6e6e6"
+      },
+      "grey": {
+        "$value": "#e6e6e6"
+      },
+      "offWhite": {
+        "$value": "#e6e6e6"
+      },
+      "bright": {
+        "$value": "#e6e6e6"
+      },
+      "light": {
+        "$value": "#e6e6e6"
+      },
+      "neutral": {
+        "$value": "#e3e4e8"
+      },
+      "dark": {
+        "$value": "#e3e6e8"
+      },
+      "orange": {
+        "$value": "#ffe1cc"
+      },
+      "navigation": {
+        "$value": "#dce1ef"
+      },
+      "skyBlue": {
+        "$value": "#ccefff"
+      },
+      "steel": {
+        "$value": "#e3e6e8"
+      },
+      "metal": {
+        "$value": "#e1e5ea"
+      },
+      "sand": {
+        "$value": "#e6e6e6"
+      },
+      "silver": {
+        "$value": "#e6e6e6"
+      },
+      "stone": {
+        "$value": "#e6e6e6"
+      },
+      "ash": {
+        "$value": "#e6e6e6"
+      },
+      "anonymous": {
+        "$value": "#e4e5e7"
+      },
+      "slate": {
+        "$value": "#e6e6e6"
+      },
+      "onyx": {
+        "$value": "#e0e6eb"
+      },
+      "charcoal": {
+        "$value": "#e6e6e6"
+      },
+      "moonlight": {
+        "$value": "#dee5ed"
+      },
+      "midnight": {
+        "$value": "#dce1ef"
+      },
+      "darkness": {
+        "$value": "#dee6ed"
+      },
+      "navy": {
+        "$value": "#d4e9f7"
+      },
+      "aqua": {
+        "$value": "#d4edf7"
+      },
+      "ocean": {
+        "$value": "#d4e3f7"
+      },
+      "mint": {
+        "$value": "#d8f3ed"
+      },
+      "grass": {
+        "$value": "#e6f2d9"
+      },
+      "sunflower": {
+        "$value": "#fdebce"
+      },
+      "bittersweet": {
+        "$value": "#fadad1"
+      },
+      "grapefruit": {
+        "$value": "#f7d4d8"
+      },
+      "carnation": {
+        "$value": "#f4d7e8"
+      },
+      "lavender": {
+        "$value": "#dfd7f4"
+      },
+      "mountain": {
+        "$value": "#e5deed"
+      },
+      "info": {
+        "$value": "#d4e3f7"
+      },
+      "positive": {
+        "$value": "#d4e3f7"
+      },
+      "success": {
+        "$value": "#e6f2d9"
+      },
+      "negative": {
+        "$value": "#f7d4d8"
+      },
+      "danger": {
+        "$value": "#f7d4d8"
+      },
+      "error": {
+        "$value": "#f7d4d8"
+      },
+      "warning": {
+        "$value": "#fdebce"
+      },
+      "empty": {
+        "$value": "#e5e6e5"
+      },
+      "disabled": {
+        "$value": "#e6e6e6"
+      },
+      "background": {
+        "$value": "#e6e6e6"
+      },
+      "backgroundDark": {
+        "$value": "#e6e6e6"
+      },
+      "border": {
+        "$value": "#e6e6e6"
+      },
+      "border2": {
+        "$value": "#e6e6e6"
+      },
+      "text": {
+        "$value": "#e6e6e6"
+      },
+      "presentation": {
+        "$value": "#e3e6e8"
+      },
+      "bullhorn": {
+        "$value": "#ffe1cc"
+      },
+      "pulse": {
+        "$value": "#d4edf7"
+      },
+      "fastFind": {
+        "$value": "#d4e9f7"
+      },
+      "toast": {
+        "$value": "#d4e9f7"
+      },
+      "company": {
+        "$value": "#d3e9f8"
+      },
+      "candidate": {
+        "$value": "#daf1e4"
+      },
+      "lead": {
+        "$value": "#eddee9"
+      },
+      "contact": {
+        "$value": "#ffe8cc"
+      },
+      "clientcontact": {
+        "$value": "#ffe8cc"
+      },
+      "opportunity": {
+        "$value": "#f2d9ec"
+      },
+      "job": {
+        "$value": "#f0dbde"
+      },
+      "joborder": {
+        "$value": "#f0dbde"
+      },
+      "submission": {
+        "$value": "#e3e4e8"
+      },
+      "sendout": {
+        "$value": "#e4e5e7"
+      },
+      "placement": {
+        "$value": "#d2e9f9"
+      },
+      "note": {
+        "$value": "#e4e5e7"
+      },
+      "contract": {
+        "$value": "#dbddf0"
+      },
+      "task": {
+        "$value": "#e3e4e8"
+      },
+      "jobCode": {
+        "$value": "#e4e5e7"
+      },
+      "earnCode": {
+        "$value": "#e4e5e7"
+      },
+      "invoiceStatement": {
+        "$value": "#e4e5e7"
+      },
+      "billableCharge": {
+        "$value": "#e4e5e7"
+      },
+      "payableCharge": {
+        "$value": "#e4e5e7"
+      },
+      "user": {
+        "$value": "#e4e5e7"
+      },
+      "corporateUser": {
+        "$value": "#e4e5e7"
+      },
+      "distributionList": {
+        "$value": "#e4e5e7"
+      },
+      "credential": {
+        "$value": "#e4e5e7"
+      },
+      "person": {
+        "$value": "#e4e5e7"
+      }
+    },
+    "varNames": {
+      "shade": {
+        "black": {
+          "$value": "var(--color-shade-black)"
+        },
+        "white": {
+          "$value": "var(--color-shade-white)"
+        },
+        "gray": {
+          "$value": "var(--color-shade-gray)"
+        },
+        "grey": {
+          "$value": "var(--color-shade-grey)"
+        },
+        "offWhite": {
+          "$value": "var(--color-shade-off-white)"
+        },
+        "bright": {
+          "$value": "var(--color-shade-bright)"
+        },
+        "light": {
+          "$value": "var(--color-shade-light)"
+        },
+        "neutral": {
+          "$value": "var(--color-shade-neutral)"
+        },
+        "dark": {
+          "$value": "var(--color-shade-dark)"
+        },
+        "orange": {
+          "$value": "var(--color-shade-orange)"
+        },
+        "navigation": {
+          "$value": "var(--color-shade-navigation)"
+        },
+        "skyBlue": {
+          "$value": "var(--color-shade-sky-blue)"
+        },
+        "steel": {
+          "$value": "var(--color-shade-steel)"
+        },
+        "metal": {
+          "$value": "var(--color-shade-metal)"
+        },
+        "sand": {
+          "$value": "var(--color-shade-sand)"
+        },
+        "silver": {
+          "$value": "var(--color-shade-silver)"
+        },
+        "stone": {
+          "$value": "var(--color-shade-stone)"
+        },
+        "ash": {
+          "$value": "var(--color-shade-ash)"
+        },
+        "anonymous": {
+          "$value": "var(--color-shade-anonymous)"
+        },
+        "slate": {
+          "$value": "var(--color-shade-slate)"
+        },
+        "onyx": {
+          "$value": "var(--color-shade-onyx)"
+        },
+        "charcoal": {
+          "$value": "var(--color-shade-charcoal)"
+        },
+        "moonlight": {
+          "$value": "var(--color-shade-moonlight)"
+        },
+        "midnight": {
+          "$value": "var(--color-shade-midnight)"
+        },
+        "darkness": {
+          "$value": "var(--color-shade-darkness)"
+        },
+        "navy": {
+          "$value": "var(--color-shade-navy)"
+        },
+        "aqua": {
+          "$value": "var(--color-shade-aqua)"
+        },
+        "ocean": {
+          "$value": "var(--color-shade-ocean)"
+        },
+        "mint": {
+          "$value": "var(--color-shade-mint)"
+        },
+        "grass": {
+          "$value": "var(--color-shade-grass)"
+        },
+        "sunflower": {
+          "$value": "var(--color-shade-sunflower)"
+        },
+        "bittersweet": {
+          "$value": "var(--color-shade-bittersweet)"
+        },
+        "grapefruit": {
+          "$value": "var(--color-shade-grapefruit)"
+        },
+        "carnation": {
+          "$value": "var(--color-shade-carnation)"
+        },
+        "lavender": {
+          "$value": "var(--color-shade-lavender)"
+        },
+        "mountain": {
+          "$value": "var(--color-shade-mountain)"
+        },
+        "info": {
+          "$value": "var(--color-shade-info)"
+        },
+        "positive": {
+          "$value": "var(--color-shade-positive)"
+        },
+        "success": {
+          "$value": "var(--color-shade-success)"
+        },
+        "negative": {
+          "$value": "var(--color-shade-negative)"
+        },
+        "danger": {
+          "$value": "var(--color-shade-danger)"
+        },
+        "error": {
+          "$value": "var(--color-shade-error)"
+        },
+        "warning": {
+          "$value": "var(--color-shade-warning)"
+        },
+        "empty": {
+          "$value": "var(--color-shade-empty)"
+        },
+        "disabled": {
+          "$value": "var(--color-shade-disabled)"
+        },
+        "background": {
+          "$value": "var(--color-shade-background)"
+        },
+        "backgroundDark": {
+          "$value": "var(--color-shade-background-dark)"
+        },
+        "border": {
+          "$value": "var(--color-shade-border)"
+        },
+        "border2": {
+          "$value": "var(--color-shade-border2)"
+        },
+        "text": {
+          "$value": "var(--color-shade-text)"
+        },
+        "presentation": {
+          "$value": "var(--color-shade-presentation)"
+        },
+        "bullhorn": {
+          "$value": "var(--color-shade-bullhorn)"
+        },
+        "pulse": {
+          "$value": "var(--color-shade-pulse)"
+        },
+        "fastFind": {
+          "$value": "var(--color-shade-fast-find)"
+        },
+        "toast": {
+          "$value": "var(--color-shade-toast)"
+        },
+        "company": {
+          "$value": "var(--color-shade-company)"
+        },
+        "candidate": {
+          "$value": "var(--color-shade-candidate)"
+        },
+        "lead": {
+          "$value": "var(--color-shade-lead)"
+        },
+        "contact": {
+          "$value": "var(--color-shade-contact)"
+        },
+        "clientcontact": {
+          "$value": "var(--color-shade-clientcontact)"
+        },
+        "opportunity": {
+          "$value": "var(--color-shade-opportunity)"
+        },
+        "job": {
+          "$value": "var(--color-shade-job)"
+        },
+        "joborder": {
+          "$value": "var(--color-shade-joborder)"
+        },
+        "submission": {
+          "$value": "var(--color-shade-submission)"
+        },
+        "sendout": {
+          "$value": "var(--color-shade-sendout)"
+        },
+        "placement": {
+          "$value": "var(--color-shade-placement)"
+        },
+        "note": {
+          "$value": "var(--color-shade-note)"
+        },
+        "contract": {
+          "$value": "var(--color-shade-contract)"
+        },
+        "task": {
+          "$value": "var(--color-shade-task)"
+        },
+        "jobCode": {
+          "$value": "var(--color-shade-job-code)"
+        },
+        "earnCode": {
+          "$value": "var(--color-shade-earn-code)"
+        },
+        "invoiceStatement": {
+          "$value": "var(--color-shade-invoice-statement)"
+        },
+        "billableCharge": {
+          "$value": "var(--color-shade-billable-charge)"
+        },
+        "payableCharge": {
+          "$value": "var(--color-shade-payable-charge)"
+        },
+        "user": {
+          "$value": "var(--color-shade-user)"
+        },
+        "corporateUser": {
+          "$value": "var(--color-shade-corporate-user)"
+        },
+        "distributionList": {
+          "$value": "var(--color-shade-distribution-list)"
+        },
+        "credential": {
+          "$value": "var(--color-shade-credential)"
+        },
+        "person": {
+          "$value": "var(--color-shade-person)"
+        }
+      },
+      "tint": {
+        "black": {
+          "$value": "var(--color-tint-black)"
+        },
+        "white": {
+          "$value": "var(--color-tint-white)"
+        },
+        "gray": {
+          "$value": "var(--color-tint-gray)"
+        },
+        "grey": {
+          "$value": "var(--color-tint-grey)"
+        },
+        "offWhite": {
+          "$value": "var(--color-tint-off-white)"
+        },
+        "bright": {
+          "$value": "var(--color-tint-bright)"
+        },
+        "light": {
+          "$value": "var(--color-tint-light)"
+        },
+        "neutral": {
+          "$value": "var(--color-tint-neutral)"
+        },
+        "dark": {
+          "$value": "var(--color-tint-dark)"
+        },
+        "orange": {
+          "$value": "var(--color-tint-orange)"
+        },
+        "navigation": {
+          "$value": "var(--color-tint-navigation)"
+        },
+        "skyBlue": {
+          "$value": "var(--color-tint-sky-blue)"
+        },
+        "steel": {
+          "$value": "var(--color-tint-steel)"
+        },
+        "metal": {
+          "$value": "var(--color-tint-metal)"
+        },
+        "sand": {
+          "$value": "var(--color-tint-sand)"
+        },
+        "silver": {
+          "$value": "var(--color-tint-silver)"
+        },
+        "stone": {
+          "$value": "var(--color-tint-stone)"
+        },
+        "ash": {
+          "$value": "var(--color-tint-ash)"
+        },
+        "anonymous": {
+          "$value": "var(--color-tint-anonymous)"
+        },
+        "slate": {
+          "$value": "var(--color-tint-slate)"
+        },
+        "onyx": {
+          "$value": "var(--color-tint-onyx)"
+        },
+        "charcoal": {
+          "$value": "var(--color-tint-charcoal)"
+        },
+        "moonlight": {
+          "$value": "var(--color-tint-moonlight)"
+        },
+        "midnight": {
+          "$value": "var(--color-tint-midnight)"
+        },
+        "darkness": {
+          "$value": "var(--color-tint-darkness)"
+        },
+        "navy": {
+          "$value": "var(--color-tint-navy)"
+        },
+        "aqua": {
+          "$value": "var(--color-tint-aqua)"
+        },
+        "ocean": {
+          "$value": "var(--color-tint-ocean)"
+        },
+        "mint": {
+          "$value": "var(--color-tint-mint)"
+        },
+        "grass": {
+          "$value": "var(--color-tint-grass)"
+        },
+        "sunflower": {
+          "$value": "var(--color-tint-sunflower)"
+        },
+        "bittersweet": {
+          "$value": "var(--color-tint-bittersweet)"
+        },
+        "grapefruit": {
+          "$value": "var(--color-tint-grapefruit)"
+        },
+        "carnation": {
+          "$value": "var(--color-tint-carnation)"
+        },
+        "lavender": {
+          "$value": "var(--color-tint-lavender)"
+        },
+        "mountain": {
+          "$value": "var(--color-tint-mountain)"
+        },
+        "info": {
+          "$value": "var(--color-tint-info)"
+        },
+        "positive": {
+          "$value": "var(--color-tint-positive)"
+        },
+        "success": {
+          "$value": "var(--color-tint-success)"
+        },
+        "negative": {
+          "$value": "var(--color-tint-negative)"
+        },
+        "danger": {
+          "$value": "var(--color-tint-danger)"
+        },
+        "error": {
+          "$value": "var(--color-tint-error)"
+        },
+        "warning": {
+          "$value": "var(--color-tint-warning)"
+        },
+        "empty": {
+          "$value": "var(--color-tint-empty)"
+        },
+        "disabled": {
+          "$value": "var(--color-tint-disabled)"
+        },
+        "background": {
+          "$value": "var(--color-tint-background)"
+        },
+        "backgroundDark": {
+          "$value": "var(--color-tint-background-dark)"
+        },
+        "border": {
+          "$value": "var(--color-tint-border)"
+        },
+        "border2": {
+          "$value": "var(--color-tint-border2)"
+        },
+        "text": {
+          "$value": "var(--color-tint-text)"
+        },
+        "presentation": {
+          "$value": "var(--color-tint-presentation)"
+        },
+        "bullhorn": {
+          "$value": "var(--color-tint-bullhorn)"
+        },
+        "pulse": {
+          "$value": "var(--color-tint-pulse)"
+        },
+        "fastFind": {
+          "$value": "var(--color-tint-fast-find)"
+        },
+        "toast": {
+          "$value": "var(--color-tint-toast)"
+        },
+        "company": {
+          "$value": "var(--color-tint-company)"
+        },
+        "candidate": {
+          "$value": "var(--color-tint-candidate)"
+        },
+        "lead": {
+          "$value": "var(--color-tint-lead)"
+        },
+        "contact": {
+          "$value": "var(--color-tint-contact)"
+        },
+        "clientcontact": {
+          "$value": "var(--color-tint-clientcontact)"
+        },
+        "opportunity": {
+          "$value": "var(--color-tint-opportunity)"
+        },
+        "job": {
+          "$value": "var(--color-tint-job)"
+        },
+        "joborder": {
+          "$value": "var(--color-tint-joborder)"
+        },
+        "submission": {
+          "$value": "var(--color-tint-submission)"
+        },
+        "sendout": {
+          "$value": "var(--color-tint-sendout)"
+        },
+        "placement": {
+          "$value": "var(--color-tint-placement)"
+        },
+        "note": {
+          "$value": "var(--color-tint-note)"
+        },
+        "contract": {
+          "$value": "var(--color-tint-contract)"
+        },
+        "task": {
+          "$value": "var(--color-tint-task)"
+        },
+        "jobCode": {
+          "$value": "var(--color-tint-job-code)"
+        },
+        "earnCode": {
+          "$value": "var(--color-tint-earn-code)"
+        },
+        "invoiceStatement": {
+          "$value": "var(--color-tint-invoice-statement)"
+        },
+        "billableCharge": {
+          "$value": "var(--color-tint-billable-charge)"
+        },
+        "payableCharge": {
+          "$value": "var(--color-tint-payable-charge)"
+        },
+        "user": {
+          "$value": "var(--color-tint-user)"
+        },
+        "corporateUser": {
+          "$value": "var(--color-tint-corporate-user)"
+        },
+        "distributionList": {
+          "$value": "var(--color-tint-distribution-list)"
+        },
+        "credential": {
+          "$value": "var(--color-tint-credential)"
+        },
+        "person": {
+          "$value": "var(--color-tint-person)"
+        }
+      },
+      "contrast": {
+        "black": {
+          "$value": "var(--color-contrast-black)"
+        },
+        "white": {
+          "$value": "var(--color-contrast-white)"
+        },
+        "gray": {
+          "$value": "var(--color-contrast-gray)"
+        },
+        "grey": {
+          "$value": "var(--color-contrast-grey)"
+        },
+        "offWhite": {
+          "$value": "var(--color-contrast-off-white)"
+        },
+        "bright": {
+          "$value": "var(--color-contrast-bright)"
+        },
+        "light": {
+          "$value": "var(--color-contrast-light)"
+        },
+        "neutral": {
+          "$value": "var(--color-contrast-neutral)"
+        },
+        "dark": {
+          "$value": "var(--color-contrast-dark)"
+        },
+        "orange": {
+          "$value": "var(--color-contrast-orange)"
+        },
+        "navigation": {
+          "$value": "var(--color-contrast-navigation)"
+        },
+        "skyBlue": {
+          "$value": "var(--color-contrast-sky-blue)"
+        },
+        "steel": {
+          "$value": "var(--color-contrast-steel)"
+        },
+        "metal": {
+          "$value": "var(--color-contrast-metal)"
+        },
+        "sand": {
+          "$value": "var(--color-contrast-sand)"
+        },
+        "silver": {
+          "$value": "var(--color-contrast-silver)"
+        },
+        "stone": {
+          "$value": "var(--color-contrast-stone)"
+        },
+        "ash": {
+          "$value": "var(--color-contrast-ash)"
+        },
+        "anonymous": {
+          "$value": "var(--color-contrast-anonymous)"
+        },
+        "slate": {
+          "$value": "var(--color-contrast-slate)"
+        },
+        "onyx": {
+          "$value": "var(--color-contrast-onyx)"
+        },
+        "charcoal": {
+          "$value": "var(--color-contrast-charcoal)"
+        },
+        "moonlight": {
+          "$value": "var(--color-contrast-moonlight)"
+        },
+        "midnight": {
+          "$value": "var(--color-contrast-midnight)"
+        },
+        "darkness": {
+          "$value": "var(--color-contrast-darkness)"
+        },
+        "navy": {
+          "$value": "var(--color-contrast-navy)"
+        },
+        "aqua": {
+          "$value": "var(--color-contrast-aqua)"
+        },
+        "ocean": {
+          "$value": "var(--color-contrast-ocean)"
+        },
+        "mint": {
+          "$value": "var(--color-contrast-mint)"
+        },
+        "grass": {
+          "$value": "var(--color-contrast-grass)"
+        },
+        "sunflower": {
+          "$value": "var(--color-contrast-sunflower)"
+        },
+        "bittersweet": {
+          "$value": "var(--color-contrast-bittersweet)"
+        },
+        "grapefruit": {
+          "$value": "var(--color-contrast-grapefruit)"
+        },
+        "carnation": {
+          "$value": "var(--color-contrast-carnation)"
+        },
+        "lavender": {
+          "$value": "var(--color-contrast-lavender)"
+        },
+        "mountain": {
+          "$value": "var(--color-contrast-mountain)"
+        },
+        "info": {
+          "$value": "var(--color-contrast-info)"
+        },
+        "positive": {
+          "$value": "var(--color-contrast-positive)"
+        },
+        "success": {
+          "$value": "var(--color-contrast-success)"
+        },
+        "negative": {
+          "$value": "var(--color-contrast-negative)"
+        },
+        "danger": {
+          "$value": "var(--color-contrast-danger)"
+        },
+        "error": {
+          "$value": "var(--color-contrast-error)"
+        },
+        "warning": {
+          "$value": "var(--color-contrast-warning)"
+        },
+        "empty": {
+          "$value": "var(--color-contrast-empty)"
+        },
+        "disabled": {
+          "$value": "var(--color-contrast-disabled)"
+        },
+        "background": {
+          "$value": "var(--color-contrast-background)"
+        },
+        "backgroundDark": {
+          "$value": "var(--color-contrast-background-dark)"
+        },
+        "border": {
+          "$value": "var(--color-contrast-border)"
+        },
+        "border2": {
+          "$value": "var(--color-contrast-border2)"
+        },
+        "text": {
+          "$value": "var(--color-contrast-text)"
+        },
+        "presentation": {
+          "$value": "var(--color-contrast-presentation)"
+        },
+        "bullhorn": {
+          "$value": "var(--color-contrast-bullhorn)"
+        },
+        "pulse": {
+          "$value": "var(--color-contrast-pulse)"
+        },
+        "fastFind": {
+          "$value": "var(--color-contrast-fast-find)"
+        },
+        "toast": {
+          "$value": "var(--color-contrast-toast)"
+        },
+        "company": {
+          "$value": "var(--color-contrast-company)"
+        },
+        "candidate": {
+          "$value": "var(--color-contrast-candidate)"
+        },
+        "lead": {
+          "$value": "var(--color-contrast-lead)"
+        },
+        "contact": {
+          "$value": "var(--color-contrast-contact)"
+        },
+        "clientcontact": {
+          "$value": "var(--color-contrast-clientcontact)"
+        },
+        "opportunity": {
+          "$value": "var(--color-contrast-opportunity)"
+        },
+        "job": {
+          "$value": "var(--color-contrast-job)"
+        },
+        "joborder": {
+          "$value": "var(--color-contrast-joborder)"
+        },
+        "submission": {
+          "$value": "var(--color-contrast-submission)"
+        },
+        "sendout": {
+          "$value": "var(--color-contrast-sendout)"
+        },
+        "placement": {
+          "$value": "var(--color-contrast-placement)"
+        },
+        "note": {
+          "$value": "var(--color-contrast-note)"
+        },
+        "contract": {
+          "$value": "var(--color-contrast-contract)"
+        },
+        "task": {
+          "$value": "var(--color-contrast-task)"
+        },
+        "jobCode": {
+          "$value": "var(--color-contrast-job-code)"
+        },
+        "earnCode": {
+          "$value": "var(--color-contrast-earn-code)"
+        },
+        "invoiceStatement": {
+          "$value": "var(--color-contrast-invoice-statement)"
+        },
+        "billableCharge": {
+          "$value": "var(--color-contrast-billable-charge)"
+        },
+        "payableCharge": {
+          "$value": "var(--color-contrast-payable-charge)"
+        },
+        "user": {
+          "$value": "var(--color-contrast-user)"
+        },
+        "corporateUser": {
+          "$value": "var(--color-contrast-corporate-user)"
+        },
+        "distributionList": {
+          "$value": "var(--color-contrast-distribution-list)"
+        },
+        "credential": {
+          "$value": "var(--color-contrast-credential)"
+        },
+        "person": {
+          "$value": "var(--color-contrast-person)"
+        }
+      },
+      "pale": {
+        "black": {
+          "$value": "var(--color-pale-black)"
+        },
+        "white": {
+          "$value": "var(--color-pale-white)"
+        },
+        "gray": {
+          "$value": "var(--color-pale-gray)"
+        },
+        "grey": {
+          "$value": "var(--color-pale-grey)"
+        },
+        "offWhite": {
+          "$value": "var(--color-pale-off-white)"
+        },
+        "bright": {
+          "$value": "var(--color-pale-bright)"
+        },
+        "light": {
+          "$value": "var(--color-pale-light)"
+        },
+        "neutral": {
+          "$value": "var(--color-pale-neutral)"
+        },
+        "dark": {
+          "$value": "var(--color-pale-dark)"
+        },
+        "orange": {
+          "$value": "var(--color-pale-orange)"
+        },
+        "navigation": {
+          "$value": "var(--color-pale-navigation)"
+        },
+        "skyBlue": {
+          "$value": "var(--color-pale-sky-blue)"
+        },
+        "steel": {
+          "$value": "var(--color-pale-steel)"
+        },
+        "metal": {
+          "$value": "var(--color-pale-metal)"
+        },
+        "sand": {
+          "$value": "var(--color-pale-sand)"
+        },
+        "silver": {
+          "$value": "var(--color-pale-silver)"
+        },
+        "stone": {
+          "$value": "var(--color-pale-stone)"
+        },
+        "ash": {
+          "$value": "var(--color-pale-ash)"
+        },
+        "anonymous": {
+          "$value": "var(--color-pale-anonymous)"
+        },
+        "slate": {
+          "$value": "var(--color-pale-slate)"
+        },
+        "onyx": {
+          "$value": "var(--color-pale-onyx)"
+        },
+        "charcoal": {
+          "$value": "var(--color-pale-charcoal)"
+        },
+        "moonlight": {
+          "$value": "var(--color-pale-moonlight)"
+        },
+        "midnight": {
+          "$value": "var(--color-pale-midnight)"
+        },
+        "darkness": {
+          "$value": "var(--color-pale-darkness)"
+        },
+        "navy": {
+          "$value": "var(--color-pale-navy)"
+        },
+        "aqua": {
+          "$value": "var(--color-pale-aqua)"
+        },
+        "ocean": {
+          "$value": "var(--color-pale-ocean)"
+        },
+        "mint": {
+          "$value": "var(--color-pale-mint)"
+        },
+        "grass": {
+          "$value": "var(--color-pale-grass)"
+        },
+        "sunflower": {
+          "$value": "var(--color-pale-sunflower)"
+        },
+        "bittersweet": {
+          "$value": "var(--color-pale-bittersweet)"
+        },
+        "grapefruit": {
+          "$value": "var(--color-pale-grapefruit)"
+        },
+        "carnation": {
+          "$value": "var(--color-pale-carnation)"
+        },
+        "lavender": {
+          "$value": "var(--color-pale-lavender)"
+        },
+        "mountain": {
+          "$value": "var(--color-pale-mountain)"
+        },
+        "info": {
+          "$value": "var(--color-pale-info)"
+        },
+        "positive": {
+          "$value": "var(--color-pale-positive)"
+        },
+        "success": {
+          "$value": "var(--color-pale-success)"
+        },
+        "negative": {
+          "$value": "var(--color-pale-negative)"
+        },
+        "danger": {
+          "$value": "var(--color-pale-danger)"
+        },
+        "error": {
+          "$value": "var(--color-pale-error)"
+        },
+        "warning": {
+          "$value": "var(--color-pale-warning)"
+        },
+        "empty": {
+          "$value": "var(--color-pale-empty)"
+        },
+        "disabled": {
+          "$value": "var(--color-pale-disabled)"
+        },
+        "background": {
+          "$value": "var(--color-pale-background)"
+        },
+        "backgroundDark": {
+          "$value": "var(--color-pale-background-dark)"
+        },
+        "border": {
+          "$value": "var(--color-pale-border)"
+        },
+        "border2": {
+          "$value": "var(--color-pale-border2)"
+        },
+        "text": {
+          "$value": "var(--color-pale-text)"
+        },
+        "presentation": {
+          "$value": "var(--color-pale-presentation)"
+        },
+        "bullhorn": {
+          "$value": "var(--color-pale-bullhorn)"
+        },
+        "pulse": {
+          "$value": "var(--color-pale-pulse)"
+        },
+        "fastFind": {
+          "$value": "var(--color-pale-fast-find)"
+        },
+        "toast": {
+          "$value": "var(--color-pale-toast)"
+        },
+        "company": {
+          "$value": "var(--color-pale-company)"
+        },
+        "candidate": {
+          "$value": "var(--color-pale-candidate)"
+        },
+        "lead": {
+          "$value": "var(--color-pale-lead)"
+        },
+        "contact": {
+          "$value": "var(--color-pale-contact)"
+        },
+        "clientcontact": {
+          "$value": "var(--color-pale-clientcontact)"
+        },
+        "opportunity": {
+          "$value": "var(--color-pale-opportunity)"
+        },
+        "job": {
+          "$value": "var(--color-pale-job)"
+        },
+        "joborder": {
+          "$value": "var(--color-pale-joborder)"
+        },
+        "submission": {
+          "$value": "var(--color-pale-submission)"
+        },
+        "sendout": {
+          "$value": "var(--color-pale-sendout)"
+        },
+        "placement": {
+          "$value": "var(--color-pale-placement)"
+        },
+        "note": {
+          "$value": "var(--color-pale-note)"
+        },
+        "contract": {
+          "$value": "var(--color-pale-contract)"
+        },
+        "task": {
+          "$value": "var(--color-pale-task)"
+        },
+        "jobCode": {
+          "$value": "var(--color-pale-job-code)"
+        },
+        "earnCode": {
+          "$value": "var(--color-pale-earn-code)"
+        },
+        "invoiceStatement": {
+          "$value": "var(--color-pale-invoice-statement)"
+        },
+        "billableCharge": {
+          "$value": "var(--color-pale-billable-charge)"
+        },
+        "payableCharge": {
+          "$value": "var(--color-pale-payable-charge)"
+        },
+        "user": {
+          "$value": "var(--color-pale-user)"
+        },
+        "corporateUser": {
+          "$value": "var(--color-pale-corporate-user)"
+        },
+        "distributionList": {
+          "$value": "var(--color-pale-distribution-list)"
+        },
+        "credential": {
+          "$value": "var(--color-pale-credential)"
+        },
+        "person": {
+          "$value": "var(--color-pale-person)"
+        }
+      },
+      "black": {
+        "$value": "var(--color-black)"
+      },
+      "white": {
+        "$value": "var(--color-white)"
+      },
+      "gray": {
+        "$value": "var(--color-gray)"
+      },
+      "grey": {
+        "$value": "var(--color-grey)"
+      },
+      "offWhite": {
+        "$value": "var(--color-off-white)"
+      },
+      "bright": {
+        "$value": "var(--color-bright)"
+      },
+      "light": {
+        "$value": "var(--color-light)"
+      },
+      "neutral": {
+        "$value": "var(--color-neutral)"
+      },
+      "dark": {
+        "$value": "var(--color-dark)"
+      },
+      "orange": {
+        "$value": "var(--color-orange)"
+      },
+      "navigation": {
+        "$value": "var(--color-navigation)"
+      },
+      "skyBlue": {
+        "$value": "var(--color-sky-blue)"
+      },
+      "steel": {
+        "$value": "var(--color-steel)"
+      },
+      "metal": {
+        "$value": "var(--color-metal)"
+      },
+      "sand": {
+        "$value": "var(--color-sand)"
+      },
+      "silver": {
+        "$value": "var(--color-silver)"
+      },
+      "stone": {
+        "$value": "var(--color-stone)"
+      },
+      "ash": {
+        "$value": "var(--color-ash)"
+      },
+      "anonymous": {
+        "$value": "var(--color-anonymous)"
+      },
+      "slate": {
+        "$value": "var(--color-slate)"
+      },
+      "onyx": {
+        "$value": "var(--color-onyx)"
+      },
+      "charcoal": {
+        "$value": "var(--color-charcoal)"
+      },
+      "moonlight": {
+        "$value": "var(--color-moonlight)"
+      },
+      "midnight": {
+        "$value": "var(--color-midnight)"
+      },
+      "darkness": {
+        "$value": "var(--color-darkness)"
+      },
+      "navy": {
+        "$value": "var(--color-navy)"
+      },
+      "aqua": {
+        "$value": "var(--color-aqua)"
+      },
+      "ocean": {
+        "$value": "var(--color-ocean)"
+      },
+      "mint": {
+        "$value": "var(--color-mint)"
+      },
+      "grass": {
+        "$value": "var(--color-grass)"
+      },
+      "sunflower": {
+        "$value": "var(--color-sunflower)"
+      },
+      "bittersweet": {
+        "$value": "var(--color-bittersweet)"
+      },
+      "grapefruit": {
+        "$value": "var(--color-grapefruit)"
+      },
+      "carnation": {
+        "$value": "var(--color-carnation)"
+      },
+      "lavender": {
+        "$value": "var(--color-lavender)"
+      },
+      "mountain": {
+        "$value": "var(--color-mountain)"
+      },
+      "info": {
+        "$value": "var(--color-info)"
+      },
+      "positive": {
+        "$value": "var(--color-positive)"
+      },
+      "success": {
+        "$value": "var(--color-success)"
+      },
+      "negative": {
+        "$value": "var(--color-negative)"
+      },
+      "danger": {
+        "$value": "var(--color-danger)"
+      },
+      "error": {
+        "$value": "var(--color-error)"
+      },
+      "warning": {
+        "$value": "var(--color-warning)"
+      },
+      "empty": {
+        "$value": "var(--color-empty)"
+      },
+      "disabled": {
+        "$value": "var(--color-disabled)"
+      },
+      "background": {
+        "$value": "var(--color-background)"
+      },
+      "backgroundDark": {
+        "$value": "var(--color-background-dark)"
+      },
+      "border": {
+        "$value": "var(--color-border)"
+      },
+      "border2": {
+        "$value": "var(--color-border2)"
+      },
+      "text": {
+        "$value": "var(--color-text)"
+      },
+      "presentation": {
+        "$value": "var(--color-presentation)"
+      },
+      "bullhorn": {
+        "$value": "var(--color-bullhorn)"
+      },
+      "pulse": {
+        "$value": "var(--color-pulse)"
+      },
+      "fastFind": {
+        "$value": "var(--color-fast-find)"
+      },
+      "toast": {
+        "$value": "var(--color-toast)"
+      },
+      "company": {
+        "$value": "var(--color-company)"
+      },
+      "candidate": {
+        "$value": "var(--color-candidate)"
+      },
+      "lead": {
+        "$value": "var(--color-lead)"
+      },
+      "contact": {
+        "$value": "var(--color-contact)"
+      },
+      "clientcontact": {
+        "$value": "var(--color-clientcontact)"
+      },
+      "opportunity": {
+        "$value": "var(--color-opportunity)"
+      },
+      "job": {
+        "$value": "var(--color-job)"
+      },
+      "joborder": {
+        "$value": "var(--color-joborder)"
+      },
+      "submission": {
+        "$value": "var(--color-submission)"
+      },
+      "sendout": {
+        "$value": "var(--color-sendout)"
+      },
+      "placement": {
+        "$value": "var(--color-placement)"
+      },
+      "note": {
+        "$value": "var(--color-note)"
+      },
+      "contract": {
+        "$value": "var(--color-contract)"
+      },
+      "task": {
+        "$value": "var(--color-task)"
+      },
+      "jobCode": {
+        "$value": "var(--color-job-code)"
+      },
+      "earnCode": {
+        "$value": "var(--color-earn-code)"
+      },
+      "invoiceStatement": {
+        "$value": "var(--color-invoice-statement)"
+      },
+      "billableCharge": {
+        "$value": "var(--color-billable-charge)"
+      },
+      "payableCharge": {
+        "$value": "var(--color-payable-charge)"
+      },
+      "user": {
+        "$value": "var(--color-user)"
+      },
+      "corporateUser": {
+        "$value": "var(--color-corporate-user)"
+      },
+      "distributionList": {
+        "$value": "var(--color-distribution-list)"
+      },
+      "credential": {
+        "$value": "var(--color-credential)"
+      },
+      "person": {
+        "$value": "var(--color-person)"
+      }
+    }
+  }
+}

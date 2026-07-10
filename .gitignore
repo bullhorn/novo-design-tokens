@@ -2,6 +2,7 @@ lib
 css
 node_modules
 .idea
+.vscode
 # Ignore SCSS :
 ! scss/
 **/scss/*

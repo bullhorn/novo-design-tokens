@@ -14,107 +14,82 @@ npm install novo-design-tokens
 
 ```
 novo-design-tokens/
-├── tokens/                                 # token source files
-├── lib/                                    # generated js & json files
-├── css/                                    # generated css files
-└── scss/                                   # generated scss files
-    ├── mixins/                             # pre-built mixins for applying
-    ├── breakpoint/
-    │    ├── all (.scss|.css)
-    │    ├── breakpoint (.scss|.css)        # breakpoint variables
-    │    └── container-width (.scss|.css)   # container-width variables
-    ├── color/
-    │    ├── all (.scss|.css)
-    │    ├── brand (.scss|.css)             # brand color variables
-    │    └── ui (.scss|.css)                # ui color variables
-    ├── spacing/
-    │   ├── all (.scss|.css)
-    │   ├── layout (.scss|.css)             # layout spacing variables
-    │   └── spacing (.scss|.css)            # component spacing variables
-    ├── typography/
-    │   ├── all (.scss|.css)
-    │   ├── font (.scss|.css)               # font variables
-    │   ├── font-size (.scss|.css)          # font-size variables
-    │   └── line-height (.scss|.css)        # line-height variables
-    └── all (.scss|.css)                    # all variables
+├── lib/                    # generated js (CJS + ESM), json, and manifest.json (theme registry)
+├── css/                    # generated per-theme css: bh2022(.min), bh2022-dark(.min), bh2026(.min)
+└── scss/                   # scss consumption layer (variables + mixins + functions)
 ```
+
+### Themes
+
+Two themes ship today, both as CSS custom properties:
+
+| Theme | Selector | CSS entry |
+|---|---|---|
+| `bh2022` (base) | `:root` (+ dark) | `novo-design-tokens/css/bh2022`, `.../bh2022-dark` |
+| `bh2026` | `[data-theme="bh2026"]` | `novo-design-tokens/css/bh2026` |
+
+The theme registry is published at `novo-design-tokens/manifest` (`lib/manifest.json`) — name,
+selector, modes, and css paths per theme — so you can enumerate themes without hardcoding.
 
 ### Using the tokens
 
-Tokens are available for web platforms for now and can be included in your project as JS, CSS variables, or SCSS variables and mixins.
+Tokens are available for web and can be included as JS, CSS variables, or SCSS variables and mixins.
 
 #### JS
 
 ```js
-import { color, size } from "novo-design-tokens";
+import { color, spacing } from "novo-design-tokens";
 
-document.querySelector("#el").style.backgroundColor = color.entity.candidate;
-document.querySelector("#el").style.color = color.grass.contrast;
-document.querySelector("#el").style.padding = size.spacing.lg;
+document.querySelector("#el").style.backgroundColor = color.candidate; // entity color
+document.querySelector("#el").style.color = color.contrast.grass; // computed contrast
+document.querySelector("#el").style.padding = spacing.lg;
 ```
 
-#### CSS with webpack
+#### CSS
 
-Import the available `variables.css` or `variables.min.css` file. Imported CSS variables will be applied to the `:root` element.
+Import a theme's variables. The base theme (`bh2022`) applies to `:root`; add `data-theme="bh2026"`
+on a container (or `:root`) to activate the modern theme.
 
 ```js
-// import all tokens
-import "novo-design-tokens/css/variables.css";
+import "novo-design-tokens/css/bh2022";       // base (:root)
+import "novo-design-tokens/css/bh2022-dark";  // optional dark overrides
+import "novo-design-tokens/css/bh2026";       // modern ([data-theme="bh2026"])
 ```
+
+> In **Sass**, use the extensionless path (as above) so the variables are inlined; a `.css` suffix
+> makes Sass emit a passthrough `@import` instead. In **JS/bundlers** either form works — the manifest
+> (`lib/manifest.json`) advertises the `.css` paths.
+>
+> Deprecated aliases `css/variables`, `css/variables-dark`, `css/variables-bh2026` (each + `.min`) still
+> resolve but will be removed in a future major — migrate to the `css/<theme>` paths above.
 
 #### SCSS
 
-The design tokens are also shipped with utility mixins to make it easier to apply design tokens to
-your components.
+Ships with utility mixins and functions for applying tokens in components:
 
 ```scss
 @use "novo-design-tokens/scss";
 
-.mything {
-  margin-right: 0.8rem;
-}
-
 .box {
-  @include background-color(gray);
-  @include color(gray, "contrast");
-  @include padding("md");
-
-  // padding: 0.6rem;
-  padding-top: $spacing-md;
-  color: rgba($candidate, 0.3);
-  @include margin("xs");
-  @include background-color(blue, "dark");
+  @include padding("md");                 // spacing scale
+  @include background-color(blue, "dark"); // color + variant
+  @include font("lg");                     // type scale
   border: 2px solid getColor(gray, "light");
-
-  &:hover {
-    color: darken($candidate, 0.13333);
-  }
-}
-
-.text {
-  color: $candidate;
-  @include color(blue); // base
-  &.xs {
-    @include font("xs");
-  }
-  &.sm {
-    @include font("sm");
-  }
-  &.md {
-    @include font("md");
-  }
-  &.lg {
-    @include font("lg");
-  }
-  &.xl {
-    @include font("xl");
-  }
+  color: rgba($candidate, 0.3);            // entity color as a var
 }
 ```
 
 ## Development
 
-Read more [here](DEVELOPMENT.md).
+```bash
+npm install   # install dependencies
+npm start     # build all token outputs
+npm test      # build + regression suite
+```
+
+Themes are declared in `manifest.mjs`; the build is `build.mjs`. `bh2022` is authored as DTCG
+under `src/core` + `src/themes/bh2022`; `bh2026` is generated from its Figma export in
+`src/themes/bh2026`. See `CLAUDE.md` for architecture and contribution details.
 
 ## Built with
 

@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import "./variables.scss";
 @import "./functions.scss";
 
@@ -91,29 +92,30 @@ $entityColors: (
 /*******************/
 /********COLOR******/
 /*******************/
-@function getColor($color) {
+@function getCssVarname($color, $subregion: '') {
   $colorTokens: map-get($tokens, "color");
-  @return map-get($colorTokens, $color);
+  $varNames: map-get($colorTokens, "varNames");
+  $region: $varNames;
+  @if $subregion != '' {
+    $region: map-get($varNames, $subregion);
+  }
+  @return map-get($region, $color);
+}
+
+@function getColor($color) {
+  @return getCssVarname($color);
 }
 @function getTintColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $tintTokens: map-get($colorTokens, "tint");
-  @return map-get($tintTokens, $color);
+  @return getCssVarname($color, 'tint');
 }
 @function getShadeColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $shadeTokens: map-get($colorTokens, "shade");
-  @return map-get($shadeTokens, $color);
+  @return getCssVarname($color, 'shade');
 }
 @function getContrastColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $contrastTokens: map-get($colorTokens, "contrast");
-  @return map-get($contrastTokens, $color);
+  @return getCssVarname($color, 'contrast');
 }
 @function getPaleColor($color) {
-  $colorTokens: map-get($tokens, "color");
-  $paleTokens: map-get($colorTokens, "pale");
-  @return map-get($paleTokens, $color);
+  @return getCssVarname($color, 'pale');
 }
 
 /**color**/
@@ -184,6 +186,15 @@ $textWeightTokens: map-get($tokens, "textWeight");
           background: $shade;
         }
       }
+    }
+  }
+}
+
+@mixin theme-backgrounds-live($prefix: "color", $interactive: false) {
+  @include theme-colors() using ($name, $color, $contrast, $tint, $shade, $pale) {
+    &[#{$prefix}="#{$name}"] {
+      color: var(--color-contrast-#{$name});
+      background: var(--color-#{$name});
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
@@ -208,4 +219,74 @@ $textWeightTokens: map-get($tokens, "textWeight");
       @content ($name, $color, $contrast, $tint, $shade, $pale);
     }
   }
+}
+
+@function strip-units($number) {
+  @return math.div($number, ($number * 0 + 1));
+}
+
+@function darkenLive($cvar, $amount: 15, $alpha: 1) {
+  $rawAmount: strip-units($amount);
+  $alphaBlock: '';
+  @if $alpha != 1 {
+    $alphaBlock: '/ #{$alpha}';
+  }
+  @return hsl(from var(#{$cvar}) h s calc(l - #{$rawAmount})#{$alphaBlock});
+}
+
+@function brightenLive($cvar, $amount: 15, $alpha: 1) {
+  $rawAmount: strip-units($amount);
+  $alphaBlock: '';
+  @if $alpha != 1 {
+    $alphaBlock: '/ #{$alpha}';
+  }
+  @return hsl(from var(#{$cvar}) h s calc(l + #{$rawAmount})#{$alphaBlock});
+}
+
+@function saturateLive($cvar, $amount: 15, $alpha: 1) {
+  $rawAmount: strip-units($amount);
+  $alphaBlock: '';
+  @if $alpha != 1 {
+    $alphaBlock: '/ #{$alpha}';
+  }
+  $decimalAmt: 1 + (0.01 * $rawAmount);
+  @return hsl(from var(#{$cvar}) h calc(s * #{$decimalAmt}) l#{$alphaBlock});
+}
+
+@function adjustOpacity($cvar, $alpha) {
+  @return rgb(from var(#{$cvar}) r g b / #{$alpha});
+}
+
+@function fadeTextColorLive($luminance: 0, $saturation: 1, $alpha: 1) {
+  @return _elevateInternal('currentColor', $luminance * -1, $saturation, $alpha);
+}
+
+// In light mode, brighten a color. In dark mode, darken a color
+@function elevate($cssVar, $luminance: 0, $saturation: 1, $alpha: 1) {
+  @return _elevateInternal('var(#{$cssVar})', $luminance, $saturation, $alpha);
+}
+
+// In light mode, darken a color. In dark mode, lighten a color
+@function recede($cssVar, $luminance: 0, $saturation: 1, $alpha: 1) {
+  @return _elevateInternal('var(#{$cssVar})', $luminance * -1, $saturation, $alpha);
+}
+
+@function _elevateInternal($target, $luminance: 0, $saturation: 1, $alpha: 1) {
+  $rawSatAmount: strip-units($saturation);
+  @if math.abs($saturation) > 5 {
+    @error "fadeTextColorLive: $saturation argument received a value over 5. This variable is multiplied with the current saturation, and should usually be somewhere between 0 and 2 as a decimal."
+  }
+  $alphaBlock: '';
+  @if $alpha != 1 {
+    $alphaBlock: '/ #{$alpha}';
+  }
+  $saturationBlock: 's';
+  @if $saturation != 1 {
+    $saturationBlock: calc(s * #{$saturation});
+  }
+  $luminanceBlock: 'l';
+  @if $luminance != 0 {
+    $luminanceBlock: calc(l + (#{$luminance} * var(--bg-fade-multiplier, 1)));
+  }
+  @return hsl(from #{$target} h #{$saturationBlock} #{$luminanceBlock}#{$alphaBlock});
 }

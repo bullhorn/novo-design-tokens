@@ -1,0 +1,130 @@
+{
+  "font": {
+    "weight": {
+      "hairline": {
+        "$value": 100
+      },
+      "thin": {
+        "$value": 200
+      },
+      "light": {
+        "$value": 300
+      },
+      "normal": {
+        "$value": 400
+      },
+      "medium": {
+        "$value": 500
+      },
+      "semibold": {
+        "$value": 600
+      },
+      "bold": {
+        "$value": 700
+      },
+      "extrabold": {
+        "$value": 800
+      },
+      "heavy": {
+        "$value": 900
+      }
+    },
+    "family": {
+      "body": {
+        "$value": "'Montserrat', Helvetica, Arial, sans-serif"
+      },
+      "mono": {
+        "$value": "'Fira Code', Menlo, Monaco, Consolas, \"Courier New\", monospace"
+      },
+      "base": {
+        "$value": "{font.family.body}"
+      }
+    },
+    "size": {
+      "base": {
+        "$value": "10px"
+      },
+      "body": {
+        "$value": "1.3rem"
+      },
+      "xs": {
+        "$value": "1.0rem"
+      },
+      "sm": {
+        "$value": "1.2rem"
+      },
+      "md": {
+        "$value": "1.3rem"
+      },
+      "lg": {
+        "$value": "1.6rem"
+      },
+      "xl": {
+        "$value": "2.0rem"
+      },
+      "2xl": {
+        "$value": "2.6rem"
+      },
+      "3xl": {
+        "$value": "3.2rem"
+      },
+      "4xl": {
+        "$value": "4rem"
+      }
+    },
+    "spacing": {
+      "tighter": {
+        "$value": "-0.05em"
+      },
+      "tight": {
+        "$value": "-0.025em"
+      },
+      "normal": {
+        "$value": "0"
+      },
+      "wide": {
+        "$value": "0.025em"
+      },
+      "wider": {
+        "$value": "0.05em"
+      },
+      "widest": {
+        "$value": "0.1em"
+      }
+    },
+    "height": {
+      "normal": {
+        "$value": "normal"
+      },
+      "none": {
+        "$value": "1"
+      },
+      "shorter": {
+        "$value": "1.25"
+      },
+      "short": {
+        "$value": "1.375"
+      },
+      "base": {
+        "$value": "1.5"
+      },
+      "tall": {
+        "$value": "1.625"
+      },
+      "taller": {
+        "$value": "2"
+      }
+    },
+    "color": {
+      "base": {
+        "$value": "{color.dark}"
+      },
+      "secondary": {
+        "$value": "{color.light}"
+      },
+      "link": {
+        "$value": "{color.ocean}"
+      }
+    }
+  }
+}

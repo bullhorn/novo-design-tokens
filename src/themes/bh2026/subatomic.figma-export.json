@@ -1,0 +1,3185 @@
+[
+  {
+    "core": {
+      "modes": {
+        "Mode 1": {
+          "spacing": {
+            "0": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 0
+            },
+            "2": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 2
+            },
+            "4": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 4
+            },
+            "8": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 8
+            },
+            "12": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 12
+            },
+            "16": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 16
+            },
+            "24": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 24
+            },
+            "32": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 32
+            },
+            "40": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 40
+            },
+            "48": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 48
+            },
+            "64": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 64
+            },
+            "80": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 80
+            },
+            "96": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 96
+            },
+            "128": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$value": 128
+            }
+          },
+          "color": {
+            "gray": {
+              "100": {
+                "$type": "color",
+                "$value": "#f1f1f2"
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#d0d2d5"
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#b3b6bb"
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#9699a0"
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#7a7e87"
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#61646b"
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#484a4f"
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#313337"
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#1c1d1f"
+              },
+              "white": {
+                "$type": "color",
+                "$value": "#ffffff"
+              },
+              "black": {
+                "$type": "color",
+                "$value": "#000000"
+              }
+            },
+            "utility": {
+              "blue": {
+                "100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#eceefc"
+                },
+                "200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#ccd1f6"
+                },
+                "300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#abb3f0"
+                },
+                "400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#8792ea"
+                },
+                "500": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#6775e4"
+                },
+                "600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#4555d3"
+                },
+                "700": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#34409e"
+                },
+                "800": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#242c6e"
+                },
+                "900": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#15193f"
+                }
+              },
+              "green": {
+                "100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#dcf3ee"
+                },
+                "200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#9fdfcf"
+                },
+                "300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#5dc9af"
+                },
+                "400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#11ad86"
+                },
+                "500": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#0e9070"
+                },
+                "600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#0b7058"
+                },
+                "700": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#085442"
+                },
+                "800": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#063a2e"
+                },
+                "900": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#03211a"
+                }
+              },
+              "yellow": {
+                "100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f9efbb"
+                },
+                "200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#efd242"
+                },
+                "300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#dbb305"
+                },
+                "400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#be9304"
+                },
+                "500": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#a57702"
+                },
+                "600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#8a5801"
+                },
+                "700": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#6d3f00"
+                },
+                "800": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#4b2c00"
+                },
+                "900": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#2c1900"
+                }
+              },
+              "red": {
+                "100": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#fceaef"
+                },
+                "200": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#f8c5d1"
+                },
+                "300": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#efa2b2"
+                },
+                "400": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#dd7c88"
+                },
+                "500": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#cd5a61"
+                },
+                "600": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#b82f30"
+                },
+                "700": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#8d2121"
+                },
+                "800": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#631717"
+                },
+                "900": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "#390e0e"
+                }
+              }
+            },
+            "transparency": {
+              "white": {
+                "white-10": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.1)"
+                },
+                "white-20": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.2)"
+                },
+                "white-30": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.3)"
+                },
+                "white-40": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.4)"
+                },
+                "white-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.5)"
+                },
+                "white-60": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.6)"
+                },
+                "white-70": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.7)"
+                },
+                "white-80": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.8)"
+                },
+                "white-90": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(255, 255, 255, 0.9)"
+                }
+              },
+              "black": {
+                "black-10": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.1)"
+                },
+                "black-20": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.2)"
+                },
+                "black-30": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.3)"
+                },
+                "black-40": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.4)"
+                },
+                "black-50": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.5)"
+                },
+                "black-60": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.6)"
+                },
+                "black-70": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.7)"
+                },
+                "black-80": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.8)"
+                },
+                "black-90": {
+                  "$scopes": [
+                    "ALL_SCOPES"
+                  ],
+                  "$type": "color",
+                  "$value": "rgba(0, 0, 0, 0.9)"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "Tier 1  |  base values": {
+      "modes": {
+        "Mode 1": {
+          "spacing": {
+            "gutter": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.24}"
+            },
+            "columns": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.12}"
+            },
+            "margin": {
+              "$scopes": [
+                "WIDTH_HEIGHT",
+                "GAP",
+                "EFFECT_FLOAT",
+                "PARAGRAPH_SPACING",
+                "FONT_VARIATIONS"
+              ],
+              "$type": "float",
+              "$libraryName": "",
+              "$collectionName": "core",
+              "$value": "{spacing.24}"
+            },
+            "padding": {
+              "none": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.0}"
+              },
+              "xxsm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.2}"
+              },
+              "xsm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.4}"
+              },
+              "sm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.8}"
+              },
+              "md": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.16}"
+              },
+              "lg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.24}"
+              },
+              "xlg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.32}"
+              },
+              "xxlg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.48}"
+              }
+            },
+            "gap": {
+              "none": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.0}"
+              },
+              "xxsm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.2}"
+              },
+              "xsm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.4}"
+              },
+              "sm": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.8}"
+              },
+              "md": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.16}"
+              },
+              "lg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.24}"
+              },
+              "xlg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.32}"
+              },
+              "xxlg": {
+                "$scopes": [
+                  "WIDTH_HEIGHT",
+                  "GAP",
+                  "EFFECT_FLOAT",
+                  "PARAGRAPH_SPACING",
+                  "FONT_VARIATIONS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.48}"
+              }
+            }
+          },
+          "border": {
+            "radius": {
+              "none": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.0}"
+              },
+              "xxsm": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.2}"
+              },
+              "xsm": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.4}"
+              },
+              "sm": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.8}"
+              },
+              "md": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.16}"
+              },
+              "lg": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.24}"
+              },
+              "xlg": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.32}"
+              },
+              "xxlg": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "core",
+                "$value": "{spacing.48}"
+              },
+              "round": {
+                "$scopes": [
+                  "CORNER_RADIUS"
+                ],
+                "$type": "float",
+                "$value": 999
+              }
+            },
+            "width": {
+              "border-default": {
+                "$scopes": [
+                  "STROKE_FLOAT"
+                ],
+                "$type": "float",
+                "$value": 1
+              },
+              "border-sm": {
+                "$scopes": [
+                  "STROKE_FLOAT"
+                ],
+                "$type": "float",
+                "$value": 2
+              },
+              "border-md": {
+                "$scopes": [
+                  "STROKE_FLOAT"
+                ],
+                "$type": "float",
+                "$value": 4
+              },
+              "border-lg": {
+                "$scopes": [
+                  "STROKE_FLOAT"
+                ],
+                "$type": "float",
+                "$value": 8
+              }
+            }
+          },
+          "color": {
+            "purple": {
+              "lead-purple": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#913b8d"
+              },
+              "opps-purple": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#6b2155"
+              },
+              "lilac-purple": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#a499c8"
+              }
+            },
+            "blue": {
+              "navigation-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#202945"
+              },
+              "sky-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#1b9ad6"
+              },
+              "medium-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#125783"
+              },
+              "light-blue": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#aae1f4"
+              },
+              "blue-gray": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#314158"
+              }
+            },
+            "background": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#f8fafc"
+            },
+            "green": {
+              "automation-green": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#49b790"
+              },
+              "dark-green": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#00956c"
+              },
+              "light-green": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#a5d6be"
+              }
+            },
+            "orange": {
+              "bullhorn-orange": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ff6b00"
+              },
+              "valencia-orange": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ca5728"
+              },
+              "coral-orange": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ff9045"
+              }
+            },
+            "yellow": {
+              "honey-yellow": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffce5c"
+              },
+              "golden-yellow": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffb400"
+              },
+              "light-yellow": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffda85"
+              }
+            },
+            "grayscale": {
+              "bullhorn-black": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#221f1f"
+              },
+              "gray-25": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#404141"
+              },
+              "gray-45": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#737374"
+              },
+              "gray-60": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#969595"
+              },
+              "gray-70": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#b2b2b2"
+              },
+              "gray-85": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#d6d6d6"
+              },
+              "gray-95": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#f2f2f2"
+              },
+              "white": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffffff"
+              }
+            },
+            "entity": {
+              "lead": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#aa6699"
+              },
+              "contact": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#ffaa44"
+              },
+              "company": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#3399dd"
+              },
+              "candidate": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#44bb77"
+              },
+              "opportunity": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#662255"
+              },
+              "job": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#bb5566"
+              },
+              "job-code": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#606d79"
+              },
+              "earn-code": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#606d79"
+              },
+              "submission": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#a9adbb"
+              },
+              "placement": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#0b344f"
+              },
+              "sendout": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#747884"
+              },
+              "note": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#747884"
+              },
+              "contract": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#454ea0"
+              },
+              "invoice-statement": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#606d79"
+              },
+              "billable-charge": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#606d79"
+              },
+              "payable-charge": {
+                "$scopes": [
+                  "ALL_SCOPES"
+                ],
+                "$type": "color",
+                "$value": "#606d79"
+              }
+            },
+            "border": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#f0f5f9"
+            },
+            "subtle": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#8ca1b9"
+            },
+            "medium": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#5d7798"
+            },
+            "subtle-content": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#5d7798"
+            },
+            "lightest-blue": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#f1f5fc"
+            },
+            "positive": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#4a89dc"
+            },
+            "success": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#8cc152"
+            },
+            "negative": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#da4453"
+            },
+            "warning": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#f6b042"
+            },
+            "sand": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#f4f4f4"
+            },
+            "silver": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#e2e2e2"
+            },
+            "stone": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#bebebe"
+            },
+            "ash": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#a0a0a0"
+            },
+            "slate": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#707070"
+            },
+            "dark": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#3d464d"
+            },
+            "charcoal": {
+              "$scopes": [
+                "ALL_SCOPES"
+              ],
+              "$type": "color",
+              "$value": "#282828"
+            }
+          },
+          "typography": {
+            "font-family": {
+              "inter": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$value": "Inter"
+              }
+            },
+            "font-weight": {
+              "400": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 400
+              },
+              "500": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 500
+              },
+              "600": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 600
+              },
+              "700": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 700
+              },
+              "800": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 800
+              },
+              "900": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$value": 900
+              },
+              "regular": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Regular"
+              },
+              "medium": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Medium"
+              },
+              "semi": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Semibold"
+              },
+              "bold": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Bold"
+              },
+              "extrabold": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Extrabold"
+              },
+              "black": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "Black"
+              }
+            },
+            "font-size": {
+              "10": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 10
+              },
+              "12": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 12
+              },
+              "14": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 14
+              },
+              "16": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "18": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 18
+              },
+              "20": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "24": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "28": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 28
+              },
+              "32": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 32
+              },
+              "40": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 40
+              },
+              "48": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 48
+              },
+              "56": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 56
+              },
+              "64": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 64
+              },
+              "72": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 72
+              },
+              "80": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 80
+              },
+              "88": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 88
+              },
+              "96": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 96
+              },
+              "104": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$value": 104
+              }
+            },
+            "line-height": {
+              "12": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 12
+              },
+              "16": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 16
+              },
+              "20": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 20
+              },
+              "24": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 24
+              },
+              "28": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 28
+              },
+              "32": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 32
+              },
+              "36": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 36
+              },
+              "40": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 40
+              },
+              "48": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 48
+              },
+              "56": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 56
+              },
+              "64": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 64
+              },
+              "72": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 72
+              },
+              "80": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 80
+              },
+              "88": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 88
+              },
+              "96": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 96
+              },
+              "104": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 104
+              },
+              "112": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$value": 112
+              }
+            },
+            "letter-spacing": {
+              "0": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": 0
+              },
+              "1": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": 1
+              },
+              "2": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": 2
+              },
+              "minus-2": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": -2
+              },
+              "minus-1-half": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": -1.5
+              },
+              "minus-1": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": -1
+              },
+              "minus-half": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": -0.5
+              },
+              "half": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": 0.5
+              },
+              "1-half": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$value": 1.5
+              }
+            },
+            "text-transform": {
+              "none": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "none"
+              },
+              "uppercase": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "uppercase"
+              },
+              "capitalize": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "capitalize"
+              },
+              "lowercase": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$value": "lowercase"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "Tier 2  |  semantic tokens": {
+      "modes": {
+        "Default": {
+          "color": {
+            "background": {
+              "default": {
+                "$scopes": [
+                  "FRAME_FILL",
+                  "SHAPE_FILL"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.background}"
+              },
+              "subtle": {
+                "$scopes": [
+                  "FRAME_FILL",
+                  "SHAPE_FILL"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.lightest-blue}"
+              },
+              "subtle-hover": {
+                "$scopes": [
+                  "FRAME_FILL",
+                  "SHAPE_FILL"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.silver}"
+              },
+              "disabled": {
+                "$scopes": [
+                  "FRAME_FILL",
+                  "SHAPE_FILL"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.slate}"
+              },
+              "utility": {
+                "error": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.red.100}"
+                },
+                "error-knockout": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.red.600}"
+                },
+                "warning": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.yellow.100}"
+                },
+                "warning-knockout": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.yellow.600}"
+                },
+                "success": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.green.100}"
+                },
+                "success-knockout": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.green.600}"
+                },
+                "info": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.blue.100}"
+                },
+                "info-knockout": {
+                  "$scopes": [
+                    "FRAME_FILL",
+                    "SHAPE_FILL"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.blue.600}"
+                }
+              }
+            },
+            "border": {
+              "default": {
+                "$scopes": [
+                  "STROKE_COLOR",
+                  "EFFECT_COLOR"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.border}"
+              },
+              "subtle": {
+                "$scopes": [
+                  "STROKE_COLOR",
+                  "EFFECT_COLOR"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.subtle}"
+              },
+              "medium": {
+                "$scopes": [
+                  "STROKE_COLOR",
+                  "EFFECT_COLOR"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.medium}"
+              },
+              "strong": {
+                "$scopes": [
+                  "STROKE_COLOR",
+                  "EFFECT_COLOR"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.blue.blue-gray}"
+              },
+              "emphasized": {
+                "$scopes": [
+                  "STROKE_COLOR",
+                  "EFFECT_COLOR"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.charcoal}"
+              },
+              "utility": {
+                "error": {
+                  "$scopes": [
+                    "STROKE_COLOR",
+                    "EFFECT_COLOR"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.red.700}"
+                },
+                "warning": {
+                  "$scopes": [
+                    "STROKE_COLOR",
+                    "EFFECT_COLOR"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.yellow.700}"
+                },
+                "success": {
+                  "$scopes": [
+                    "STROKE_COLOR",
+                    "EFFECT_COLOR"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.green.700}"
+                },
+                "info": {
+                  "$scopes": [
+                    "STROKE_COLOR",
+                    "EFFECT_COLOR"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.blue.700}"
+                }
+              }
+            },
+            "content": {
+              "headline": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.charcoal}"
+              },
+              "body": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.blue.blue-gray}"
+              },
+              "subtle": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.subtle-content}"
+              },
+              "link": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.charcoal}"
+              },
+              "link-hover": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.grayscale.bullhorn-black}"
+              },
+              "disabled": {
+                "$scopes": [
+                  "ALL_FILLS"
+                ],
+                "$type": "color",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{color.slate}"
+              },
+              "utility": {
+                "error": {
+                  "$scopes": [
+                    "ALL_FILLS"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.red.600}"
+                },
+                "warning": {
+                  "$scopes": [
+                    "ALL_FILLS"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.yellow.600}"
+                },
+                "success": {
+                  "$scopes": [
+                    "ALL_FILLS"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.green.600}"
+                },
+                "info": {
+                  "$scopes": [
+                    "ALL_FILLS"
+                  ],
+                  "$type": "color",
+                  "$libraryName": "",
+                  "$collectionName": "core",
+                  "$value": "{color.utility.blue.600}"
+                }
+              }
+            }
+          },
+          "typography": {
+            "font-family": {
+              "headline": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-family.inter}"
+              },
+              "base": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-family.inter}"
+              }
+            },
+            "navigation": {
+              "main-nav": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.400}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.14}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.24}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.none}"
+                }
+              },
+              "entity": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.400}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.12}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.16}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.capitalize}"
+                }
+              }
+            },
+            "title": {
+              "font-family": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.700}"
+              },
+              "font-size": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.24}"
+              },
+              "line-height": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.32}"
+              },
+              "letter-spacing": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.minus-half}"
+              },
+              "text-transform": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.capitalize}"
+              }
+            },
+            "label-lg": {
+              "font-family": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.14}"
+              },
+              "line-height": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.16}"
+              },
+              "letter-spacing": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "label-sm": {
+              "font-family": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.10}"
+              },
+              "line-height": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.16}"
+              },
+              "letter-spacing": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.half}"
+              },
+              "text-transform": {
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.uppercase}"
+              }
+            },
+            "body-default": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.14}"
+              },
+              "line-height": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.20}"
+              },
+              "letter-spacing": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "body-default-bold": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.700}"
+              },
+              "font-size": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.14}"
+              },
+              "line-height": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.20}"
+              },
+              "letter-spacing": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "body-lg": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.16}"
+              },
+              "line-height": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.24}"
+              },
+              "letter-spacing": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "body-xl": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.600}"
+              },
+              "font-size": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.18}"
+              },
+              "line-height": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.24}"
+              },
+              "letter-spacing": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "meta-default": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.14}"
+              },
+              "line-height": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.20}"
+              },
+              "letter-spacing": {
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "TEXT_CONTENT"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "button": {
+              "font-family": {
+                "$scopes": [
+                  "FONT_FAMILY"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 2  |  semantic tokens",
+                "$value": "{typography.font-family.base}"
+              },
+              "font-weight": {
+                "$scopes": [
+                  "FONT_WEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-weight.500}"
+              },
+              "font-size": {
+                "$scopes": [
+                  "FONT_SIZE"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.font-size.12}"
+              },
+              "line-height": {
+                "$scopes": [
+                  "LINE_HEIGHT"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.line-height.16}"
+              },
+              "letter-spacing": {
+                "$scopes": [
+                  "LETTER_SPACING"
+                ],
+                "$type": "float",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.letter-spacing.0}"
+              },
+              "text-transform": {
+                "$scopes": [
+                  "FONT_STYLE"
+                ],
+                "$type": "string",
+                "$libraryName": "",
+                "$collectionName": "Tier 1  |  base values",
+                "$value": "{typography.text-transform.none}"
+              }
+            },
+            "input": {
+              "label": {
+                "lg": {
+                  "font-family": {
+                    "$scopes": [
+                      "FONT_FAMILY"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 2  |  semantic tokens",
+                    "$value": "{typography.font-family.base}"
+                  },
+                  "font-weight": {
+                    "$scopes": [
+                      "FONT_WEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-weight.400}"
+                  },
+                  "font-size": {
+                    "$scopes": [
+                      "FONT_SIZE"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-size.14}"
+                  },
+                  "line-height": {
+                    "$scopes": [
+                      "LINE_HEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.line-height.16}"
+                  },
+                  "letter-spacing": {
+                    "$scopes": [
+                      "LETTER_SPACING"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.letter-spacing.0}"
+                  },
+                  "text-transform": {
+                    "$scopes": [
+                      "FONT_STYLE"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.text-transform.none}"
+                  }
+                },
+                "sm": {
+                  "font-family": {
+                    "$scopes": [
+                      "FONT_FAMILY"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 2  |  semantic tokens",
+                    "$value": "{typography.font-family.base}"
+                  },
+                  "font-weight": {
+                    "$scopes": [
+                      "FONT_WEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-weight.400}"
+                  },
+                  "font-size": {
+                    "$scopes": [
+                      "FONT_SIZE"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-size.10}"
+                  },
+                  "line-height": {
+                    "$scopes": [
+                      "LINE_HEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.line-height.16}"
+                  },
+                  "letter-spacing": {
+                    "$scopes": [
+                      "LETTER_SPACING"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.letter-spacing.half}"
+                  },
+                  "text-transform": {
+                    "$scopes": [
+                      "FONT_STYLE"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.text-transform.uppercase}"
+                  }
+                }
+              },
+              "value": {
+                "default": {
+                  "font-family": {
+                    "$scopes": [
+                      "FONT_FAMILY"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 2  |  semantic tokens",
+                    "$value": "{typography.font-family.base}"
+                  },
+                  "font-weight": {
+                    "$scopes": [
+                      "FONT_WEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-weight.400}"
+                  },
+                  "font-size": {
+                    "$scopes": [
+                      "FONT_SIZE"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-size.14}"
+                  },
+                  "line-height": {
+                    "$scopes": [
+                      "LINE_HEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.line-height.16}"
+                  },
+                  "letter-spacing": {
+                    "$scopes": [
+                      "LETTER_SPACING"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.letter-spacing.0}"
+                  },
+                  "text-transform": {
+                    "$scopes": [
+                      "FONT_STYLE"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.text-transform.none}"
+                  }
+                },
+                "hyperlinks": {
+                  "font-family": {
+                    "$scopes": [
+                      "FONT_FAMILY"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 2  |  semantic tokens",
+                    "$value": "{typography.font-family.base}"
+                  },
+                  "font-weight": {
+                    "$scopes": [
+                      "FONT_WEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-weight.500}"
+                  },
+                  "font-size": {
+                    "$scopes": [
+                      "FONT_SIZE"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.font-size.14}"
+                  },
+                  "line-height": {
+                    "$scopes": [
+                      "LINE_HEIGHT"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.line-height.16}"
+                  },
+                  "letter-spacing": {
+                    "$scopes": [
+                      "LETTER_SPACING"
+                    ],
+                    "$type": "float",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.letter-spacing.0}"
+                  },
+                  "text-transform": {
+                    "$scopes": [
+                      "FONT_STYLE"
+                    ],
+                    "$type": "string",
+                    "$libraryName": "",
+                    "$collectionName": "Tier 1  |  base values",
+                    "$value": "{typography.text-transform.none}"
+                  }
+                }
+              }
+            },
+            "tabs": {
+              "default": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.400}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.14}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.20}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.none}"
+                }
+              },
+              "active": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.600}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.14}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.20}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.none}"
+                }
+              }
+            },
+            "card": {
+              "header": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.500}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.18}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.24}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.capitalize}"
+                }
+              },
+              "body": {
+                "font-family": {
+                  "$scopes": [
+                    "FONT_FAMILY"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 2  |  semantic tokens",
+                  "$value": "{typography.font-family.base}"
+                },
+                "font-weight": {
+                  "$scopes": [
+                    "FONT_WEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-weight.400}"
+                },
+                "font-size": {
+                  "$scopes": [
+                    "FONT_SIZE"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.font-size.14}"
+                },
+                "line-height": {
+                  "$scopes": [
+                    "LINE_HEIGHT"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.line-height.20}"
+                },
+                "letter-spacing": {
+                  "$scopes": [
+                    "LETTER_SPACING"
+                  ],
+                  "$type": "float",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.letter-spacing.0}"
+                },
+                "text-transform": {
+                  "$scopes": [
+                    "FONT_STYLE"
+                  ],
+                  "$type": "string",
+                  "$libraryName": "",
+                  "$collectionName": "Tier 1  |  base values",
+                  "$value": "{typography.text-transform.none}"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

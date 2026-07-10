@@ -1,0 +1,52 @@
+{
+  "button": {
+    "primary": {
+      "padding": {
+        "$value": "{spacing.md}"
+      },
+      "font-size": {
+        "$value": "{font.size.lg}"
+      },
+      "background-color": {
+        "$value": "{color.ocean}"
+      },
+      "color": {
+        "$value": "{color.contrast.ocean}"
+      }
+    },
+    "secondary": {
+      "padding": {
+        "$value": "{spacing.md}"
+      },
+      "font-size": {
+        "$value": "{font.size.lg}"
+      },
+      "background-color": {
+        "$value": "{color.white}"
+      },
+      "border-color": {
+        "$value": "{color.ocean}"
+      },
+      "border-width": {
+        "$value": "{size.border.width.base}"
+      },
+      "border-radius": {
+        "$value": "{size.border.radius.base}"
+      },
+      "color": {
+        "$value": "{color.ocean}"
+      }
+    }
+  },
+  "tooltip": {
+    "padding": {
+      "$value": "{spacing.md}"
+    },
+    "border-radius": {
+      "$value": "{borderRadius.round}"
+    },
+    "background-color": {
+      "$value": "var(--color-tint-black)"
+    }
+  }
+}
