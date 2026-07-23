@@ -21,7 +21,7 @@ const declNames = (css) => [...css.matchAll(/--([a-z0-9-]+)\s*:/g)].map((m) => m
 // An unresolved Style Dictionary / DTCG reference survives as a brace-wrapped dotted
 // identifier path with no whitespace, e.g. `{color.white}`. Anchored to `{<ident>(.<ident>)+}`
 // so it can't match a real CSS `{ … }` block (those open with a newline, not an identifier).
-const UNRESOLVED_REF = /\{[a-z][\w-]*(?:\.[\w-]+)+\}/i;
+const UNRESOLVED_REF = /\{[a-z][\w-]*(?:\.[\w-]+)+}/i;
 
 // build.mjs emits the raw css/scss/lib; postcss/minify (postbuild) are no-ops on the token
 // css, so building the script alone is a faithful, fast check.
@@ -50,10 +50,10 @@ for (const [output, name] of SNAPSHOTS) {
 }
 
 // --- Invariants ---------------------------------------------------------------------------
-test("bh2026: 377 tokens, all unique (no parser name collisions)", () => {
+test("bh2026: 404 tokens, all unique (no parser name collisions)", () => {
   const names = declNames(read("css/bh2026.css"));
-  assert.equal(names.length, 377, "bh2026 token count changed");
-  assert.equal(new Set(names).size, 377, "bh2026 has colliding var names (silent overwrite)");
+  assert.equal(names.length, 404, "bh2026 token count changed");
+  assert.equal(new Set(names).size, 404, "bh2026 has colliding var names (silent overwrite)");
 });
 
 test("no duplicate var names within a theme", () => {
@@ -61,6 +61,16 @@ test("no duplicate var names within a theme", () => {
     const names = declNames(read(file));
     assert.equal(new Set(names).size, names.length, `${file} has duplicate var names`);
   }
+});
+
+test("bh2026: all emitted var names are valid CSS custom property identifiers", () => {
+  const css = read("css/bh2026.css");
+  // CSS custom property names may only contain [a-z0-9-] after the -- prefix.
+  // Spaces, uppercase, or other characters make the declaration invalid and silently dropped.
+  const invalid = [...css.matchAll(/--([^\s:]+)\s*:/g)]
+    .map((m) => m[1])
+    .filter((name) => !/^[a-z0-9-]+$/.test(name));
+  assert.deepEqual(invalid, [], `bh2026 has invalid CSS custom property names: ${invalid.join(", ")}`);
 });
 
 test("no unresolved references leak into any output", () => {

@@ -16,7 +16,7 @@ const sd = new StyleDictionary({
         {
           destination: BASE_THEME.outputs.light.replace(/^css\//, ""),
           format: "css/variables",
-          filter: (token, a, b, c) => {
+          filter: (token) => {
             // varNames are dash-case versions of colors, only generated for SCSS convenience, and are not needed by CSS var() statements.
             return !token.path.includes('varNames');
           }
@@ -128,7 +128,7 @@ await sd.buildAllPlatforms();
 // nested tree can't hold the export's flat aliases, where e.g. `color.border` is both a leaf
 // and a group.) Re-export from Figma + rebuild — nothing else.
 const REM_BASE = 10;
-const ALIAS = /^\{(.+)\}$/;
+const ALIAS = /^\{(.+)}$/;
 
 // Collapse a redundant numeric ramp: transparency/white/white-80 -> transparency/white-80
 // (avoids a doubled `white-white-80` var name). Numeric-only, so color/blue/blue-gray is kept.
@@ -165,10 +165,17 @@ function parseFigmaExport(contents, label = "figma export") {
       const p = normalizePath(path);
       leaves.push([p, node.$value]);
       ns.set(p.replace(/\//g, "."), node.$value);
+      // also register the raw (un-normalized) path so aliases using the full
+      // Figma path (e.g. {color.transparency.charcoal.charcoal-08}) still resolve
+      // after normalizePath strips the redundant parent segment
+      if (path !== p) ns.set(path.replace(/\//g, "."), node.$value);
       return;
     }
     for (const [key, value] of Object.entries(node)) {
       if (key.startsWith("$")) continue; // skip $type/$scopes metadata
+      // CSS custom property names cannot contain spaces; skip any Figma group whose
+      // key has spaces (e.g. "DO NOT USE - deprecated" in Tier 1 export).
+      if (key.includes(" ")) continue;
       walk(value, path ? `${path}/${key}` : key);
     }
   };
