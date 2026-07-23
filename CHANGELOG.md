@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0...v1.1.0) (2026-07-23)
+
+
+### Features
+
+* **bh2026:** Updated colors and semantic tokens ([062278e](https://github.com/bullhorn/novo-design-tokens/commit/062278e3f522d5765d6df880cefec50bda456846))
+
 # [1.0.0](https://github.com/bullhorn/novo-design-tokens/compare/v0.1.4...v1.0.0) (2026-07-10)
 
 
