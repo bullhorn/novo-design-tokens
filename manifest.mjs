@@ -6,9 +6,9 @@
  *   - 'dtcg'  : built via Style Dictionary from tiered DTCG source (`$value`) under
  *              `src/core/**` (primitives) + `src/themes/<name>/**` (semantic + components).
  *              Uses `sources` (ordered list).
- *   - 'figma' : built from a committed Figma export (`src/themes/<name>/`) via the Style
- *              Dictionary `figma/subatomic` parser (resolved + unit-converted at build time).
- *              Uses `source` (single export file).
+ *   - 'figma' : built from committed Figma exports (`src/themes/<name>/`) via a custom
+ *              multi-file parser (resolved + unit-converted at build time).
+ *              Uses `sources` (ordered list: core → tier-1 → tier-2 → semantic).
  *
  * `isBase`  : renders at `:root` (no data-theme) and also emits the scss/js/mjs/json
  *             consumption artifacts. Exactly one base today (bh2022).
@@ -38,9 +38,12 @@ export const THEMES = [
     name: 'bh2026',
     isBase: false,
     kind: 'figma',
-    source: 'src/themes/bh2026/subatomic.figma-export.json',
-    // Tier-3 components (components.figma-export.json) are committed but not yet wired in —
-    // design still in flux. Add a `componentsSource` here + parser support when it stabilizes.
+    sources: [
+      'src/themes/bh2026/core.figma-export.json',
+      'src/themes/bh2026/tier-1.figma-export.json',
+      'src/themes/bh2026/tier-2.figma-export.json',
+      'src/themes/bh2026/semantic.figma-export.json',
+    ],
     selector: ':root[data-theme="bh2026"], :root.theme-bh2026',
     modes: ['light'],
     outputs: { light: 'css/bh2026.css' },
