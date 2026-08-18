@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.1.0...v1.2.0) (2026-08-18)
+
+
+### Features
+
+* **bh2026:** Increase semantic level tokens and refactor Figma exports ([#6](https://github.com/bullhorn/novo-design-tokens/issues/6)) ([20db0e8](https://github.com/bullhorn/novo-design-tokens/commit/20db0e8cb2ff75bc9b979cd49eb792f8127fa4db))
+
 # [1.1.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.0.0...v1.1.0) (2026-07-23)
 
 
