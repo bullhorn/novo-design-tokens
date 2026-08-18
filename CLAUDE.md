@@ -26,8 +26,9 @@ driven by `manifest.mjs` — two *source shapes* feeding the same pipeline:
 1. **bh2022** (base, `:root`). Tiered DTCG: primitives in `src/core/**`, semantic + components in
    `src/themes/bh2022/**` (which reference core). The base SD instance emits all five platforms
    (css light+dark, scss, js, mjs, json).
-2. **bh2026** (modern, `[data-theme="bh2026"]`). Built from its Figma "subatomic" export through the
-   `figma/subatomic` custom parser (one SD instance per figma theme, looped from the manifest).
+2. **bh2026** (modern, `[data-theme="bh2026"]`). Built from four Figma exports (core, tier-1, tier-2,
+   semantic) via `buildFigmaTokens` — reads all files together, resolves cross-tier aliases, converts
+   Figma color objects to CSS, then passes the flat token map to SD via `tokens:` (no SD file parser).
 
 **Two theme shapes are deliberate.** bh2022 shares `src/core` primitives; **Figma themes are
 self-contained** — each carries its own primitives and does *not* reference `src/core`. The contract
@@ -42,10 +43,11 @@ between themes is the emitted `--*` CSS var names, not a shared source tier.
   `css/dark` formatter swaps it into `$value`. Standard DTCG has no dark concept here.
 - **bh2022 color scales are frozen literals.** `color.shade/tint/contrast/pale/varNames` were computed
   once by `polished` and baked in; the color-math deps are gone. Edit the literal(s) directly.
-- **bh2026 needs a custom parser** because its aliases use a flat namespace where tier-1 `color.border`
-  (leaf) and tier-2 `color.border.*` (group) collide in SD's nested tree. `figma/subatomic` de-collides,
-  resolves, and unit-converts (px→rem) the export in-memory. The raw export stays the committed source of
-  truth — **re-export → `npm run build`, nothing else.**
+- **bh2026 uses `buildFigmaTokens`** (in `build.mjs`) instead of an SD file parser. It reads all four
+  `*.figma-export.json` sources together, builds a shared alias namespace across tiers, resolves aliases,
+  converts Figma's DTCG color objects (`{hex, components, alpha}`) to CSS hex/rgba, and unit-converts
+  (px→rem). The flat token map is passed directly to SD via `tokens:`. SD's file-based parser is not
+  involved. The raw exports stay the committed source of truth — **re-export → `npm run build`, nothing else.**
 
 > Editing `build.mjs`? SD v5 is ESM-only and async (`await sd.buildAllPlatforms()`); token data is
 > `dictionary.tokens` (nested) / `.allTokens` (flat). Custom formatters: `css/dark`, `figma/css-vars`,
@@ -55,10 +57,10 @@ between themes is the emitted `--*` CSS var names, not a shared source tier.
 
 - **bh2022 value** → edit the DTCG file (`src/core/<category>.json` or `src/themes/bh2022/{semantic,components}.json`);
   `$value` + `"{...}"` refs, no `$type`. New source file → add it to `BASE_THEME.sources` in `manifest.mjs`.
-- **bh2026 value** → update Figma → re-export `src/themes/bh2026/subatomic.figma-export.json`. (Component-level
-  `components.figma-export.json` is committed but not yet wired into the build.)
-- **New theme** → Figma-sourced: drop `src/themes/<name>/subatomic.figma-export.json` + one `figma` entry in
-  `manifest.mjs` (no new build code). Hand-authored: follow the bh2022 shape.
+- **bh2026 value** → update Figma → re-export into `src/themes/bh2026/` as `core.figma-export.json`,
+  `tier-1.figma-export.json`, `tier-2.figma-export.json`, `semantic.figma-export.json`.
+- **New theme** → Figma-sourced: drop `*.figma-export.json` files under `src/themes/<name>/` + one `figma`
+  entry (with `sources` array) in `manifest.mjs`. Hand-authored: follow the bh2022 shape.
 - Don't invent a third pattern, and don't re-introduce `$type` on bh2022.
 
 ## Package exports

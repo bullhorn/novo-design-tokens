@@ -1,6 +1,6 @@
 import StyleDictionary from "style-dictionary";
 import { minifyDictionary } from "style-dictionary/utils";
-import { writeFileSync } from "node:fs";
+import { writeFileSync, readFileSync, existsSync } from "node:fs";
 import { THEMES, BASE_THEME, FIGMA_THEMES } from "./manifest.mjs";
 
 // Base theme (bh2022): tiered DTCG source. `$type` is intentionally omitted — typing
@@ -123,10 +123,10 @@ sd.registerFormat({
 
 await sd.buildAllPlatforms();
 
-// Figma-sourced themes build through Style Dictionary via a custom parser that resolves
-// the committed export in-memory, flattening each leaf to a single dashed-name token. (SD's
-// nested tree can't hold the export's flat aliases, where e.g. `color.border` is both a leaf
-// and a group.) Re-export from Figma + rebuild — nothing else.
+// Figma-sourced themes build through Style Dictionary by reading all export files up-front,
+// building a shared alias namespace across all tiers, resolving aliases + converting units,
+// then passing the flat token map directly to SD (no SD file parser needed).
+// Re-export from Figma → rename to *.figma-export.json → `npm run build`. Nothing else.
 const REM_BASE = 10;
 const ALIAS = /^\{(.+)}$/;
 
@@ -138,7 +138,7 @@ const normalizePath = (path) => {
   for (let i = 0; i < segs.length; i += 1) {
     const next = segs[i + 1];
     if (next && next.startsWith(`${segs[i]}-`) && /^\d/.test(next.slice(segs[i].length + 1))) {
-      continue; // drop the redundant parent; the next segment already carries the name
+      continue;
     }
     out.push(segs[i]);
   }
@@ -147,42 +147,50 @@ const normalizePath = (path) => {
 
 const toRem = (n) => (n === 0 ? "0" : `${parseFloat((n / REM_BASE).toFixed(4))}rem`);
 
-// Parse the Figma export into a flat, resolved token set: { "<dashed-name>": { value } }.
-// Aliases resolved + lengths unit-converted here, so SD needs no further transforms.
-function parseFigmaExport(contents, label = "figma export") {
-  // The export is an array of collections: [{ "<name>": { modes: { "<mode>": {…} } } }].
-  // Each collection has a single mode today; we take the first.
-  const collections = JSON.parse(contents);
-  const isLeaf = (n) =>
-    n && typeof n === "object" && Object.prototype.hasOwnProperty.call(n, "$value");
+const isLeaf = (n) =>
+  n && typeof n === "object" && Object.prototype.hasOwnProperty.call(n, "$value");
 
-  // Flatten each collection's leaves into ordered [path, rawValue]; build a flat
-  // dotted-path namespace (collection prefix stripped) so aliases resolve tier-agnostically.
-  const ns = new Map();
-  const leaves = [];
+// Walk a single Figma export object (flat dict or legacy array-of-collections) into a
+// shared namespace map and leaves list. Called once per source file.
+function walkFigmaFile(raw, ns, leaves) {
   const walk = (node, path) => {
     if (isLeaf(node)) {
       const p = normalizePath(path);
       leaves.push([p, node.$value]);
       ns.set(p.replace(/\//g, "."), node.$value);
-      // also register the raw (un-normalized) path so aliases using the full
-      // Figma path (e.g. {color.transparency.charcoal.charcoal-08}) still resolve
-      // after normalizePath strips the redundant parent segment
+      // Register raw (un-normalized) path too so aliases using the full Figma path still resolve.
       if (path !== p) ns.set(path.replace(/\//g, "."), node.$value);
       return;
     }
     for (const [key, value] of Object.entries(node)) {
-      if (key.startsWith("$")) continue; // skip $type/$scopes metadata
-      // CSS custom property names cannot contain spaces; skip any Figma group whose
-      // key has spaces (e.g. "DO NOT USE - deprecated" in Tier 1 export).
-      if (key.includes(" ")) continue;
+      if (key.startsWith("$")) continue; // skip $type/$scopes/$extensions metadata
+      if (key.includes(" ")) continue;   // CSS custom props can't contain spaces
       walk(value, path ? `${path}/${key}` : key);
     }
   };
-  for (const collection of collections) {
-    const [, body] = Object.entries(collection)[0];
-    const mode = Object.values(body.modes ?? {})[0] ?? {};
-    walk(mode, "");
+
+  if (Array.isArray(raw)) {
+    // Legacy format: array of collections [{ "<name>": { modes: { "<mode>": {…} } } }]
+    for (const collection of raw) {
+      const [, body] = Object.entries(collection)[0];
+      const mode = Object.values(body.modes ?? {})[0] ?? {};
+      walk(mode, "");
+    }
+  } else {
+    // Current format: flat dict { category: { token: { $value } } }
+    walk(raw, "");
+  }
+}
+
+// Parse multiple Figma export files into a single flat, resolved token set.
+// Aliases resolve across all files (shared namespace); unit conversion applied here.
+// Re-export → rebuild — SD needs no further transforms.
+function buildFigmaTokens(filePaths, label = "figma theme") {
+  const ns = new Map();
+  const leaves = []; // [normalizedPath, rawValue] — all files, in source order
+
+  for (const filePath of filePaths) {
+    walkFigmaFile(JSON.parse(readFileSync(filePath, "utf8")), ns, leaves);
   }
 
   const resolve = (val, seen = new Set()) => {
@@ -203,7 +211,15 @@ function parseFigmaExport(contents, label = "figma export") {
     const { val, unresolved: bad } = resolve(raw);
     if (bad) {
       unresolved += 1;
-      return String(val);
+      return null; // caller skips — emitting "{...}" would cause SD to re-resolve and error
+    }
+    // New Figma DTCG color format: { colorSpace, components: [r,g,b] (0-1), alpha, hex }
+    if (typeof val === "object" && val !== null && "hex" in val) {
+      const hex = val.hex.toLowerCase();
+      if (val.alpha === 1) return hex;
+      const [r, g, b] = val.components.map((c) => Math.round(c * 255));
+      const a = parseFloat(val.alpha.toFixed(4));
+      return `rgba(${r}, ${g}, ${b}, ${a})`;
     }
     if (typeof val === "number") {
       if (path.includes("font-weight")) return String(val); // unitless
@@ -211,33 +227,55 @@ function parseFigmaExport(contents, label = "figma export") {
       if (val >= 999) return `${val}px`; // round sentinel
       return toRem(val);
     }
-    return String(val); // colors (#…), keywords (Inter, none, uppercase…)
+    return String(val); // hex colors (#…), keywords (Inter, none, uppercase…)
   };
 
   const tokens = {};
   for (const [path, raw] of leaves) {
-    tokens[path.replace(/\//g, "-")] = { value: cssValue(path, raw) };
+    const value = cssValue(path, raw);
+    if (value === null) continue; // skip unresolvable aliases
+    // CSS custom property names are case-sensitive but must use only [a-z0-9-] — lowercase.
+    tokens[path.replace(/\//g, "-").toLowerCase()] = { value };
   }
   console.log(
-    `parsed ${label} — ${leaves.length} tokens` +
-      (unresolved ? ` (⚠ ${unresolved} unresolved aliases)` : ", 0 unresolved")
+    `parsed ${label} — ${leaves.length} tokens across ${filePaths.length} files` +
+    (unresolved ? ` (⚠ ${unresolved} unresolved aliases)` : ", 0 unresolved")
   );
   return tokens;
 }
 
-// Register the Figma parser + CSS-vars format globally (shared by all figma theme instances).
-StyleDictionary.registerParser({
-  name: "figma/subatomic",
-  pattern: /subatomic\.figma-export\.json$/,
-  parser: ({ filePath, contents }) => parseFigmaExport(contents, filePath),
-});
+// Parse CSS custom property declarations from a built CSS file: { "--name": "value" }.
+function parseCssVars(css) {
+  const vars = new Map();
+  for (const [, name, value] of css.matchAll(/--([a-z0-9-]+)\s*:\s*([^;]+);/g)) {
+    vars.set(name, value.trim());
+  }
+  return vars;
+}
+
+// Log a diff of token changes between old and new CSS output.
+function reportCssDiff(oldCss, newCss, label) {
+  const oldVars = parseCssVars(oldCss);
+  const newVars = parseCssVars(newCss);
+  const added = [...newVars.keys()].filter((k) => !oldVars.has(k));
+  const removed = [...oldVars.keys()].filter((k) => !newVars.has(k));
+  const changed = [...newVars.keys()].filter(
+    (k) => oldVars.has(k) && oldVars.get(k) !== newVars.get(k)
+  );
+  console.log(
+    `${label} diff vs previous build: +${added.length} added, -${removed.length} removed, ~${changed.length} changed`
+  );
+  if (added.length) console.log(`  added:   ${added.slice(0, 10).map((k) => `--${k}`).join(", ")}${added.length > 10 ? ` … +${added.length - 10} more` : ""}`);
+  if (removed.length) console.log(`  removed: ${removed.slice(0, 10).map((k) => `--${k}`).join(", ")}${removed.length > 10 ? ` … +${removed.length - 10} more` : ""}`);
+  if (changed.length) console.log(`  changed: ${changed.slice(0, 10).map((k) => `--${k}: ${oldVars.get(k)} → ${newVars.get(k)}`).join("\n           ")}${changed.length > 10 ? ` … +${changed.length - 10} more` : ""}`);
+}
 
 StyleDictionary.registerFormat({
   name: "figma/css-vars",
   format: ({ dictionary, options }) => {
-    const { selector, name, source } = options;
+    const { selector, name, sources } = options;
     const header =
-      `/* ${name} theme — generated by build.mjs from ${source}.\n` +
+      `/* ${name} theme — generated by build.mjs from ${sources.map((s) => s.split("/").pop()).join(", ")}.\n` +
       `   Do not edit directly. Lengths px -> rem at ${REM_BASE}px base; border-widths px; font-weight unitless. */\n`;
     const body = dictionary.allTokens
       .map((token) => `  --${token.path.join("-")}: ${token.value};`)
@@ -246,28 +284,36 @@ StyleDictionary.registerFormat({
   },
 });
 
-// Build each Figma-sourced theme through its own SD instance (adding a theme needs no new code).
+// Build each Figma-sourced theme: parse all export files together (shared namespace for
+// cross-tier alias resolution), then pass the resolved token map directly to SD.
 for (const theme of FIGMA_THEMES) {
+  const oldCss = existsSync(theme.outputs.light)
+    ? readFileSync(theme.outputs.light, "utf8")
+    : null;
+
+  const tokens = buildFigmaTokens(theme.sources, theme.name);
+
   const themeSd = new StyleDictionary({
-    source: [theme.source],
-    // Opt this instance into the Figma parser (registered parsers only run when named here).
-    parsers: ["figma/subatomic"],
+    tokens,
     platforms: {
       css: {
-        // Parser emits final values + de-collided names; no value/name transforms needed.
-        transforms: [],
+        transforms: [], // all values already resolved + unit-converted by buildFigmaTokens
         buildPath: "css/",
         files: [
           {
             destination: theme.outputs.light.replace(/^css\//, ""),
             format: "figma/css-vars",
-            options: { selector: theme.selector, name: theme.name, source: theme.source },
+            options: { selector: theme.selector, name: theme.name, sources: theme.sources },
           },
         ],
       },
     },
   });
   await themeSd.buildAllPlatforms();
+
+  if (oldCss) {
+    reportCssDiff(oldCss, readFileSync(theme.outputs.light, "utf8"), theme.name);
+  }
 }
 
 // Publish the theme registry for consumers (`novo-design-tokens/manifest`).

@@ -50,10 +50,10 @@ for (const [output, name] of SNAPSHOTS) {
 }
 
 // --- Invariants ---------------------------------------------------------------------------
-test("bh2026: 404 tokens, all unique (no parser name collisions)", () => {
+test("bh2026: 1129 tokens, all unique (no parser name collisions)", () => {
   const names = declNames(read("css/bh2026.css"));
-  assert.equal(names.length, 404, "bh2026 token count changed");
-  assert.equal(new Set(names).size, 404, "bh2026 has colliding var names (silent overwrite)");
+  assert.equal(names.length, 1129, "bh2026 token count changed");
+  assert.equal(new Set(names).size, 1129, "bh2026 has colliding var names (silent overwrite)");
 });
 
 test("no duplicate var names within a theme", () => {
