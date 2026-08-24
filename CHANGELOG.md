@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.2.0...v1.3.0) (2026-08-24)
+
+
+### Features
+
+* **bh2026:** Additional bh2026 tokens from Figma ([#7](https://github.com/bullhorn/novo-design-tokens/issues/7)) ([c958434](https://github.com/bullhorn/novo-design-tokens/commit/c9584347dec9b0aba12a5266ba17c3c39f957c0d))
+
 # [1.2.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.1.0...v1.2.0) (2026-08-18)
 
 
