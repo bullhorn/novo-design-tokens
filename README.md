@@ -1,54 +1,21 @@
-# novo-design-tokens [![npm](https://img.shields.io/npm/v/novo-design-tokens?style=flat-square)](https://www.npmjs.com/package/novo-design-tokens) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/novo-design-tokens?label=gzipped%20size&style=flat-square)](https://bundlephobia.com/result?p=novo-design-tokens)
+# novo-design-tokens [![npm](https://img.shields.io/npm/v/novo-design-tokens?style=flat-square)](https://www.npmjs.com/package/novo-design-tokens)
 
 Design tokens for the Bullhorn/Novo Design System.
 
-## Getting started
-
-### Installing the package:
+## Using the tokens
 
 ```
 npm install novo-design-tokens
 ```
 
-### What's included
-
-```
-novo-design-tokens/
-├── lib/                    # generated js (CJS + ESM), json, and manifest.json (theme registry)
-├── css/                    # generated per-theme css: bh2022(.min), bh2022-dark(.min), bh2026(.min)
-└── scss/                   # scss consumption layer (variables + mixins + functions)
-```
-
 ### Themes
 
-Two themes ship today, both as CSS custom properties:
+| Theme             | Selector                | CSS entry                                          |
+|-------------------|-------------------------|----------------------------------------------------|
+| `bh2022` (base)   | `:root`                 | `novo-design-tokens/css/bh2022`, `.../bh2022-dark` |
+| `bh2026` (modern) | `[data-theme="bh2026"]` | `novo-design-tokens/css/bh2026`                    |
 
-| Theme | Selector | CSS entry |
-|---|---|---|
-| `bh2022` (base) | `:root` (+ dark) | `novo-design-tokens/css/bh2022`, `.../bh2022-dark` |
-| `bh2026` | `[data-theme="bh2026"]` | `novo-design-tokens/css/bh2026` |
-
-The theme registry is published at `novo-design-tokens/manifest` (`lib/manifest.json`) — name,
-selector, modes, and css paths per theme — so you can enumerate themes without hardcoding.
-
-### Using the tokens
-
-Tokens are available for web and can be included as JS, CSS variables, or SCSS variables and mixins.
-
-#### JS
-
-```js
-import { color, spacing } from "novo-design-tokens";
-
-document.querySelector("#el").style.backgroundColor = color.candidate; // entity color
-document.querySelector("#el").style.color = color.contrast.grass; // computed contrast
-document.querySelector("#el").style.padding = spacing.lg;
-```
-
-#### CSS
-
-Import a theme's variables. The base theme (`bh2022`) applies to `:root`; add `data-theme="bh2026"`
-on a container (or `:root`) to activate the modern theme.
+### CSS
 
 ```js
 import "novo-design-tokens/css/bh2022";       // base (:root)
@@ -56,42 +23,70 @@ import "novo-design-tokens/css/bh2022-dark";  // optional dark overrides
 import "novo-design-tokens/css/bh2026";       // modern ([data-theme="bh2026"])
 ```
 
-> In **Sass**, use the extensionless path (as above) so the variables are inlined; a `.css` suffix
-> makes Sass emit a passthrough `@import` instead. In **JS/bundlers** either form works — the manifest
-> (`lib/manifest.json`) advertises the `.css` paths.
->
-> Deprecated aliases `css/variables`, `css/variables-dark`, `css/variables-bh2026` (each + `.min`) still
-> resolve but will be removed in a future major — migrate to the `css/<theme>` paths above.
+> In Sass, use the extensionless path so variables are inlined. A `.css` suffix makes Sass emit a passthrough `@import`.
 
-#### SCSS
-
-Ships with utility mixins and functions for applying tokens in components:
+### SCSS
 
 ```scss
 @use "novo-design-tokens/scss";
 
 .box {
-  @include padding("md");                 // spacing scale
-  @include background-color(blue, "dark"); // color + variant
-  @include font("lg");                     // type scale
+  @include padding("md");
+  @include background-color(blue, "dark");
+  @include font("lg");
   border: 2px solid getColor(gray, "light");
-  color: rgba($candidate, 0.3);            // entity color as a var
+  color: rgba($candidate, 0.3);
 }
 ```
 
-## Development
+### JS
 
-```bash
-npm install   # install dependencies
-npm start     # build all token outputs
-npm test      # build + regression suite
+```js
+import {color, spacing} from "novo-design-tokens";
+
+document.querySelector("#el").style.backgroundColor = color.candidate;
+document.querySelector("#el").style.padding = spacing.lg;
 ```
 
-Themes are declared in `manifest.mjs`; the build is `build.mjs`. `bh2022` is authored as DTCG
-under `src/core` + `src/themes/bh2022`; `bh2026` is generated from its Figma export in
-`src/themes/bh2026`. See `CLAUDE.md` for architecture and contribution details.
+The theme registry at `novo-design-tokens/manifest` (`lib/manifest.json`) lists all themes, selectors, and CSS paths.
 
-## Built with
+## Updating tokens (developers)
 
-- [Style Dictionary](https://github.com/amzn/style-dictionary)
-- [clean-css](https://github.com/jakubpawlowicz/clean-css-cli)
+### bh2022 (hand-authored)
+
+Edit the DTCG source files directly:
+
+- Primitives: `src/core/<category>.json`
+- Semantic + components: `src/themes/bh2022/`
+
+Then rebuild:
+
+```bash
+npm start
+```
+
+### bh2026 (Figma-sourced)
+
+1. Export updated tokens from Figma as JSON.
+2. Replace the files in `src/themes/bh2026/`:
+    - `core.figma-export.json`
+    - `tier-1.figma-export.json`
+    - `tier-2.figma-export.json`
+    - `semantic.figma-export.json`
+3. Rebuild:
+
+```bash
+npm start
+```
+
+That's it — the build resolves aliases and converts Figma's color format automatically.
+
+### Verify
+
+```bash
+npm test   # build + regression suite (snapshots + invariants)
+```
+
+Intentional output changes require updating fixtures in `test/fixtures/`.
+
+See `CLAUDE.md` for architecture details.

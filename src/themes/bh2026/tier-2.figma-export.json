@@ -3350,6 +3350,100 @@
               }
             }
           }
+        },
+        "field-label": {
+          "font-family": {
+            "$type": "string",
+            "$value": "{typography.font-family.base}",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:148",
+              "com.figma.scopes": [
+                "FONT_FAMILY"
+              ],
+              "com.figma.type": "string"
+            }
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": 400,
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:149",
+              "com.figma.scopes": [
+                "FONT_STYLE"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:6f7b1baa6aa669f2831d4ce1a61319b1b9a5d3d8/-1:-1",
+                "targetVariableName": "typography/font-weight/400",
+                "targetVariableSetId": "VariableCollectionId:6df4b0b7d97875ec1df103377e4ae4f3e8212a4b/-1:-1",
+                "targetVariableSetName": "Tier 1  |  base values"
+              }
+            }
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 12,
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:150",
+              "com.figma.scopes": [
+                "FONT_SIZE"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:98197e6e8fdb4c8c246c1bb6292f2fd95f2132a7/-1:-1",
+                "targetVariableName": "typography/font-size/12",
+                "targetVariableSetId": "VariableCollectionId:6df4b0b7d97875ec1df103377e4ae4f3e8212a4b/-1:-1",
+                "targetVariableSetName": "Tier 1  |  base values"
+              }
+            }
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 14,
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:151",
+              "com.figma.scopes": [
+                "LINE_HEIGHT"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:5ed41737ad69d61abab3e8fdba39151ef50756fc/-1:-1",
+                "targetVariableName": "typography/line-height/14",
+                "targetVariableSetId": "VariableCollectionId:6df4b0b7d97875ec1df103377e4ae4f3e8212a4b/-1:-1",
+                "targetVariableSetName": "Tier 1  |  base values"
+              }
+            }
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0,
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:152",
+              "com.figma.scopes": [
+                "LETTER_SPACING"
+              ],
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:355aaf38aa2c922c3f5ba7370735205d56398627/-1:-1",
+                "targetVariableName": "typography/letter-spacing/0",
+                "targetVariableSetId": "VariableCollectionId:6df4b0b7d97875ec1df103377e4ae4f3e8212a4b/-1:-1",
+                "targetVariableSetName": "Tier 1  |  base values"
+              }
+            }
+          },
+          "text-transform": {
+            "$type": "string",
+            "$value": "none",
+            "$extensions": {
+              "com.figma.variableId": "VariableID:16552:153",
+              "com.figma.scopes": [
+                "FONT_STYLE"
+              ],
+              "com.figma.type": "string",
+              "com.figma.aliasData": {
+                "targetVariableId": "VariableID:2804425a193faa8e836d8564bc6a5e2bf6ce27d2/-1:-1",
+                "targetVariableName": "typography/text-transform/none",
+                "targetVariableSetId": "VariableCollectionId:6df4b0b7d97875ec1df103377e4ae4f3e8212a4b/-1:-1",
+                "targetVariableSetName": "Tier 1  |  base values"
+              }
+            }
+          }
         }
       },
       "value": {
