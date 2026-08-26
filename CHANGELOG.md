@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.4.0...v2.0.0) (2026-08-26)
+
+
+* feat(bh2026)!: Updated to latest tokens from Figma, including deletions ([#9](https://github.com/bullhorn/novo-design-tokens/issues/9)) ([3b8d93d](https://github.com/bullhorn/novo-design-tokens/commit/3b8d93d2b14a16a95a57981129570c1fe459b6d6))
+
+
+### BREAKING CHANGES
+
+* The use of --color-transparency-black has been removed from Figma, and pure black should be replaced with charcoal instead
+
+Co-authored-by: Nathan Dickerson <nathan.dickerson@bullhorn.com>
+
 # [1.4.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.3.0...v1.4.0) (2026-08-26)
 
 
