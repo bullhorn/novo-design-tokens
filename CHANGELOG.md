@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.3.0...v1.4.0) (2026-08-26)
+
+
+### Features
+
+* **bh2026:** updated from Figma variables ([#8](https://github.com/bullhorn/novo-design-tokens/issues/8)) ([fcd0533](https://github.com/bullhorn/novo-design-tokens/commit/fcd05336f949eda7d3c1a8c5e9a0961e5c04ea3e))
+
 # [1.3.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.2.0...v1.3.0) (2026-08-24)
 
 
