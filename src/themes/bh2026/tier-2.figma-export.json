@@ -13,6 +13,7 @@
           "alpha": 1,
           "hex": "#FFFFFF"
         },
+        "$description": "default background for the focus areas on a page - containers (card, slideout, modals), headers, etc.",
         "$extensions": {
           "com.figma.variableId": "VariableID:327:9894",
           "com.figma.scopes": [
@@ -39,6 +40,7 @@
           "alpha": 0.8999999761581421,
           "hex": "#FFFFFF"
         },
+        "$description": "background for transparent containers that is activated when scrolling content goes underneath.",
         "$extensions": {
           "com.figma.variableId": "VariableID:16262:674",
           "com.figma.scopes": [
@@ -65,6 +67,7 @@
           "alpha": 0.07999999821186066,
           "hex": "#2F2F33"
         },
+        "$description": "used for overlay behind modals and bowling-alley menus (add menu, menu, user preferences, fast find)",
         "$extensions": {
           "com.figma.variableId": "VariableID:16262:675",
           "com.figma.scopes": [
@@ -91,6 +94,7 @@
           "alpha": 1,
           "hex": "#FCFDFD"
         },
+        "$description": "background color used for secondary surfaces (bowling-alley, footer, slideout background, amplify chat background)",
         "$extensions": {
           "com.figma.variableId": "VariableID:16247:332",
           "com.figma.scopes": [
@@ -117,6 +121,7 @@
           "alpha": 1,
           "hex": "#E6F1FF"
         },
+        "$description": "hover state background for containers and components that: have a hover state and who's background color is background = default.",
         "$extensions": {
           "com.figma.variableId": "VariableID:16412:2",
           "com.figma.scopes": [
@@ -169,6 +174,7 @@
           "alpha": 1,
           "hex": "#EBEDEF"
         },
+        "$description": "background for the 'bottom' of the application - page background underneath the bowling alley, headers, slideouts, cards. ",
         "$extensions": {
           "com.figma.variableId": "VariableID:7831:2491",
           "com.figma.scopes": [
@@ -764,6 +770,32 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
+            0.7607843279838562,
+            0.772549033164978,
+            0.7960784435272217
+          ],
+          "alpha": 1,
+          "hex": "#C2C5CB"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:327:9906",
+          "com.figma.scopes": [
+            "STROKE",
+            "EFFECT_COLOR"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:5a11fd44df7f3b5b54bc8d4b040093748bec32e2/-1:-1",
+            "targetVariableName": "color/gray/300",
+            "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
+            "targetVariableSetName": "core"
+          }
+        }
+      },
+      "subtle": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
             0.8700000047683716,
             0.8799999952316284,
             0.8899999856948853
@@ -772,7 +804,7 @@
           "hex": "#DEE0E3"
         },
         "$extensions": {
-          "com.figma.variableId": "VariableID:327:9906",
+          "com.figma.variableId": "VariableID:618:2752",
           "com.figma.scopes": [
             "STROKE",
             "EFFECT_COLOR"
@@ -785,43 +817,17 @@
           }
         }
       },
-      "subtle": {
-        "$type": "color",
-        "$value": {
-          "colorSpace": "srgb",
-          "components": [
-            0.9222221374511719,
-            0.9300000667572021,
-            0.9377778172492981
-          ],
-          "alpha": 1,
-          "hex": "#EBEDEF"
-        },
-        "$extensions": {
-          "com.figma.variableId": "VariableID:618:2752",
-          "com.figma.scopes": [
-            "STROKE",
-            "EFFECT_COLOR"
-          ],
-          "com.figma.aliasData": {
-            "targetVariableId": "VariableID:ff5147e2d3e0ea09de48c88f11a35fcb3bebfe57/-1:-1",
-            "targetVariableName": "color/gray/100",
-            "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
-            "targetVariableSetName": "core"
-          }
-        }
-      },
       "medium": {
         "$type": "color",
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.7607843279838562,
-            0.772549033164978,
-            0.7960784435272217
+            0.6078431606292725,
+            0.6313725709915161,
+            0.6627451181411743
           ],
           "alpha": 1,
-          "hex": "#C2C5CB"
+          "hex": "#9BA1A9"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:15851:1213",
@@ -830,8 +836,8 @@
             "EFFECT_COLOR"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:5a11fd44df7f3b5b54bc8d4b040093748bec32e2/-1:-1",
-            "targetVariableName": "color/gray/300",
+            "targetVariableId": "VariableID:63ad54bc76f11c1a2a4873af7d4bcad64b14c340/-1:-1",
+            "targetVariableName": "color/gray/400",
             "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
             "targetVariableSetName": "core"
           }
@@ -853,12 +859,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.6078431606292725,
-            0.6313725709915161,
-            0.6627451181411743
+            0.5372549295425415,
+            0.5647059082984924,
+            0.6039215922355652
           ],
           "alpha": 1,
-          "hex": "#9BA1A9"
+          "hex": "#89909A"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:15851:1214",
@@ -867,8 +873,8 @@
             "EFFECT_COLOR"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:63ad54bc76f11c1a2a4873af7d4bcad64b14c340/-1:-1",
-            "targetVariableName": "color/gray/400",
+            "targetVariableId": "VariableID:5e57305dc3843ae13d369fb438b930804b6b6bbb/-1:-1",
+            "targetVariableName": "color/gray/500",
             "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
             "targetVariableSetName": "core"
           }
@@ -905,12 +911,12 @@
         "$value": {
           "colorSpace": "srgb",
           "components": [
-            0.7607843279838562,
-            0.772549033164978,
-            0.7960784435272217
+            0.8700000047683716,
+            0.8799999952316284,
+            0.8899999856948853
           ],
           "alpha": 1,
-          "hex": "#C2C5CB"
+          "hex": "#DEE0E3"
         },
         "$extensions": {
           "com.figma.variableId": "VariableID:16212:580",
@@ -919,8 +925,8 @@
             "EFFECT_COLOR"
           ],
           "com.figma.aliasData": {
-            "targetVariableId": "VariableID:5a11fd44df7f3b5b54bc8d4b040093748bec32e2/-1:-1",
-            "targetVariableName": "color/gray/300",
+            "targetVariableId": "VariableID:4be98b7bf40e0f50a7c359ae30e690c31f5ebd85/-1:-1",
+            "targetVariableName": "color/gray/200",
             "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
             "targetVariableSetName": "core"
           }
@@ -1128,6 +1134,32 @@
           }
         }
       },
+      "secondary": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.32156863808631897,
+            0.35686275362968445,
+            0.38823530077934265
+          ],
+          "alpha": 1,
+          "hex": "#525B63"
+        },
+        "$description": "use for text that needs slightly less attention than body. examples include labels, tabs.",
+        "$extensions": {
+          "com.figma.variableId": "VariableID:16544:120",
+          "com.figma.scopes": [
+            "ALL_FILLS"
+          ],
+          "com.figma.aliasData": {
+            "targetVariableId": "VariableID:57160ba14c0fd90b4b14fa8a6130cc1ddabff511/-1:-1",
+            "targetVariableName": "color/gray/750",
+            "targetVariableSetId": "VariableCollectionId:460cf2981e713a1204739d3c0754b34997343147/-1:-1",
+            "targetVariableSetName": "core"
+          }
+        }
+      },
       "body-knockout": {
         "$type": "color",
         "$value": {
@@ -1165,6 +1197,7 @@
           "alpha": 1,
           "hex": "#677079"
         },
+        "$description": "use for text that needs less attention that body or secondary text, but more so than disabled text. examples include help or info text.",
         "$extensions": {
           "com.figma.variableId": "VariableID:14377:2671",
           "com.figma.scopes": [

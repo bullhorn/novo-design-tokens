@@ -375,6 +375,25 @@
           ]
         }
       },
+      "750": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.32156863808631897,
+            0.35686275362968445,
+            0.38823530077934265
+          ],
+          "alpha": 1,
+          "hex": "#525B63"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:16543:119",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
       "800": {
         "$type": "color",
         "$value": {
