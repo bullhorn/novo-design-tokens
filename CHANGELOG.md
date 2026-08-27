@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/bullhorn/novo-design-tokens/compare/v2.0.0...v2.1.0) (2026-08-27)
+
+
+### Features
+
+* **bh2026:** Button color updates and additions ([#10](https://github.com/bullhorn/novo-design-tokens/issues/10)) ([43193f6](https://github.com/bullhorn/novo-design-tokens/commit/43193f68f3fa466f0393ee995d47be4bc0f5f748))
+
 # [2.0.0](https://github.com/bullhorn/novo-design-tokens/compare/v1.4.0...v2.0.0) (2026-08-26)
 
 
