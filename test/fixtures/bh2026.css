@@ -345,7 +345,7 @@
   --typography-meta-default-text-transform: none;
   --typography-meta-sm-font-family: Inter;
   --typography-meta-sm-font-weight: 500;
-  --typography-meta-sm-font-size: 1rem;
+  --typography-meta-sm-font-size: 1.2rem;
   --typography-meta-sm-line-height: 1.2rem;
   --typography-meta-sm-letter-spacing: 0;
   --typography-meta-sm-text-transform: uppercase;
@@ -381,7 +381,7 @@
   --typography-input-label-md-text-transform: capitalize;
   --typography-input-label-sm-font-family: Inter;
   --typography-input-label-sm-font-weight: 400;
-  --typography-input-label-sm-font-size: 1rem;
+  --typography-input-label-sm-font-size: 1.2rem;
   --typography-input-label-sm-line-height: 1.2rem;
   --typography-input-label-sm-letter-spacing: 0.05rem;
   --typography-input-label-sm-text-transform: uppercase;

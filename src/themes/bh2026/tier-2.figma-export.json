@@ -2719,7 +2719,7 @@
       },
       "font-size": {
         "$type": "number",
-        "$value": 10,
+        "$value": 12,
         "$extensions": {
           "com.figma.variableId": "VariableID:15971:4",
           "com.figma.scopes": [
@@ -3287,7 +3287,7 @@
           },
           "font-size": {
             "$type": "number",
-            "$value": 10,
+            "$value": 12,
             "$extensions": {
               "com.figma.variableId": "VariableID:15868:1459",
               "com.figma.scopes": [
