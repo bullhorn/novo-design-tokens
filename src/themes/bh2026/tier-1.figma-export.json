@@ -922,6 +922,65 @@
         }
       }
     },
+    "amplify": {
+      "amplify-green": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.843137264251709,
+            0.18039216101169586
+          ],
+          "alpha": 1,
+          "hex": "#00D72E"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:16632:716",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "amplify-light-blue": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.6666666865348816,
+            0.8823529481887817,
+            0.95686274766922
+          ],
+          "alpha": 1,
+          "hex": "#AAE1F4"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:16632:717",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      },
+      "amplify-blue": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0,
+            0.5568627715110779,
+            1
+          ],
+          "alpha": 1,
+          "hex": "#008EFF"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:16632:718",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ]
+        }
+      }
+    },
     "entity": {
       "lead": {
         "$type": "color",
